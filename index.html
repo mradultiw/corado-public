@@ -1,25 +1,31 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>corado.in — Coming Soon</title>
-  <meta name="description" content="corado.in — Coming Soon. Stay tuned for updates." />
-  <link rel="stylesheet" href="/assets/style.css">
+  <meta name="description" content="corado.in — Coming Soon. Stay tuned for updates.">
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#7dd3fc;--muted:#9ca3af;--text:#e6eef8}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+    .box{max-width:680px;width:100%;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:12px;padding:28px;text-align:center;box-shadow:0 8px 40px rgba(2,6,23,0.6)}
+    h1{margin:0;font-size:28px;color:var(--accent);letter-spacing:0.06em}
+    h2{margin:8px 0 0;font-size:18px}
+    p{color:var(--muted);margin:16px 0 0}
+    footer{margin-top:18px;color:rgba(255,255,255,0.06);font-size:13px}
+    @media(max-width:520px){.box{padding:20px}h1{font-size:22px}}
+  </style>
 </head>
 <body>
-  <main class="center">
-    <div class="card">
-      <h1 class="logo">corado.in</h1>
+  <div class="wrap">
+    <div class="box" role="main" aria-labelledby="site-title">
+      <h1 id="site-title">corado.in</h1>
       <h2>Coming Soon... stay tuned!</h2>
-      <p class="lead">We're building something great. Sign up to get updates when we launch.</p>
-      <form class="subscribe" action="mailto:hello@corado.in" method="get" target="_blank">
-        <input type="email" name="email" placeholder="your@email.com" aria-label="email" />
-        <button type="submit">Notify me</button>
-      </form>
-      <p class="note">Or follow us on social media for progress updates.</p>
-      <footer class="foot">&copy; 2026 corado.in</footer>
+      <p>We're working on something great. Visit again soon for updates.</p>
+      <footer>&copy; <span id="year"></span> corado.in</footer>
     </div>
-  </main>
+  </div>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
