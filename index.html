@@ -1,31 +1,338 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>corado.in — Coming Soon</title>
-  <meta name="description" content="corado.in — Coming Soon. Stay tuned for updates.">
-  <style>
-    :root{--bg:#0f1724;--card:#0b1220;--accent:#7dd3fc;--muted:#9ca3af;--text:#e6eef8}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
-    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
-    .box{max-width:680px;width:100%;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:12px;padding:28px;text-align:center;box-shadow:0 8px 40px rgba(2,6,23,0.6)}
-    h1{margin:0;font-size:28px;color:var(--accent);letter-spacing:0.06em}
-    h2{margin:8px 0 0;font-size:18px}
-    p{color:var(--muted);margin:16px 0 0}
-    footer{margin-top:18px;color:rgba(255,255,255,0.06);font-size:13px}
-    @media(max-width:520px){.box{padding:20px}h1{font-size:22px}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corado | The Trusted Community for Verified Professionals</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+
+        .brand-blue {
+            background-color: #1877F2;
+        }
+
+        .text-brand-blue {
+            color: #1877F2;
+        }
+
+        .gradient-blue {
+            background: linear-gradient(135deg, #1877F2 0%, #0A56B1 100%);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #1877F2 0%, #0A56B1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .verified-green {
+            background: #F0FDF4;
+            color: #166534;
+            /* color: #d3a008; */
+            border: 1px solid #BBF7D0;
+        }
+    </style>
 </head>
-<body>
-  <div class="wrap">
-    <div class="box" role="main" aria-labelledby="site-title">
-      <h1 id="site-title">corado.in</h1>
-      <h2>Coming Soon... stay tuned!</h2>
-      <p>We're working on something great. Visit again soon for updates.</p>
-      <footer>&copy; <span id="year"></span> corado.in</footer>
-    </div>
-  </div>
-  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+
+<body class="bg-white text-slate-900 antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div
+                    class="flex items-center justify-center w-10 h-10 border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                    <img src="client/public/corado-nobg.png" alt="Corado Logo" class="h-8 w-auto">
+                </div>
+                <span class="text-2xl font-extrabold tracking-tight">Corado</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-10 text-sm font-semibold text-slate-600">
+                <a href="#community" class="hover:text-brand-blue transition">The Community</a>
+                <a href="#categories" class="hover:text-brand-blue transition">Categories</a>
+                <a href="#how-it-works" class="hover:text-brand-blue transition">How it works</a>
+                <a href="#download"
+                    class="brand-blue text-white px-6 py-3 rounded-2xl shadow-lg shadow-blue-200 hover:opacity-90 transition active:scale-95">Get
+                    the App</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative pt-40 pb-20 lg:pt-56 lg:pb-40">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full verified-green text-sm font-bold mb-8">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                        d="M2.166 4.999A11.954 11.955 0 0010 19.444a11.954 11.955 0 007.834-14.445 11.954 11.955 0 00-7.834-3.555 11.954 11.955 0 00-7.834 3.555zM10 17.111a9.962 9.962 0 01-6.528-12.037 9.962 9.962 0 016.528-2.963 9.962 9.962 0 016.528 2.963 9.962 9.962 0 01-6.528 12.037zm3.707-9.293a1 1 0 00-1.414-1.414L9 9.586 7.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd" />
+                </svg>
+                Exclusive Professional Network
+            </div>
+            <h1 class="text-5xl lg:text-8xl font-black tracking-tighter mb-8 lg:mb-12 leading-[1.1]">
+                A trusted space for <br><span class="text-gradient">People Like You.</span>
+            </h1>
+            <p
+                class="text-2xl lg:text-4xl font-extrabold tracking-tight text-slate-700 mb-16 max-w-4xl mx-auto leading-tight py-4">
+                Find the right audience for your needs, faster.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8 py-2">
+                <a href="#download"
+                    class="w-full sm:w-auto bg-slate-900 text-white px-10 py-5 rounded-3xl font-bold text-xl hover:bg-slate-800 transition shadow-2xl flex items-center justify-center gap-3">
+                    Download for Android
+                </a>
+                <div class="text-slate-400 font-bold px-10 py-5 border-2 border-slate-100 rounded-3xl italic">
+                    iOS coming soon
+                </div>
+            </div>
+            <div class="py-2"></div>
+            <p class="text-slate-400 font-semibold tracking-wide text-s">
+                <!-- Join the community of verified peers -->
+                Replace fragmented groups and unverified listings with<br>
+                a single, vetted community of verified professionals.
+            </p>
+        </div>
+
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 overflow-hidden pointer-events-none opacity-10">
+            <div class="absolute top-1/4 -left-20 w-[500px] h-[500px] brand-blue rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-sky-400 rounded-full blur-[120px]"></div>
+        </div>
+    </section>
+
+    <!-- Categories Grid -->
+    <section id="categories" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-brand-blue font-bold uppercase tracking-widest text-sm mb-4">Community Focused</h2>
+                <p class="text-4xl lg:text-6xl font-extrabold tracking-tight">Everything that you need, <br>from people
+                    you could trust.</p>
+                <br>
+                <p>
+                    <span class="text-4xl lg:text-4xl font-extrabold tracking-tight text-[#d3a008]">Faster.</span>
+                    <span class="text-4xl lg:text-4xl font-extrabold tracking-tight text-[#1877F2]">Focused.</span>
+                    <span class="text-4xl lg:text-4xl font-extrabold tracking-tight text-[#138c40]">Safer.</span>
+                </p>
+
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div
+                    class="bg-white p-8 rounded-[2rem] border border-slate-100 hover:border-blue-200 transition shadow-sm">
+                    <div class="text-[#1877F2] mb-6"> <svg class="w-8 h-8" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Co-living</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Secure the perfect home and flatmates within a
+                        verified professional community.</p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-[2rem] border border-slate-100 hover:border-blue-200 transition shadow-sm">
+                    <div class="text-[#F59E0B] mb-6"> <svg class="w-8 h-8" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Marketplace</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Buy, sell, or trade items locally with a network
+                        you could trust.</p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-[2rem] border border-slate-100 hover:border-blue-200 transition shadow-sm">
+                    <div class="text-[#059669] mb-6"> <svg class="w-8 h-8" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Getaways</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Escape the routine. Join curated trips and travel
+                        with like-minded companions.</p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-[2rem] border border-slate-100 hover:border-blue-200 transition shadow-sm">
+                    <div class="text-[#EC4899] mb-6"> <svg class="w-8 h-8" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Happenings</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Stay in the loop with events, social gatherings,
+                        and parties in your neighborhood.</p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-[2rem] border border-slate-100 hover:border-blue-200 transition shadow-sm">
+                    <div class="text-[#8B5CF6] mb-6"> <svg class="w-8 h-8" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Daily Help</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Simplify your life with vetted domestic help
+                        recommended by your peers.</p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-[2rem] border border-slate-100 hover:border-blue-200 transition shadow-sm">
+                    <div class="text-[#06B6D4] mb-6"> <svg class="w-8 h-8" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Ridesharing</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Commute smarter. Share rides to major hubs with
+                        people from your circle.</p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-[2rem] border border-slate-100 hover:border-blue-200 transition shadow-sm">
+                    <div class="text-[#6366F1] mb-6"> <svg class="w-8 h-8" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Referrals</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Unlock career opportunities with direct referrals
+                        from industry insiders.</p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-[2rem] border border-slate-100 hover:border-blue-200 transition shadow-sm">
+                    <div class="text-[#64748B] mb-6"> <svg class="w-8 h-8" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">General</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Crowdsource advice and get quick answers to any
+                        burning questions.</p>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- How it Works / Requirements -->
+    <section id="how-it-works" class="py-24 lg:py-40">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-20">
+            <div class="flex-1">
+                <h2 class="text-brand-blue font-bold uppercase tracking-widest text-sm mb-4">Better by Design</h2>
+                <h3 class="text-4xl lg:text-6xl font-black mb-12 tracking-tight">Trust is built <br>into the flow.</h3>
+
+                <div class="space-y-12">
+                    <div class="flex gap-6">
+                        <div
+                            class="w-12 h-12 rounded-2xl bg-blue-50 text-brand-blue flex items-center justify-center shrink-0 font-bold">
+                            1</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Corporate Verification</h4>
+                            <ul class="text-slate-500 font-medium space-y-1 text-sm list-disc ml-4">
+                                <li>Work email required to post or interact.</li>
+                                <li>Keeps the community exclusive to peers.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div
+                            class="w-12 h-12 rounded-2xl bg-blue-50 text-brand-blue flex items-center justify-center shrink-0 font-bold">
+                            2</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Location Awareness</h4>
+                            <ul class="text-slate-500 font-medium space-y-1 text-sm list-disc ml-4">
+                                <li>Find trusted help or housing nearby.</li>
+                                <li>Connect with people in your vicinity.</li>
+                                <li>Personalized results based on where you are.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1">
+                <div class="bg-slate-900 rounded-[3.5rem] p-12 lg:p-20 text-white relative overflow-hidden shadow-2xl">
+                    <h4 class="text-3xl font-bold mb-6">Built for professionals.</h4>
+                    <p class="text-slate-400 font-medium mb-8 leading-relaxed">
+                        No anonymous noise. No unverified actors. Only a clean, trusted space to get your needs reach to
+                        the right audience.
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full brand-blue flex items-center justify-center font-bold">C
+                        </div>
+                        <div>
+                            <p class="font-bold text-lg">Verified Member</p>
+                            <p class="text-slate-500 text-sm">Verified via Work Email</p>
+                        </div>
+                    </div>
+                    <!-- Decorative Circle -->
+                    <div class="absolute -bottom-20 -right-20 w-64 h-64 brand-blue rounded-full opacity-20 blur-[80px]">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download CTA -->
+    <section id="download" class="py-24 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-5xl lg:text-7xl font-black tracking-tighter mb-16 leading-tight">Join your <span
+                    class="text-brand-blue">trusted</span> professional circle.</h2>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-8">
+                <a onclick="alert('App link coming soon.')"
+                    class="w-full sm:w-auto brand-blue text-white px-12 py-6 rounded-[2.5rem] font-bold text-2xl shadow-2xl hover:opacity-90 transition flex flex-col items-center cursor-pointer">
+                    <span class="text-xs uppercase tracking-widest opacity-70 mb-1">Get the App</span>
+                    <span>Google Play</span>
+                </a>
+                <div
+                    class="w-full sm:w-auto bg-slate-50 border-2 border-slate-100 text-slate-400 px-12 py-6 rounded-[2.5rem] font-bold text-2xl italic flex flex-col items-center">
+                    <span class="text-xs uppercase tracking-widest opacity-70 mb-1">Coming Soon</span>
+                    <span>App Store</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-slate-100">
+        <div
+            class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8 font-semibold text-slate-400 text-sm">
+            <div class="flex items-center gap-2">
+                <img src="client/public/corado-nobg.png" alt="Logo" class="h-6 w-auto grayscale opacity-50">
+                <p>© 2026 Corado Community.</p>
+            </div>
+            <div class="flex space-x-10">
+                <a href="#" class="hover:text-slate-900 transition">Terms</a>
+                <a href="#" class="hover:text-slate-900 transition">Privacy</a>
+                <a href="#" class="hover:text-slate-900 transition">Support</a>
+            </div>
+        </div>
+    </footer>
+
 </body>
+
 </html>
