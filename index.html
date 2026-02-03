@@ -46,6 +46,15 @@
       "description": "A trusted community for verified professionals to find housing, referrals, and social connections."
     }
     </script>
+    <script>
+        window.onload = function() {
+            var path = window.location.pathname;
+            var packageName = "com.corado.app"; 
+            var playStoreUrl = "";
+            playStoreUrl = "https://play.google.com/store/apps/details?id=" + packageName;
+            document.getElementById("android-link").href = playStoreUrl;
+        };
+    </script>
     <!-- ==================== SEO OPTIMIZATIONS END ==================== -->
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -385,7 +394,7 @@
             <h2 class="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tighter mb-12 sm:mb-16 leading-tight">Join
                 your <span class="text-brand-blue">trusted</span> professional circle.</h2>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
-                <a onclick="alert('App link coming soon.')"
+                <a id="android-link" href="#"
                     class="w-full sm:w-auto brand-blue text-white px-10 py-5 rounded-2xl font-bold text-xl shadow-2xl hover:opacity-90 transition flex flex-col items-center cursor-pointer">
                     <span class="text-[10px] uppercase tracking-widest opacity-70 mb-1">Get the App</span>
                     <span>Google Play</span>
