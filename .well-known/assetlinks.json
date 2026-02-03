@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.corado.app",
+    "sha256_cert_fingerprints":
+    ["43:79:EF:E5:E0:1C:64:37:0F:8E:43:5A:13:A5:95:13:5F:AD:9F:5D:F5:CD:C7:D2:97:A2:FC:7A:53:24:CB:B4"]
+  }
+}]
