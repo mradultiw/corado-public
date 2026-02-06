@@ -1,9 +1,14 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "com.corado.app",
-    "sha256_cert_fingerprints":
-    ["43:79:EF:E5:E0:1C:64:37:0F:8E:43:5A:13:A5:95:13:5F:AD:9F:5D:F5:CD:C7:D2:97:A2:FC:7A:53:24:CB:B4"]
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.corado.app",
+      "sha256_cert_fingerprints": [
+        "A4:88:32:1C:05:37:E6:AA:62:51:91:99:CA:AC:B6:C7:6E:32:98:62:D3:D0:91:F5:B2:D4:50:23:54:4E:7B:61"
+      ]
+    }
   }
-}]
+]
