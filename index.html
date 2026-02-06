@@ -351,6 +351,179 @@
         </div>
     </section>
 
+<section id="preview" class="py-20 lg:py-32 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 mb-16 text-center">
+        <h2 class="text-brand-blue font-bold uppercase tracking-widest text-xs sm:text-sm mb-4">App Preview</h2>
+        <h3 class="text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight leading-tight">Experience the Interface</h3>
+    </div>
+
+    <div class="relative w-full overflow-hidden">
+        <div id="slider-container" class="flex gap-4 sm:gap-8 will-change-transform">
+        </div>
+
+        <div class="absolute inset-y-0 left-0 w-12 sm:w-1/4 bg-gradient-to-r from-white via-white/80 to-transparent z-30 pointer-events-none"></div>
+        <div class="absolute inset-y-0 right-0 w-12 sm:w-1/4 bg-gradient-to-l from-white via-white/80 to-transparent z-30 pointer-events-none"></div>
+    </div>
+
+    <style>
+        #slider-container {
+            /* Reduced padding for a more compact look on mobile */
+            padding: 1.5rem 0; 
+        }
+
+        .slide-item {
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                        filter 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: blur(2px);
+            opacity: 0.7;
+            transform: scale(0.9);
+            pointer-events: none;
+            will-change: transform, opacity;
+        }
+
+        .slide-item.active {
+            filter: blur(0);
+            opacity: 1;
+            transform: scale(1.05);
+            z-index: 20;
+        }
+
+        .slide-item img {
+            border-radius: 2rem;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .slide-item.active img {
+            box-shadow: 0 25px 50px -12px rgba(24, 119, 242, 0.2);
+        }
+
+        /* Utility to force stop animations during reset */
+        .no-transition,
+        .no-transition * {
+            transition: none !important;
+        }
+    </style>
+
+    <script>
+        const images = [
+            { src: './onboarding.png', alt: 'Onboarding' },
+            { src: './loging.png', alt: 'Login' },
+            { src: './category.png', alt: 'Category' },
+            { src: './feed.png', alt: 'Feed' },
+            { src: './fullpost.png', alt: 'Full Post' }
+        ];
+
+        const container = document.getElementById('slider-container');
+        let currentIndex = images.length; 
+        let isPaused = false;
+        let isTransitioning = false;
+        let autoPlayInterval;
+
+        function initSlider() {
+            if (autoPlayInterval) clearInterval(autoPlayInterval);
+            container.innerHTML = '';
+
+            const allImages = [...images, ...images, ...images];
+            container.innerHTML = allImages.map((img, i) => `
+                <div class="slide-item shrink-0 w-[65vw] sm:w-[300px] aspect-[9/19]">
+                    <img src="${img.src}" alt="${img.alt}">
+                </div>
+            `).join('');
+
+            // FORCE IMMEDIATE POSITIONING
+            const slides = document.querySelectorAll('.slide-item');
+            const slideWidth = slides[0].offsetWidth;
+            const gap = window.innerWidth < 640 ? 16 : 32;
+            const centerOfSlide = (currentIndex * (slideWidth + gap)) + (slideWidth / 2);
+            const offset = (window.innerWidth / 2) - centerOfSlide;
+            
+            container.classList.add('no-transition');
+            container.style.transition = 'none';
+            container.style.transform = `translateX(${offset}px)`;
+            
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentIndex);
+            });
+
+            startAutoPlay();
+        }
+
+        function updateSlider(animate = true) {
+            const slides = document.querySelectorAll('.slide-item');
+            if (slides.length === 0) return;
+
+            const slideWidth = slides[0].offsetWidth;
+            const gap = window.innerWidth < 640 ? 16 : 32;
+            const centerOfSlide = (currentIndex * (slideWidth + gap)) + (slideWidth / 2);
+            const offset = (window.innerWidth / 2) - centerOfSlide;
+
+            if (animate) {
+                container.classList.remove('no-transition');
+                container.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                container.style.transform = `translateX(${offset}px)`;
+                
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === currentIndex);
+                });
+            } else {
+                // SNAP LOGIC
+                container.classList.add('no-transition');
+                container.style.transition = 'none';
+                slides.forEach(s => s.classList.add('no-transition'));
+                
+                requestAnimationFrame(() => {
+                    container.style.transform = `translateX(${offset}px)`;
+                    slides.forEach((slide, i) => {
+                        slide.classList.toggle('active', i === currentIndex);
+                    });
+                    container.offsetHeight; // Force reflow
+                    
+                    requestAnimationFrame(() => {
+                        container.classList.remove('no-transition');
+                        slides.forEach(s => s.classList.remove('no-transition'));
+                    });
+                });
+            }
+        }
+
+        container.addEventListener('transitionend', () => {
+            isTransitioning = false;
+            if (currentIndex >= images.length * 2) {
+                currentIndex = images.length;
+                updateSlider(false);
+            } else if (currentIndex < images.length) {
+                currentIndex = images.length * 2 - 1;
+                updateSlider(false);
+            }
+        });
+
+        function nextSlide() {
+            if (isPaused || isTransitioning) return;
+            isTransitioning = true;
+            currentIndex++;
+            updateSlider(true);
+        }
+
+        function startAutoPlay() {
+            if (autoPlayInterval) clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(nextSlide, 2500);
+        }
+
+        window.addEventListener('DOMContentLoaded', initSlider);
+        window.addEventListener('resize', () => updateSlider(false));
+
+        const parent = container.parentElement;
+        parent.addEventListener('mouseenter', () => isPaused = true);
+        parent.addEventListener('mouseleave', () => isPaused = false);
+        parent.addEventListener('touchstart', () => isPaused = true, {passive: true});
+        parent.addEventListener('touchend', () => isPaused = false, {passive: true});
+    </script>
+</section>
+
     <!-- How it Works -->
     <section id="how-it-works" class="py-20 lg:py-32 px-4 sm:px-6">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-16 sm:gap-24">
