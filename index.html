@@ -57,15 +57,6 @@
       "description": "A trusted community for verified professionals to find housing, referrals, and social connections."
     }
     </script>
-    <script>
-        window.onload = function () {
-            var path = window.location.pathname;
-            var packageName = "com.corado.app";
-            var playStoreUrl = "";
-            playStoreUrl = "https://play.google.com/store/apps/details?id=" + packageName;
-            document.getElementById("android-link").href = playStoreUrl;
-        };
-    </script>
     <!-- ==================== SEO OPTIMIZATIONS END ==================== -->
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -135,14 +126,9 @@
             <!-- Mobile & Desktop accessible right side -->
             <div class="flex items-center gap-3 sm:gap-6">
                 <span
-                    class="inline-flex items-center gap-1.5 px-3 py-1 sm:px-4 sm:py-2 rounded-full bg-yellow-400 text-black text-[9px] sm:text-xs font-black animate-pulse shadow-md whitespace-nowrap">
-                    <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd"
-                            d="M2.166 4.999A11.954 11.955 0 0010 19.444a11.954 11.955 0 007.834-14.445 11.954 11.955 0 00-7.834-3.555 11.954 11.955 0 00-7.834 3.555zM10 17.111a9.962 9.962 0 01-6.528-12.037 9.962 9.962 0 016.528-2.963 9.962 9.962 0 016.528 2.963 9.962 9.962 0 01-6.528 12.037zm3.707-9.293a1 1 0 00-1.414-1.414L9 9.586 7.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clip-rule="evenodd" />
-                    </svg>
-                    <a href="https://groups.google.com/u/1/g/corado-trusted-testers" class="uppercase tracking-wider">
-                        Beta
+                    class="inline-flex items-center gap-1.5 px-3 py-1 sm:px-4 sm:py-2 rounded-full bg-yellow-300 text-black text-[9px] sm:text-xs font-black animate-pulse shadow-md whitespace-nowrap">
+                    <a href="#android-link" class="tracking-wider">
+                        🚀 Early Access
                     </a>
                 </span>
 
@@ -625,6 +611,61 @@
             <p>© 2026 Corado Community.</p>
         </div>
     </footer>
+
+    <!-- Beta Modal -->
+    <div id="beta-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 px-4">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full text-center shadow-2xl">
+            <h3 class="text-2xl font-bold mb-4">Early Access (Beta)</h3>
+            <p class="text-slate-600 mb-6">
+                Join the beta group first to enable Play Store access.
+            </p>
+
+            <div class="flex flex-col gap-3 mt-4">
+                <a href="https://groups.google.com/u/1/g/corado-trusted-testers" target="_blank"
+                    rel="noopener noreferrer" class="brand-blue text-white py-3 rounded-xl font-semibold">
+                    Join Beta (Google Group)
+                </a>
+
+                <button id="continue-download"
+                    class="border-2 border-slate-300 text-slate-700 hover:bg-slate-100 py-3 rounded-xl font-semibold transition">
+                    Continue to Play Store
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var path = window.location.pathname;
+            var packageName = "com.corado.app";
+            var playStoreUrl = "";
+            playStoreUrl = "https://play.google.com/store/apps/details?id=" + packageName;
+
+            const androidLink = document.getElementById("android-link");
+            const modal = document.getElementById("beta-modal");
+            const continueBtn = document.getElementById("continue-download");
+
+            androidLink.addEventListener("click", function (e) {
+                e.preventDefault();
+                modal.classList.remove("hidden");
+                modal.classList.add("flex");
+            });
+
+            continueBtn.addEventListener("click", function () {
+                window.open(playStoreUrl, "_blank");
+            });
+
+            // Close modal if clicking outside box
+            modal.addEventListener("click", function (e) {
+                if (e.target === modal) {
+                    modal.classList.add("hidden");
+                    modal.classList.remove("flex");
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>
