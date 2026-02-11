@@ -162,7 +162,7 @@
     </nav>
 
     <!-- Hero -->
-    <section class="relative pt-32 pb-16 lg:pt-52 lg:pb-32 px-4 sm:px-6">
+    <section id="community" class="relative pt-32 pb-16 lg:pt-52 lg:pb-32 px-4 sm:px-6">
         <div class="max-w-7xl mx-auto text-center">
             <div
                 class="inline-flex items-center gap-2 px-4 py-2 rounded-full verified-green text-xs sm:text-sm font-bold mb-8">
@@ -357,9 +357,10 @@
     </div>
 
     <div class="relative w-full overflow-hidden">
-        <div id="slider-container" class="flex gap-4 sm:gap-8 will-change-transform">
-        </div>
-
+        <div id="slider-container" class="flex gap-4 sm:gap-8 will-change-transform"></div>
+        
+        <div id="pause-detector" class="absolute top-1/2 left-0 w-full h-[150px] -translate-y-1/2 z-40 cursor-pointer"></div>
+    
         <div class="absolute inset-y-0 left-0 w-12 sm:w-1/4 bg-gradient-to-r from-white via-white/80 to-transparent z-30 pointer-events-none"></div>
         <div class="absolute inset-y-0 right-0 w-12 sm:w-1/4 bg-gradient-to-l from-white via-white/80 to-transparent z-30 pointer-events-none"></div>
     </div>
@@ -378,7 +379,7 @@
             opacity: 0.7;
             transform: scale(0.9);
             pointer-events: none;
-            will-change: transform, opacity;
+            will-change: transform, opacity, filter;
         }
 
         .slide-item.active {
@@ -515,11 +516,11 @@
         window.addEventListener('DOMContentLoaded', initSlider);
         window.addEventListener('resize', () => updateSlider(false));
 
-        // const parent = container.parentElement;
-        // parent.addEventListener('mouseenter', () => isPaused = true);
-        // parent.addEventListener('mouseleave', () => isPaused = false);
-        // parent.addEventListener('touchstart', () => isPaused = true, {passive: true});
-        // parent.addEventListener('touchend', () => isPaused = false, {passive: true});
+        // const detector = document.getElementById('pause-detector');
+        // detector.addEventListener('mouseenter', () => isPaused = true);
+        // detector.addEventListener('mouseleave', () => isPaused = false);
+        // detector.addEventListener('touchstart', () => isPaused = true, {passive: true});
+        // detector.addEventListener('touchend', () => isPaused = false, {passive: true});
     </script>
 </section>
 
