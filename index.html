@@ -249,6 +249,32 @@
             display: none;
         }
     </style>
+    <style>
+        @keyframes infinite-scroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        .animate-infinite-scroll {
+            animation: infinite-scroll 120s linear infinite !important
+        }
+
+        .marquee-container:hover .animate-infinite-scroll {
+            animation-play-state: paused;
+        }
+
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body class="font-sans text-gray-800 bg-gray-50 antialiased selection:bg-brand-500 selection:text-white">
@@ -360,7 +386,7 @@
                     </span>
                     <span
                         class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-700 shadow-sm whitespace-nowrap hover:border-brand-500 transition-colors cursor-default">
-                        <i data-lucide="map-pin" class="w-4 h-4 text-blue-500"></i>Local Advice
+                        <i data-lucide="map-pin" class="w-4 h-4 text-blue-500"></i>General
                     </span>
                 </div>
             </div>
@@ -399,202 +425,24 @@
         </div>
     </section>
 
-    <!-- App Preview Marquee (Marketing Section) -->
-    <section
-        class="py-10 bg-gray-50 overflow-hidden relative border-y border-gray-200 scroll-container hidden sm:block">
-        <div
-            class="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none">
+    <section class="py-8 bg-gray-50 overflow-hidden relative border-y border-gray-200 scroll-container">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 w-full text-center">
+            <p class="text-sm text-gray-600 max-w-2xl mx-auto pb-4">
+                See what people are talking about
+            </p>
         </div>
-        <div
-            class="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none">
-        </div>
-
-        <div class="flex w-[200%] animate-infinite-scroll">
-            <!-- Set 1 -->
-            <div class="flex gap-6 px-3 w-1/2">
-                <div class="w-80 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 shrink-0">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-700 font-bold">
-                                R</div>
-                            <div>
-                                <div class="text-sm font-bold text-gray-900">Rahul M.</div>
-                                <div
-                                    class="text-[10px] text-brand-600 font-bold uppercase tracking-wide flex items-center">
-                                    <i data-lucide="shield-check" class="w-3 h-3 mr-1"></i>Verified
-                                </div>
-                            </div>
-                        </div>
-                        <span class="text-xs text-gray-400">2h ago</span>
-                    </div>
-                    <div class="text-gray-900 font-bold mb-2">Looking for a replacement tenant 🏠</div>
-                    <div class="text-sm text-gray-600 mb-4 line-clamp-2">Moving out of my 2BHK in Indiranagar. Looking
-                        for a chilled-out professional to take over my room.</div>
-                    <button
-                        class="w-full bg-gray-50 text-brand-700 font-medium py-2 rounded-xl text-sm border border-gray-100 hover:bg-brand-50 transition-colors">Message</button>
-                </div>
-                <div class="w-80 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 shrink-0">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-700 font-bold">
-                                S</div>
-                            <div>
-                                <div class="text-sm font-bold text-gray-900">Sneha K.</div>
-                                <div
-                                    class="text-[10px] text-brand-600 font-bold uppercase tracking-wide flex items-center">
-                                    <i data-lucide="shield-check" class="w-3 h-3 mr-1"></i>Verified
-                                </div>
-                            </div>
-                        </div>
-                        <span class="text-xs text-gray-400">5h ago</span>
-                    </div>
-                    <div class="text-gray-900 font-bold mb-2">Selling Office Chair 🪑</div>
-                    <div class="text-sm text-gray-600 mb-4 line-clamp-2">Barely used ergonomic chair, perfect for WFH.
-                        Pick up from HSR Layout Sector 2. ₹2,500.</div>
-                    <button
-                        class="w-full bg-gray-50 text-brand-700 font-medium py-2 rounded-xl text-sm border border-gray-100 hover:bg-brand-50 transition-colors">Message</button>
-                </div>
-                <div class="w-80 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 shrink-0">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-orange-700 font-bold">
-                                A</div>
-                            <div>
-                                <div class="text-sm font-bold text-gray-900">Amit P.</div>
-                                <div
-                                    class="text-[10px] text-brand-600 font-bold uppercase tracking-wide flex items-center">
-                                    <i data-lucide="shield-check" class="w-3 h-3 mr-1"></i>Verified
-                                </div>
-                            </div>
-                        </div>
-                        <span class="text-xs text-gray-400">1d ago</span>
-                    </div>
-                    <div class="text-gray-900 font-bold mb-2">Cook recommendation? 👨‍🍳</div>
-                    <div class="text-sm text-gray-600 mb-4 line-clamp-2">Does anyone have a contact for a good North
-                        Indian cook near Bellandur? Need them for 2 meals a day.</div>
-                    <button
-                        class="w-full bg-gray-50 text-brand-700 font-medium py-2 rounded-xl text-sm border border-gray-100 hover:bg-brand-50 transition-colors">Reply</button>
-                </div>
-                <div class="w-80 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 shrink-0">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center text-pink-700 font-bold">
-                                N</div>
-                            <div>
-                                <div class="text-sm font-bold text-gray-900">Neha R.</div>
-                                <div
-                                    class="text-[10px] text-brand-600 font-bold uppercase tracking-wide flex items-center">
-                                    <i data-lucide="shield-check" class="w-3 h-3 mr-1"></i>Verified
-                                </div>
-                            </div>
-                        </div>
-                        <span class="text-xs text-gray-400">1d ago</span>
-                    </div>
-                    <div class="text-gray-900 font-bold mb-2">Any good gyms nearby? 💪</div>
-                    <div class="text-sm text-gray-600 mb-4 line-clamp-2">Looking for a relatively empty gym near
-                        Koramangala 4th Block. The mainstream ones are too crowded.</div>
-                    <button
-                        class="w-full bg-gray-50 text-brand-700 font-medium py-2 rounded-xl text-sm border border-gray-100 hover:bg-brand-50 transition-colors">Reply</button>
-                </div>
+        <!-- Marquee Section -->
+        <div class="w-full marquee-container flex overflow-hidden gap-6 py-4">
+            <div class="flex shrink-0 gap-6 animate-infinite-scroll w-max" id="marquee-track-1">
+                <!-- Posts will be injected here by JavaScript -->
             </div>
-
-            <!-- Set 2 (Exact Duplicate) -->
-            <div class="flex gap-6 px-3 w-1/2">
-                <div class="w-80 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 shrink-0">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-700 font-bold">
-                                R</div>
-                            <div>
-                                <div class="text-sm font-bold text-gray-900">Rahul M.</div>
-                                <div
-                                    class="text-[10px] text-brand-600 font-bold uppercase tracking-wide flex items-center">
-                                    <i data-lucide="shield-check" class="w-3 h-3 mr-1"></i>Verified
-                                </div>
-                            </div>
-                        </div>
-                        <span class="text-xs text-gray-400">2h ago</span>
-                    </div>
-                    <div class="text-gray-900 font-bold mb-2">Looking for a replacement tenant 🏠</div>
-                    <div class="text-sm text-gray-600 mb-4 line-clamp-2">Moving out of my 2BHK in Indiranagar. Looking
-                        for a chilled-out professional to take over my room.</div>
-                    <button
-                        class="w-full bg-gray-50 text-brand-700 font-medium py-2 rounded-xl text-sm border border-gray-100 hover:bg-brand-50 transition-colors">Message</button>
-                </div>
-                <div class="w-80 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 shrink-0">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-700 font-bold">
-                                S</div>
-                            <div>
-                                <div class="text-sm font-bold text-gray-900">Sneha K.</div>
-                                <div
-                                    class="text-[10px] text-brand-600 font-bold uppercase tracking-wide flex items-center">
-                                    <i data-lucide="shield-check" class="w-3 h-3 mr-1"></i>Verified
-                                </div>
-                            </div>
-                        </div>
-                        <span class="text-xs text-gray-400">5h ago</span>
-                    </div>
-                    <div class="text-gray-900 font-bold mb-2">Selling Office Chair 🪑</div>
-                    <div class="text-sm text-gray-600 mb-4 line-clamp-2">Barely used ergonomic chair, perfect for WFH.
-                        Pick up from HSR Layout Sector 2. ₹2,500.</div>
-                    <button
-                        class="w-full bg-gray-50 text-brand-700 font-medium py-2 rounded-xl text-sm border border-gray-100 hover:bg-brand-50 transition-colors">Message</button>
-                </div>
-                <div class="w-80 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 shrink-0">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-orange-700 font-bold">
-                                A</div>
-                            <div>
-                                <div class="text-sm font-bold text-gray-900">Amit P.</div>
-                                <div
-                                    class="text-[10px] text-brand-600 font-bold uppercase tracking-wide flex items-center">
-                                    <i data-lucide="shield-check" class="w-3 h-3 mr-1"></i>Verified
-                                </div>
-                            </div>
-                        </div>
-                        <span class="text-xs text-gray-400">1d ago</span>
-                    </div>
-                    <div class="text-gray-900 font-bold mb-2">Cook recommendation? 👨‍🍳</div>
-                    <div class="text-sm text-gray-600 mb-4 line-clamp-2">Does anyone have a contact for a good North
-                        Indian cook near Bellandur? Need them for 2 meals a day.</div>
-                    <button
-                        class="w-full bg-gray-50 text-brand-700 font-medium py-2 rounded-xl text-sm border border-gray-100 hover:bg-brand-50 transition-colors">Reply</button>
-                </div>
-                <div class="w-80 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 shrink-0">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center text-pink-700 font-bold">
-                                N</div>
-                            <div>
-                                <div class="text-sm font-bold text-gray-900">Neha R.</div>
-                                <div
-                                    class="text-[10px] text-brand-600 font-bold uppercase tracking-wide flex items-center">
-                                    <i data-lucide="shield-check" class="w-3 h-3 mr-1"></i>Verified
-                                </div>
-                            </div>
-                        </div>
-                        <span class="text-xs text-gray-400">1d ago</span>
-                    </div>
-                    <div class="text-gray-900 font-bold mb-2">Any good gyms nearby? 💪</div>
-                    <div class="text-sm text-gray-600 mb-4 line-clamp-2">Looking for a relatively empty gym near
-                        Koramangala 4th Block. The mainstream ones are too crowded.</div>
-                    <button
-                        class="w-full bg-gray-50 text-brand-700 font-medium py-2 rounded-xl text-sm border border-gray-100 hover:bg-brand-50 transition-colors">Reply</button>
-                </div>
+            <div class="flex shrink-0 gap-6 animate-infinite-scroll w-max" aria-hidden="true" id="marquee-track-2">
+                <!-- Duplicated Posts will be injected here by JavaScript for seamless looping -->
             </div>
         </div>
+
     </section>
+
 
     <!-- The Problem Section -->
     <section class="py-20 bg-brand-dark text-white">
@@ -670,14 +518,14 @@
                         through recommendations from professionals near you.</p>
                 </div>
 
-                <!-- Feature 4: Local Advice (Purple) -->
+                <!-- Feature 4: General (Purple) -->
                 <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:border-purple-200 transition-colors animate-on-scroll fade-in-up group"
                     style="transition-delay: 100ms;">
                     <div
                         class="w-14 h-14 bg-purple-50 rounded-2xl shadow-sm border border-purple-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                         <i data-lucide="map-pin" class="w-7 h-7 text-purple-500"></i>
                     </div>
-                    <h4 class="text-2xl font-bold text-gray-900 mb-3">Local Advice</h4>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-3">General</h4>
                     <p class="text-gray-600 leading-relaxed">
                         Get reliable, local answers from people nearby or get help in general from the community of
                         professionals.</p>
@@ -1230,6 +1078,158 @@
 
             window.addEventListener('scroll', updateProgress);
             updateProgress();
+        });
+    </script>
+    <script>
+        const categoryColorMap = {
+            Marketplace: 'text-orange-600 bg-orange-50 border-orange-200',
+            Housing: 'text-blue-600 bg-blue-50 border-blue-200',
+            DailyHelp: 'text-amber-600 bg-amber-50 border-amber-200',
+            General: 'text-pink-600 bg-pink-50 border-pink-200'
+        };
+
+        const companies = ["Google", "Amazon", "Microsoft", "Visa", "Amex", "Atlassian", "Adobe", "Samsung", "Qualcomm", "Salesforce", "Flipkart"];
+
+        const SAMPLE_POSTS = [
+            {
+                id: 1, name: "Priya", company: "Google", date: "02/21/2026", category: "DailyHelp",
+                title: "Reliable North Indian Cook Needed, Hoodi",
+                content: "Need a reliable cook who can make healthy North Indian food (2 meals/day) for a family of 3. Please DM me if you have any leads or contacts.",
+                avatar: "P", avatarColor: "bg-emerald-100 text-emerald-700"
+            },
+            {
+                id: 2, name: "Arjun", company: "Amazon", date: "02/20/2026", category: "Housing",
+                title: "Furnished 2 BHK Flatmate in Indiranagar",
+                content: "Flatmate needed for a fully furnished 2 BHK in Indiranagar near the Mahatma Gandhi Metro. Rent is 18k including maintenance. Chill vibes, no owner interference. Available from next month.",
+                avatar: "A", avatarColor: "bg-blue-100 text-blue-700"
+            },
+            {
+                id: 3, name: "Sneha", company: "Microsoft", date: "02/19/2026", category: "General",
+                title: "Child Daycare Recommendations, Sarjapur",
+                content: "Hi neighbors! Can anyone recommend a good, reliable daycare center near Sarjapur Road for a 2-year-old toddler? Would prefer places with live CCTV access.",
+                avatar: "S", avatarColor: "bg-yellow-100 text-yellow-700"
+            },
+            {
+                id: 4, name: "Rohan", company: "Visa", date: "02/18/2026", category: "Marketplace",
+                title: "IKEA Kivik 3-Seater Sofa for Sale, Brookfield",
+                content: "Selling my 3-seater IKEA Kivik sofa. Barely used, 8 months old. Moving out of the city so need to sell it urgently. Asking price 15k. Pick up from Brookfield.",
+                avatar: "R", avatarColor: "bg-purple-100 text-purple-700"
+            },
+            {
+                id: 5, name: "Vikram", company: "Amex", date: "02/18/2026", category: "Housing",
+                title: "Spacious 3 BHK Search for Family, Whitefield",
+                content: "Looking for a spacious 3 BHK apartment for a family of four in or around Whitefield. Budget is around 50k-60k. Prefer societies with good amenities and a park.",
+                avatar: "V", avatarColor: "bg-rose-100 text-rose-700"
+            },
+            {
+                id: 6, name: "Ananya", company: "Atlassian", date: "02/17/2026", category: "Marketplace",
+                title: "Buying Second-Hand Scooter, Bengaluru",
+                content: "Looking to buy a well-maintained second-hand scooter (Activa/Jupiter) or a bike. Budget around 30k-40k. Must have all papers clear. Hit me up!",
+                avatar: "A", avatarColor: "bg-amber-100 text-amber-700"
+            },
+            {
+                id: 7, name: "Kavya", company: "Adobe", date: "02/16/2026", category: "DailyHelp",
+                title: "Experienced Full-Time Nanny Needed, Whitefield",
+                content: "Looking for an experienced, full-time nanny for my 1-year-old daughter. Timings 9 AM to 6 PM. Must be hygienic and good with kids. References required.",
+                avatar: "K", avatarColor: "bg-orange-100 text-orange-700"
+            },
+            {
+                id: 8, name: "Ishaan", company: "Samsung", date: "02/15/2026", category: "Housing",
+                title: "Private Room Available for Male, Bellandur",
+                content: "Urgent: Moving out next month and need a replacement for my private room in a 3 BHK at Bellandur (near RMZ Ecospace). Rent is 18k. Fully setup flat!",
+                avatar: "I", avatarColor: "bg-cyan-100 text-cyan-700"
+            },
+            {
+                id: 9, name: "Aditya", company: "Salesforce", date: "02/13/2026", category: "Marketplace",
+                title: "Washing Machine and Mattress Sale, Mahadevapura",
+                content: "Moving out sale! Selling an LG 6.5kg fully automatic washing machine and a queen-size Wakefit mattress. Both in excellent condition. DM for pictures and prices.",
+                avatar: "A", avatarColor: "bg-teal-100 text-teal-700"
+            },
+            {
+                id: 10, name: "Rahul", company: "Flipkart", date: "02/12/2026", category: "Housing",
+                title: "Finding a Pet-Friendly House Rental, Electronic City",
+                content: "Family seeking an independent house or villa for rent near Electronic City Phase 1. Need at least 2 parking spots and a pet-friendly landlord.",
+                avatar: "R", avatarColor: "bg-blue-100 text-blue-700"
+            },
+            {
+                id: 11, name: "Meera", company: "Google", date: "02/11/2026", category: "General",
+                title: "Pediatrician Recommendations for HSR Layout",
+                content: "Looking for recommendations for a good, patient pediatrician in and around HSR Layout Sector 2. Ideally someone who doesn't over-prescribe antibiotics.",
+                avatar: "M", avatarColor: "bg-pink-100 text-pink-700"
+            },
+            {
+                id: 12, name: "Karthik", company: "Amazon", date: "02/10/2026", category: "Housing",
+                title: "1 RK for Bachelor in JP Nagar",
+                content: "Available immediately: 1 RK for a bachelor in JP Nagar 7th Phase. Rent is 21k, deposit 50k. Very close to the main road and bus stop. No brokerage.",
+                avatar: "K", avatarColor: "bg-purple-100 text-purple-700"
+            },
+            {
+                id: 13, name: "Pooja", company: "Microsoft", date: "02/09/2026", category: "DailyHelp",
+                title: "Maid Needed for Cleaning | Marathalli Area",
+                content: "Urgent requirement: Need a part-time maid for sweeping, mopping, and utensil cleaning. Timings are flexible but morning is preferred. Good salary offered.",
+                avatar: "P", avatarColor: "bg-rose-100 text-rose-700"
+            },
+            {
+                id: 14, name: "Neha", company: "Visa", date: "02/08/2026", category: "Marketplace",
+                title: "Seeking a used Ergonomic Office Chair | Indiranagar",
+                content: "Looking for a used ergonomic office chair (preferably Herman Miller or Featherlite) in decent condition for my WFH setup. Let me know if you're selling!",
+                avatar: "N", avatarColor: "bg-amber-100 text-amber-700"
+            },
+            {
+                id: 15, name: "Sanya", company: "Qualcomm", date: "02/14/2026", category: "General",
+                title: "Hiring SDE-2 Frontend Engineers (React)",
+                content: "My team is actively looking to hire Frontend Engineers (SDE-2). If you have 3+ years of React experience, DM me for a referral!",
+                avatar: "S", avatarColor: "bg-indigo-100 text-indigo-700"
+            }
+        ];
+
+        function createPostCardHTML(post) {
+            const categoryStyle = categoryColorMap[post.category] || categoryColorMap.General;
+
+            return `
+                <div class="w-[380px] shrink-0 bg-white border border-gray-200 rounded-2xl p-5 flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300 whitespace-normal text-left">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full flex shrink-0 items-center justify-center font-bold text-sm ${post.avatarColor}">
+                                ${post.avatar}
+                            </div>
+                            <div class="overflow-hidden">
+                                <h3 class="font-[400] text-slate-700 leading-tight truncate">${post.name}</h3>
+                                <p class="text-[11px] font-medium text-gray-500 uppercase tracking-tight">
+                                    ${post.company} <span class="mx-1 text-gray-300">•</span> ${post.date}
+                                </p>
+                            </div>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-1 rounded-md border uppercase tracking-wider ${categoryStyle}">
+                            ${post.category}
+                        </span>
+                    </div>
+
+                    <p class="font-[700] text-slate-700 text-[.95rem]">
+                        ${post.title}
+                    </p>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                        ${post.content}
+                    </p>
+
+                    <div class="flex gap-3 pt-4 border-t border-gray-50">
+                        <button class="flex-1 bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 shadow-sm active:scale-95">
+                            Message
+                        </button>
+                        <button class="flex-1 bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 shadow-sm active:scale-95">
+                            Comment
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const track1 = document.getElementById('marquee-track-1');
+            const track2 = document.getElementById('marquee-track-2');
+            const cardsHTML = SAMPLE_POSTS.map(createPostCardHTML).join('');
+            track1.innerHTML = cardsHTML;
+            track2.innerHTML = cardsHTML;
         });
     </script>
 </body>
