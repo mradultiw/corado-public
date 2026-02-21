@@ -209,19 +209,20 @@
             }
         }
 
-        .animate-strike {
-            stroke-dasharray: 150;
-            stroke-dashoffset: 150;
-            animation: drawLine .7s cubic-bezier(0.45, 0, 0.55, 1) forwards;
-            animation-delay: 1.5s;
-        }
-
+        .animate-strike,
         .animate-strike-2 {
             stroke-dasharray: 150;
             stroke-dashoffset: 150;
+        }
+
+        .strike-active .animate-strike {
             animation: drawLine .7s cubic-bezier(0.45, 0, 0.55, 1) forwards;
-            animation-delay: 2.2s;
-            /* Staggered delay */
+            animation-delay: 0.6s;
+        }
+
+        .strike-active .animate-strike-2 {
+            animation: drawLine .66s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+            animation-delay: 1.18s;
         }
 
         /*** Click title to play audio ***/
@@ -403,7 +404,7 @@
                     </span>
 
                     <!-- Horizontal Hand-drawn SVG Strike -->
-                    <svg class="absolute inset-0 w-full h-full pointer-events-none overflow-visible"
+                    <svg class="absolute inset-0 w-full h-full pointer-events-none overflow-visible strike-trigger"
                         viewBox="0 0 100 100" preserveAspectRatio="none">
                         <!-- 
                         M 0,52: Starts at the left edge, vertically centered
@@ -1101,15 +1102,24 @@
                     if (entry.isIntersecting) {
                         if (entry.target.classList.contains('reveal-up')) {
                             entry.target.classList.add('active');
+                            revealObserver.unobserve(entry.target);
+                        } else if (entry.target.classList.contains('strike-trigger')) {
+                            entry.target.classList.add('strike-active');
+                            // Do not unobserve strike-trigger to allow resetting
                         } else {
                             entry.target.classList.add('visible');
+                            revealObserver.unobserve(entry.target);
                         }
-                        revealObserver.unobserve(entry.target);
+                    } else {
+                        // Reset strike animation when out of viewport
+                        if (entry.target.classList.contains('strike-trigger')) {
+                            entry.target.classList.remove('strike-active');
+                        }
                     }
                 });
             }, { threshold: 0.1 });
 
-            document.querySelectorAll('.animate-on-scroll, .reveal-up').forEach(el => revealObserver.observe(el));
+            document.querySelectorAll('.animate-on-scroll, .reveal-up, .strike-trigger').forEach(el => revealObserver.observe(el));
 
             // Modals Logic
             const webAppLinks = document.querySelectorAll('.web-app-link');
