@@ -2,7 +2,6 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HREFEQRBJD"></script>
     <script>
@@ -15,707 +14,442 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- ==================== SEO OPTIMIZATIONS START ==================== -->
-    <title>Corado Community</title>
+    <!-- SEO & Meta Tags -->
+    <title>Corado | Verified Professionals Community</title>
     <link rel="icon" type="image/png" href="./corado-nobg.png">
     <link rel="dns-prefetch" href="https://play.google.com">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <!-- Primary Meta Tags -->
+    
     <meta name="title" content="Corado | Verified Professionals Community">
-    <meta name="description"
-        content="Corado is an exclusive network for verified professionals. Find trusted housing, marketplace, happenings, daily help and more within a vetted community.">
-    <meta name="keywords"
-        content="verified professionals, corporate housing, job referrals, professional network, co-living app, daily help, events, happenings, Corado">
+    <meta name="description" content="Corado is an exclusive, noise-free local network for verified professionals. Find trusted housing, marketplace, daily help and local advice within a vetted community.">
+    <meta name="keywords" content="verified professionals, corporate housing, flatmates, resale furniture, local help, community, Corado">
     <meta name="author" content="Corado">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph / Facebook / WhatsApp -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.corado.in/">
-    <meta property="og:site_name" content="Corado">
-    <meta property="og:title" content="Corado | The Trusted Community for Verified Professionals">
-    <meta property="og:description"
-        content="Join the exclusive network where trust is built-in. Find housing, marketplace, happenings, daily help and more from people just like you.">
-    <meta property="og:image" content="https://www.corado.in/full-logo.png">
-    <meta property="og:image:secure_url" content="https://www.corado.in/full-logo.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1198">
-    <meta property="og:image:height" content="604">
-    <meta property="og:image:alt" content="Corado - Verified Professional Network Logo">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@CoradoIn">
-    <meta name="twitter:url" content="https://www.corado.in/">
-    <meta name="twitter:title" content="Corado | Verified Professionals Network">
-    <meta name="twitter:description"
-        content="Join the exclusive network where trust is built-in. Find housing, marketplace, happenings, daily help and more.">
-    <meta name="twitter:image" content="https://www.corado.in/full-logo.png">
-    <meta name="twitter:image:alt" content="Corado - Verified Professional Network Logo">
-
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Corado",
-      "applicationCategory": "SocialNetworkingApplication",
-      "operatingSystem": "Android, iOS",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "description": "A trusted community for verified professionals to find housing, referrals, and social connections."
-    }
-    </script>
-    <!-- ==================== SEO OPTIMIZATIONS END ==================== -->
-
-    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    <link rel="preload" as="image" href="./corado-nobg.png" fetchpriority="high">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            900: '#14532d',
+                            dark: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+        /* Custom subtle animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-
-        .glass {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-        }
-
-        .brand-blue {
-            background-color: #1877F2;
-        }
-
-        .text-brand-blue {
-            color: #1877F2;
-        }
-
-        .gradient-blue {
-            background: linear-gradient(135deg, #1877F2 0%, #0A56B1 100%);
-        }
-
-        .text-gradient {
-            background: linear-gradient(135deg, #1877F2 0%, #0A56B1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .verified-green {
-            background: #F0FDF4;
-            color: #166534;
-            border: 1px solid #BBF7D0;
-        }
-
-        /* Adaptive Typography */
-        .title-clamp {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-        }
-
-        .subtitle-clamp {
-            font-size: clamp(1.25rem, 4vw, 2.5rem);
-        }
-
-        /*** Click title to play audio ***/
-        .click-press:active {
-            transform: scale(0.99);
-        }
-
-        /* Music note floating animation */
-        @keyframes float-up {
-            0% {
-                transform: translateY(25px) scale(.2);
-                opacity: 0;
-            }
-
-            30% {
-                opacity: 1;
-            }
-
-            90% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(-15px) scale(2);
-                opacity: 0;
-            }
-        }
-
-        .music-note {
-            pointer-events: none;
-            position: absolute;
-            font-size: 14px;
-            color: #6366f1;
-            animation: float-up 2s ease-out infinite;
-            display: none;
-            z-index: 1000;
-            /* Hidden by default, shown via JS */
-        }
-
-        /* Soft Pulse animation */
-        @keyframes soft-pulse {
-
-            0%,
-            100% {
-                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
-            }
-
-            50% {
-                box-shadow: 0 0 0 6px rgba(99, 102, 241, 0);
-            }
-        }
-
-        .hint-pulse {
-            display: none;
-            /* Hidden by default, shown via JS */
-        }
-
-        .show-animation .hint-pulse {
-            display: flex;
-            animation: soft-pulse 3s infinite;
-        }
-
-        .show-animation .music-note {
-            display: flex;
-        }
-
-        #categories, #preview, #how-it-works, #download {
-            content-visibility: auto;
-            contain-intrinsic-size: 500px 1000px;
-        }
-
-        /* Slider Styles */
-        #slider-container {
-            padding: 1.5rem 0;
-        }
-
-        .slide-item {
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                filter 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            filter: blur(2px);
-            opacity: 0.7;
-            transform: scale(0.9);
-            pointer-events: none;
-            will-change: transform, opacity, filter;
-        }
-
-        .slide-item.active {
-            filter: blur(0);
+        .fade-in-up.visible {
             opacity: 1;
-            transform: scale(1.05);
-            z-index: 20;
+            transform: translateY(0);
         }
-
-        .slide-item img {
-            border-radius: 2rem;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        .slide-item.active img {
-            box-shadow: 0 25px 50px -12px rgba(24, 119, 242, 0.2);
-        }
-
-        .no-transition, .no-transition * {
-            transition: none !important;
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
     </style>
 </head>
 
-<body class="bg-white text-slate-900 antialiased overflow-x-hidden">
+<body class="font-sans text-gray-800 bg-gray-50 antialiased selection:bg-brand-500 selection:text-white">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex justify-between items-center">
-            <div class="flex items-center gap-4">
-                <!-- Audio Trigger Container -->
-                <div id="animationContainer" class="relative">
-                    <!-- Animated Pulse Ring -->
-                    <div class="absolute inset-0 rounded-xl hint-pulse"></div>
-
-                    <!-- Floating Note -->
-                    <div class="music-note" style="top: -5px; right: -5px;">♪</div>
-
-                    <button onclick="playAudio()"
-                        class="relative z-10 flex items-center justify-center w-10 h-10 border border-slate-200 rounded-xl overflow-hidden shadow-sm bg-white p-1 click-press transition-transform duration-75 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        aria-label="Play sound">
-                        <img src="./corado-nobg.png" alt="Corado Logo" class="h-full w-auto object-contain" width="40" height="40" decoding="async" fetchpriority="high">
-                    </button>
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center gap-3">
+                    <img src="./corado-nobg.png" alt="Corado Logo" class="h-10 w-auto" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MCIgZmlsbD0iIzE2YTM0YSIvPjx0ZXh0IHg9IjUwIiB5PSI2MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DPC90ZXh0Pjwvc3ZnPg=='">
+                    <span class="text-xl font-bold tracking-tight text-brand-dark">Corado</span>
                 </div>
-                <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-800">Corado</span>
-            </div>
-
-            <!-- Mobile & Desktop accessible right side -->
-            <div class="flex items-center gap-3 sm:gap-6">
-                <div class="inline-flex items-center justify-center rounded-full bg-[#1877F2] px-4 py-2">
-                    <a href="https://web.corado.in" target="_blank"
-                        class="text-white hover:text-slate-100 transition text-[10px] sm:text-sm font-bold whitespace-nowrap">
-                        Web App
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#features" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Features</a>
+                    <a href="#how-it-works" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">How it Works</a>
+                    <a href="#" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Use on Web</a>
+                    <a href="#" id="android-link-nav" class="bg-brand-dark text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-800 transition-all shadow-md hover:shadow-lg">
+                        Download App
                     </a>
                 </div>
-
-                <a href="https://forms.gle/kFN56v8mXUWNBNer5" target="_blank"
-                    class="text-slate-600 hover:text-brand-blue transition flex items-center gap-1 text-[10px] sm:text-sm font-bold whitespace-nowrap">
-                    Feedback
-                    <svg class="w-3 h-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                    </svg>
-                </a>
-
-                <!-- Desktop Only Menu -->
-                <div class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-600 ml-4">
-                    <a href="#community" class="hover:text-brand-blue transition">Community</a>
-                    <a href="#categories" class="hover:text-brand-blue transition">Categories</a>
-                    <a href="#how-it-works" class="hover:text-brand-blue transition">How it works</a>
-                    <!-- <a href="#download"
-                        class="brand-blue text-white px-5 py-2.5 rounded-2xl shadow-lg shadow-blue-200 hover:opacity-90 transition active:scale-95">
-                        Get App
-                    </a> -->
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section id="community" class="relative pt-32 pb-16 lg:pt-52 lg:pb-32 px-4 sm:px-6">
-        <div class="max-w-7xl mx-auto text-center">
-            <div
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-full verified-green text-xs sm:text-sm font-bold mb-8">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd"
-                        d="M2.166 4.999A11.954 11.955 0 0010 19.444a11.954 11.955 0 007.834-14.445 11.954 11.955 0 00-7.834-3.555 11.954 11.955 0 00-7.834 3.555zM10 17.111a9.962 9.962 0 01-6.528-12.037 9.962 9.962 0 016.528-2.963 9.962 9.962 0 016.528 2.963 9.962 9.962 0 01-6.528 12.037zm3.707-9.293a1 1 0 00-1.414-1.414L9 9.586 7.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clip-rule="evenodd" />
-                </svg>
-                Exclusive Professional Network
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden relative">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl opacity-30 pointer-events-none">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-brand-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            <div class="absolute top-40 right-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center animate-on-scroll fade-in-up">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-100 text-brand-600 text-sm font-semibold mb-8">
+                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                Exclusively for Verified Professionals
             </div>
-
-            <h1 class="title-clamp font-black tracking-tighter mb-8 lg:mb-12 leading-[1.1] text-slate-900 px-2">
-                A trusted space for <br><span class="text-gradient">People Like You.</span>
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-brand-dark tracking-tight leading-tight mb-6">
+                Stop searching in <br class="hidden md:block" /> 
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-blue-600">5 places for 1 thing.</span>
             </h1>
-
-            <p
-                class="subtitle-clamp font-extrabold tracking-tight text-slate-700 mb-12 sm:mb-16 max-w-4xl mx-auto leading-tight px-4">
-                Find the right audience for your needs, faster.
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-600 mb-10">
+                Flatmate. Rental. Furniture. Cook. Local help. <br/>
+                Corado is a focused local community built for clarity, not clutter. No public noise. No random spam. Just relevant posts from people like you.
             </p>
-
-
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 px-4">
-
-                <!-- Action: Use on Web -->
-                <a href="https://web.corado.in" target="_blank" class="w-full sm:w-64 brand-blue text-white px-6 py-4 rounded-2xl font-bold text-lg 
-            hover:opacity-90 transition shadow-xl shadow-blue-100 flex items-center justify-center text-center
-            border-2 border-transparent transform hover:-translate-y-1">
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="inline-flex justify-center items-center gap-2 bg-brand-dark text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                    <i data-lucide="monitor" class="w-5 h-5"></i>
                     Use on Web
                 </a>
-
-                <!-- Action: Download the App -->
-                <a href="#download" class="w-full sm:w-64 bg-slate-800 text-white px-6 py-4 rounded-2xl font-bold text-lg 
-            hover:bg-slate-800 transition shadow-xl shadow-slate-100 flex items-center justify-center text-center
-            border-2 border-transparent transform hover:-translate-y-1">
-                    Download the App
+                <a href="#" id="android-link" class="inline-flex justify-center items-center gap-2 bg-white text-brand-dark border border-gray-200 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-50 transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5">
+                    <i data-lucide="smartphone" class="w-5 h-5"></i>
+                    Download App
                 </a>
-
-            </div>
-
-            <div class="max-w-xl mx-auto space-y-2 text-slate-400 font-semibold px-4 text-sm sm:text-base">
-                <p>Housing, Marketplace, Daily Help and more - organised & clutter-free.</p>
-            </div>
-        </div>
-
-        <div
-            class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 overflow-hidden pointer-events-none opacity-10">
-            <div
-                class="absolute top-1/4 -left-20 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] brand-blue rounded-full blur-[120px]">
-            </div>
-            <div
-                class="absolute bottom-1/4 -right-20 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-sky-400 rounded-full blur-[120px]">
             </div>
         </div>
     </section>
 
-    <!-- Categories Grid -->
-    <section id="categories" class="py-20 lg:py-32 bg-slate-50 px-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 lg:mb-24">
-                <h2 class="text-brand-blue font-bold uppercase tracking-widest text-xs sm:text-sm mb-4">Focused
-                    Categories</h2>
-                <p class="text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight leading-tight">Everything you need,
-                    <br class="hidden sm:block"> from people you trust.
-                </p>
-                <p class="my-8 lg:my-10 sm:my-6 ">
-                    <span
-                        class="text-xl sm:text-2xl lg:text-4xl font-extrabold tracking-tight text-[#f5983e]">Faster.</span>
-                    <span
-                        class="text-xl sm:text-2xl lg:text-4xl font-extrabold tracking-tight text-[#1877F2]">Focused.</span>
-                    <span
-                        class="text-xl sm:text-2xl lg:text-4xl font-extrabold tracking-tight text-[#138c40]">Safer.</span>
-                </p>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-                <!-- Co-living -->
-                <div
-                    class="bg-white p-6 sm:p-8 rounded-[2rem] border border-slate-100 hover:border-blue-200 transition shadow-sm">
-                    <div class="text-[#1877F2] mb-6">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Housing</h3>
-                    <p class="text-slate-500 text-sm font-medium leading-relaxed">Find flats and verified flatmates
-                        without the unvetted public noise.</p>
+    <!-- The Problem / Transition Section -->
+    <section class="py-20 bg-brand-dark text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll fade-in-up">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Local discovery is unnecessarily messy.</h2>
+            <p class="text-xl text-gray-300 mb-12">Tired of posting the same message everywhere to find one thing?</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                <div class="bg-gray-800/50 border border-gray-700 p-6 rounded-2xl flex items-start gap-4">
+                    <i data-lucide="x-circle" class="w-6 h-6 text-red-400 shrink-0 mt-1"></i>
+                    <p class="text-gray-300">Endless spam on public groups when looking for a flatmate.</p>
                 </div>
-
-                <!-- Marketplace -->
-                <div
-                    class="bg-white p-6 sm:p-8 rounded-[2rem] border border-slate-100 hover:border-blue-200 transition shadow-sm">
-                    <div class="text-[#F59E0B] mb-6">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Marketplace</h3>
-                    <p class="text-slate-500 text-sm font-medium leading-relaxed">Buy, sell, or exchange used items
-                        securely with authentic peers.</p>
+                <div class="bg-gray-800/50 border border-gray-700 p-6 rounded-2xl flex items-start gap-4">
+                    <i data-lucide="x-circle" class="w-6 h-6 text-red-400 shrink-0 mt-1"></i>
+                    <p class="text-gray-300">Dealing with anonymous profiles to buy/sell resale furniture.</p>
                 </div>
-
-                <!-- Daily Help -->
-                <div
-                    class="bg-white p-6 sm:p-8 rounded-[2rem] border border-slate-100 hover:border-blue-200 transition shadow-sm">
-                    <div class="text-[#8B5CF6] mb-6">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Daily Help</h3>
-                    <p class="text-slate-500 text-sm font-medium leading-relaxed">Find vetted domestic help recommended
-                        by peers in your neighborhood.</p>
+                <div class="bg-gray-800/50 border border-gray-700 p-6 rounded-2xl flex items-start gap-4">
+                    <i data-lucide="x-circle" class="w-6 h-6 text-red-400 shrink-0 mt-1"></i>
+                    <p class="text-gray-300">Struggling to find trusted local cooks or maids.</p>
                 </div>
-
-                <!-- General -->
-                <div
-                    class="bg-white p-6 sm:p-8 rounded-[2rem] border border-slate-100 hover:border-blue-200 transition shadow-sm">
-                    <div class="text-[#64748B] mb-6">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Crowdsourcing</h3>
-                    <p class="text-slate-500 text-sm font-medium leading-relaxed">Ask for professional advice,
-                        referrals, or local intel from people who get it.</p>
+                <div class="bg-gray-800/50 border border-gray-700 p-6 rounded-2xl flex items-start gap-4">
+                    <i data-lucide="check-circle-2" class="w-6 h-6 text-brand-500 shrink-0 mt-1"></i>
+                    <p class="text-white font-medium">Corado brings it all into one place — strictly limited to verified professionals.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="preview" class="py-20 lg:py-32 bg-white overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 mb-16 text-center">
-            <h2 class="text-brand-blue font-bold uppercase tracking-widest text-xs sm:text-sm mb-4">App Preview</h2>
-            <h3 class="text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight leading-tight">Experience the
-                Interface</h3>
-        </div>
-
-        <div class="relative w-full overflow-hidden">
-            <div id="slider-container" class="flex gap-4 sm:gap-8 will-change-transform"></div>
-
-            <div id="pause-detector"
-                class="absolute top-1/2 left-0 w-full h-[150px] -translate-y-1/2 z-40 cursor-pointer"></div>
-
-            <div
-                class="absolute inset-y-0 left-0 w-12 sm:w-1/4 bg-gradient-to-r from-white via-white/80 to-transparent z-30 pointer-events-none">
+    <!-- What You Can Do (Features Grid) -->
+    <section id="features" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll fade-in-up">
+                <h2 class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-2">What you can do</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-brand-dark">Everything you need, locally.</h3>
             </div>
-            <div
-                class="absolute inset-y-0 right-0 w-12 sm:w-1/4 bg-gradient-to-l from-white via-white/80 to-transparent z-30 pointer-events-none">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Feature 1 -->
+                <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:border-brand-200 transition-colors animate-on-scroll fade-in-up group">
+                    <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="home" class="w-7 h-7 text-brand-600"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-3">Housing</h4>
+                    <p class="text-gray-600 leading-relaxed">Find flatmates, replacement tenants, and rental leads — shared directly by verified professionals, not brokers.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:border-brand-200 transition-colors animate-on-scroll fade-in-up group" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="shopping-bag" class="w-7 h-7 text-brand-600"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-3">Marketplace</h4>
+                    <p class="text-gray-600 leading-relaxed">Buy and sell locally with people nearby. From furniture and appliances to daily essentials, completely peer-to-peer.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:border-brand-200 transition-colors animate-on-scroll fade-in-up group">
+                    <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="users" class="w-7 h-7 text-brand-600"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-3">Daily Help</h4>
+                    <p class="text-gray-600 leading-relaxed">Find trusted cooks, maids, drivers, or domestic help through recommendations from your local professional network.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:border-brand-200 transition-colors animate-on-scroll fade-in-up group" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="map-pin" class="w-7 h-7 text-brand-600"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-3">Local Advice</h4>
+                    <p class="text-gray-600 leading-relaxed">Ask practical, neighbourhood-specific questions and get reliable answers from nearby professionals who actually know.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Corado & Who it's for -->
+    <section class="py-24 bg-brand-50 border-y border-brand-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="animate-on-scroll fade-in-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-6">Built for clarity.<br/>Not clutter.</h2>
+                    <p class="text-lg text-gray-600 mb-8">Corado is exclusively designed for working professionals who prefer relevant local posts, fewer unknown accounts, and practical exchanges over public noise.</p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-gray-800 font-medium bg-white p-4 rounded-xl shadow-sm">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-600 shrink-0"></i>
+                            Verified professional sign-up only
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-800 font-medium bg-white p-4 rounded-xl shadow-sm">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-600 shrink-0"></i>
+                            Focused local visibility near you
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-800 font-medium bg-white p-4 rounded-xl shadow-sm">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-600 shrink-0"></i>
+                            Zero influencer noise or algorithms
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-800 font-medium bg-white p-4 rounded-xl shadow-sm">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-600 shrink-0"></i>
+                            No public spam or anonymous trolls
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Simple UI Mockup / Illustration area -->
+                <div class="relative animate-on-scroll fade-in-up" style="transition-delay: 200ms;">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-200 to-blue-100 rounded-[2.5rem] transform rotate-3 scale-105"></div>
+                    <div class="relative bg-white p-8 rounded-[2rem] shadow-xl border border-gray-100">
+                        <div class="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100">
+                            <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                                <i data-lucide="user" class="w-6 h-6 text-gray-500"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-gray-900">Rahul M.</h5>
+                                <p class="text-xs text-brand-600 font-semibold flex items-center gap-1">
+                                    <i data-lucide="shield-check" class="w-3 h-3"></i> Verified Professional
+                                </p>
+                            </div>
+                        </div>
+                        <div class="space-y-4 mb-6">
+                            <h6 class="font-bold text-lg text-gray-800">Looking for a replacement tenant 🏠</h6>
+                            <p class="text-gray-600 text-sm leading-relaxed">Moving out of my 2BHK in Indiranagar. Looking for a chilled-out professional to take over my room starting next month. No brokerage!</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <button class="flex-1 bg-brand-50 text-brand-700 font-medium py-2.5 rounded-xl text-sm border border-brand-100 hover:bg-brand-100 transition-colors">Message Rahul</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- How it Works -->
-    <section id="how-it-works" class="py-20 lg:py-32 px-4 sm:px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-16 sm:gap-24">
-            <div class="flex-1">
-                <h2 class="text-brand-blue font-bold uppercase tracking-widest text-xs sm:text-sm mb-4">How it Works
-                </h2>
-                <h3 class="text-3xl sm:text-4xl lg:text-6xl font-black mb-12 tracking-tight leading-tight">Trust is
-                    built <br class="hidden sm:block">into the flow.</h3>
-
-                <div class="space-y-10 sm:space-y-16">
-                    <div class="flex gap-6">
-                        <div
-                            class="w-12 h-12 rounded-2xl bg-blue-50 text-brand-blue flex items-center justify-center shrink-0 font-bold">
-                            1</div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">Corporate Verification</h4>
-                            <p class="text-slate-500 font-medium text-sm sm:text-base max-w-md">
-                                Work email is mandatory to post or interact. This keeps the community exclusive to
-                                verified peers.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex gap-6">
-                        <div
-                            class="w-12 h-12 rounded-2xl bg-blue-50 text-brand-blue flex items-center justify-center shrink-0 font-bold">
-                            2</div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">Location Intelligence</h4>
-                            <p class="text-slate-500 font-medium text-sm sm:text-base max-w-md">
-                                Use location to discover results in your vicinity. Find help or housing where you
-                                actually are.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+    <section id="how-it-works" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4">Simple. Direct. Efficient.</h2>
+                <p class="text-xl text-gray-600">Join the community in three easy steps.</p>
             </div>
-            <div class="flex-1">
-                <div class="bg-slate-900 rounded-[3rem] p-10 sm:p-16 text-white relative overflow-hidden shadow-2xl">
-                    <h4 class="text-2xl sm:text-3xl font-bold mb-6">Built for Professionals.</h4>
-                    <p class="text-slate-400 font-medium mb-8 leading-relaxed text-sm sm:text-base">
-                        No unverified actors. Only a clean, trusted space to get your needs reach the right audience
-                        instantly.
-                    </p>
-                    <div class="flex items-center gap-4">
-                        <div
-                            class="w-10 h-10 sm:w-12 sm:h-12 rounded-full brand-blue flex items-center justify-center font-bold">
-                            C</div>
-                        <div>
-                            <p class="font-bold text-base sm:text-lg leading-none mb-1">Verified Member</p>
-                            <p class="text-slate-500 text-xs sm:text-sm">Trusted Corporate Domain</p>
-                        </div>
-                    </div>
-                    <div class="absolute -bottom-20 -right-20 w-64 h-64 brand-blue rounded-full opacity-20 blur-[80px]">
-                    </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                <!-- Connecting Line for Desktop -->
+                <div class="hidden md:block absolute top-1/2 left-[15%] right-[15%] h-0.5 bg-gray-100 -translate-y-1/2 z-0"></div>
+
+                <div class="relative z-10 text-center animate-on-scroll fade-in-up">
+                    <div class="w-16 h-16 bg-brand-dark text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">1</div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Sign Up</h4>
+                    <p class="text-gray-600">Register securely using your corporate email to verify your professional status.</p>
+                </div>
+
+                <div class="relative z-10 text-center animate-on-scroll fade-in-up" style="transition-delay: 150ms;">
+                    <div class="w-16 h-16 bg-brand-600 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">2</div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Browse & Post</h4>
+                    <p class="text-gray-600">Explore local listings near you or create a post for exactly what you need.</p>
+                </div>
+
+                <div class="relative z-10 text-center animate-on-scroll fade-in-up" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">3</div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Connect Directly</h4>
+                    <p class="text-gray-600">Chat directly with peers. No middlemen, no brokers, no public comment sections.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Final CTA -->
-    <section id="download" class="py-24 text-center px-4">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tighter mb-12 sm:mb-16 leading-tight">Join
-                your <span class="text-brand-blue">trusted</span> professional circle.</h2>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
-                <a id="android-link" href="#"
-                    class="w-full sm:w-auto brand-blue text-white px-10 py-5 rounded-2xl font-bold text-xl shadow-2xl hover:opacity-90 transition flex flex-col items-center cursor-pointer">
-                    <span class="text-[10px] uppercase tracking-widest opacity-70 mb-1">Get the App</span>
-                    <span>Google Play</span>
+    <section class="py-20 bg-brand-dark relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <!-- Subtle background pattern -->
+            <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid-pattern)" />
+            </svg>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center animate-on-scroll fade-in-up">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Tired of scattered groups?</h2>
+            <p class="text-xl text-gray-300 mb-10">Join Corado today and experience a cleaner, safer, and more efficient way to connect locally.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="inline-flex justify-center items-center gap-2 bg-brand-500 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-brand-400 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                    Create your account
                 </a>
-                <div
-                    class="w-full sm:w-auto bg-slate-50 border-2 border-slate-100 text-slate-400 px-10 py-5 rounded-2xl font-bold text-xl italic flex flex-col items-center">
-                    <span class="text-[10px] uppercase tracking-widest opacity-70 mb-1">Coming Soon</span>
-                    <span>App Store</span>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-slate-100 px-4">
-        <div class="max-w-7xl mx-auto flex items-center justify-center gap-8 font-semibold text-slate-400 text-sm">
-            <p>© 2026 Corado Community.</p>
+    <footer class="bg-gray-50 py-12 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <img src="./corado-nobg.png" alt="Corado Logo" class="h-8 w-auto grayscale opacity-70" onerror="this.style.display='none'">
+                <span class="text-xl font-bold tracking-tight text-gray-400">Corado</span>
+            </div>
+            <p class="text-gray-500 text-sm">© 2024 Corado. All rights reserved.</p>
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-400 hover:text-brand-600 transition-colors">Privacy</a>
+                <a href="#" class="text-gray-400 hover:text-brand-600 transition-colors">Terms</a>
+                <a href="#" class="text-gray-400 hover:text-brand-600 transition-colors">Contact</a>
+            </div>
         </div>
     </footer>
 
-    <!-- Beta Modal -->
-    <div id="beta-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 px-4">
-        <div class="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full text-center shadow-2xl">
-            <h3 class="text-2xl font-bold mb-4">Early Access (Beta)</h3>
-            <p class="text-slate-600 mb-6">
-                Before public release, Play Store allows access to beta members only.
+    <!-- Beta Download Modal (Preserved Functionality) -->
+    <div id="beta-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl transform scale-95 transition-transform duration-300" id="modal-content">
+            <div class="w-16 h-16 bg-brand-50 rounded-full flex items-center justify-center mb-6 mx-auto">
+                <i data-lucide="info" class="w-8 h-8 text-brand-600"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-center text-gray-900 mb-4">Beta Release</h2>
+            <p class="text-center text-gray-600 mb-8 leading-relaxed">
+                Corado is currently in Beta. By proceeding, you'll be redirected to the Play Store to download the early access version. We appreciate your feedback!
             </p>
-
-            <div class="flex flex-col gap-3 mt-4">
-                <a href="https://groups.google.com/u/1/g/corado-trusted-testers" target="_blank"
-                    rel="noopener noreferrer" class="brand-blue text-white py-3 rounded-xl font-semibold">
-                    Join Beta (Google Group)
-                </a>
-
-                <button id="continue-download"
-                    class="border-2 border-slate-300 text-slate-700 hover:bg-slate-100 py-3 rounded-xl font-semibold transition">
-                    I've joined - go to Play Store
+            <div class="flex flex-col gap-3">
+                <button id="continue-download" class="w-full bg-brand-600 text-white font-semibold py-3.5 rounded-xl hover:bg-brand-700 transition-colors">
+                    Continue to Play Store
+                </button>
+                <button id="close-modal" class="w-full bg-gray-100 text-gray-700 font-semibold py-3.5 rounded-xl hover:bg-gray-200 transition-colors">
+                    Cancel
                 </button>
             </div>
-            <p class="text-[10px] sm:text-xs pt-4 text-slate-800 uppercase tracking-wider text-center">
-                Publicly Releasing Soon...
-            </p>
         </div>
     </div>
 
-    <!-- Audio Element for Corado logo -->
-    <audio id="logoAudio" src="./corado-pronunciation.mp3" preload="auto"></audio>
-
+    <!-- Scripts -->
     <script>
-        // Global functions
-        function playAudio() {
-            const audio = document.getElementById('logoAudio');
-            if (audio) {
-                audio.currentTime = 0;
-                audio.play().catch(error => console.warn("Audio playback failed:", error));
-            }
-        }
+        // Initialize Icons
+        lucide.createIcons();
 
-        (function() {
-            const images = [
-                { src: './onboarding.png', alt: 'Onboarding', w: 706, h: 1490 },
-                { src: './loging.png', alt: 'Login', w: 706, h: 1490 },
-                { src: './cat.png', alt: 'Category', w: 1080, h: 2424 },
-                { src: './feed.png', alt: 'Feed', w: 1080, h: 2424 },
-                { src: './full-post.png', alt: 'Full Post', w: 1080, h: 2424 },
-                { src: './chat.jpg', alt: 'Chat', w: 1080, h: 2424 }
-            ];
+        // Scroll Animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
 
-            let currentIndex = images.length;
-            let isPaused = false;
-            let isTransitioning = false;
-            let autoPlayInterval;
-            let container;
-
-            function initSlider() {
-                container = document.getElementById('slider-container');
-                if (!container) return;
-                
-                if (autoPlayInterval) clearInterval(autoPlayInterval);
-                container.innerHTML = '';
-
-                const allImages = [...images, ...images, ...images];
-                container.innerHTML = allImages.map((img, i) => `
-                    <div class="slide-item shrink-0 w-[65vw] sm:w-[300px] aspect-[9/19]">
-                        <img src="${img.src}" alt="${img.alt}" width="${img.w}" height="${img.h}" loading="lazy" decoding="async">
-                    </div>
-                `).join('');
-
-                const slides = container.querySelectorAll('.slide-item');
-                const slideWidth = slides[0].offsetWidth;
-                const gap = window.innerWidth < 640 ? 16 : 32;
-                const centerOfSlide = (currentIndex * (slideWidth + gap)) + (slideWidth / 2);
-                const offset = (window.innerWidth / 2) - centerOfSlide;
-
-                container.classList.add('no-transition');
-                container.style.transform = `translateX(${offset}px)`;
-
-                slides.forEach((slide, i) => {
-                    slide.classList.toggle('active', i === currentIndex);
-                });
-
-                container.addEventListener('transitionend', () => {
-                    isTransitioning = false;
-                    if (currentIndex >= images.length * 2) {
-                        currentIndex = images.length;
-                        updateSlider(false);
-                    } else if (currentIndex < images.length) {
-                        currentIndex = images.length * 2 - 1;
-                        updateSlider(false);
-                    }
-                });
-
-                startAutoPlay();
-            }
-
-            function updateSlider(animate = true) {
-                const slides = container.querySelectorAll('.slide-item');
-                if (slides.length === 0) return;
-
-                const slideWidth = slides[0].offsetWidth;
-                const gap = window.innerWidth < 640 ? 16 : 32;
-                const centerOfSlide = (currentIndex * (slideWidth + gap)) + (slideWidth / 2);
-                const offset = (window.innerWidth / 2) - centerOfSlide;
-
-                if (animate) {
-                    container.classList.remove('no-transition');
-                    container.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-                    container.style.transform = `translateX(${offset}px)`;
-
-                    slides.forEach((slide, i) => {
-                        slide.classList.toggle('active', i === currentIndex);
-                    });
-                } else {
-                    container.classList.add('no-transition');
-                    container.style.transition = 'none';
-                    requestAnimationFrame(() => {
-                        container.style.transform = `translateX(${offset}px)`;
-                        slides.forEach((slide, i) => {
-                            slide.classList.toggle('active', i === currentIndex);
-                        });
-                    });
-                }
-            }
-
-            function nextSlide() {
-                if (isPaused || isTransitioning) return;
-                isTransitioning = true;
-                currentIndex++;
-                updateSlider(true);
-            }
-
-            function startAutoPlay() {
-                if (autoPlayInterval) clearInterval(autoPlayInterval);
-                autoPlayInterval = setInterval(nextSlide, 2500);
-            }
-
-            function handleVisitLogic() {
-                const STORAGE_KEY = 'corado_logo_visits';
-                const MAX_VISITS = 5;
-                const animContainer = document.getElementById('animationContainer');
-                if (!animContainer) return;
-
-                try {
-                    let visits = parseInt(localStorage.getItem(STORAGE_KEY)) || 0;
-                    visits += 1;
-                    localStorage.setItem(STORAGE_KEY, visits);
-                    if (visits <= MAX_VISITS) animContainer.classList.add('show-animation');
-                } catch (e) {
-                    animContainer.classList.add('show-animation');
-                }
-            }
-
-            document.addEventListener("DOMContentLoaded", function () {
-                initSlider();
-                handleVisitLogic();
-                
-                window.addEventListener('resize', () => updateSlider(false));
-
-                const androidLink = document.getElementById("android-link");
-                const modal = document.getElementById("beta-modal");
-                const continueBtn = document.getElementById("continue-download");
-                const playStoreUrl = "https://play.google.com/store/apps/details?id=com.corado.app";
-
-                if (androidLink && modal) {
-                    androidLink.addEventListener("click", function (e) {
-                        e.preventDefault();
-                        modal.classList.remove("hidden");
-                        modal.classList.add("flex");
-                    });
-
-                    modal.addEventListener("click", function (e) {
-                        if (e.target === modal) {
-                            modal.classList.add("hidden");
-                            modal.classList.remove("flex");
-                        }
-                    });
-                }
-
-                if (continueBtn) {
-                    continueBtn.addEventListener("click", function () {
-                        window.open(playStoreUrl, "_blank");
-                    });
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
-        })();
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach((elem) => {
+            observer.observe(elem);
+        });
+
+        // Modal Logic (Preserved from legacy code)
+        document.addEventListener("DOMContentLoaded", function () {
+            const androidLinks = [document.getElementById("android-link"), document.getElementById("android-link-nav")];
+            const modal = document.getElementById("beta-modal");
+            const modalContent = document.getElementById("modal-content");
+            const continueBtn = document.getElementById("continue-download");
+            const closeBtn = document.getElementById("close-modal");
+            const playStoreUrl = "https://play.google.com/store/apps/details?id=com.corado.app";
+
+            function openModal(e) {
+                e.preventDefault();
+                modal.classList.remove("hidden");
+                modal.classList.add("flex");
+                // slight delay to allow display:flex to apply before changing opacity for transition
+                setTimeout(() => {
+                    modal.classList.remove("opacity-0");
+                    modalContent.classList.remove("scale-95");
+                    modalContent.classList.add("scale-100");
+                }, 10);
+            }
+
+            function closeModal() {
+                modal.classList.add("opacity-0");
+                modalContent.classList.remove("scale-100");
+                modalContent.classList.add("scale-95");
+                setTimeout(() => {
+                    modal.classList.add("hidden");
+                    modal.classList.remove("flex");
+                }, 300);
+            }
+
+            androidLinks.forEach(link => {
+                if (link) {
+                    link.addEventListener("click", openModal);
+                }
+            });
+
+            if (modal) {
+                modal.addEventListener("click", function (e) {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener("click", closeModal);
+            }
+
+            if (continueBtn) {
+                continueBtn.addEventListener("click", function () {
+                    window.open(playStoreUrl, "_blank");
+                    closeModal();
+                });
+            }
+            
+            // Navbar Scroll Effect
+            const nav = document.querySelector('nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    nav.classList.add('shadow-sm');
+                } else {
+                    nav.classList.remove('shadow-sm');
+                }
+            });
+        });
     </script>
-
 </body>
-
 </html>
