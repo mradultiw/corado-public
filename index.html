@@ -17,7 +17,9 @@
 
     <!-- ==================== SEO OPTIMIZATIONS START ==================== -->
     <title>Corado Community</title>
-    <link rel="icon" type="image/x-icon" href="./corado-nobg.png">
+    <link rel="icon" type="image/png" href="./corado-nobg.png">
+    <link rel="dns-prefetch" href="https://play.google.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <!-- Primary Meta Tags -->
     <meta name="title" content="Corado | Verified Professionals Community">
     <meta name="description"
@@ -72,6 +74,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="preload" as="image" href="./corado-nobg.png" fetchpriority="high">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <style>
@@ -180,6 +184,50 @@
         .show-animation .music-note {
             display: flex;
         }
+
+        #categories, #preview, #how-it-works, #download {
+            content-visibility: auto;
+            contain-intrinsic-size: 500px 1000px;
+        }
+
+        /* Slider Styles */
+        #slider-container {
+            padding: 1.5rem 0;
+        }
+
+        .slide-item {
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                filter 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: blur(2px);
+            opacity: 0.7;
+            transform: scale(0.9);
+            pointer-events: none;
+            will-change: transform, opacity, filter;
+        }
+
+        .slide-item.active {
+            filter: blur(0);
+            opacity: 1;
+            transform: scale(1.05);
+            z-index: 20;
+        }
+
+        .slide-item img {
+            border-radius: 2rem;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .slide-item.active img {
+            box-shadow: 0 25px 50px -12px rgba(24, 119, 242, 0.2);
+        }
+
+        .no-transition, .no-transition * {
+            transition: none !important;
+        }
     </style>
 </head>
 
@@ -200,7 +248,7 @@
                     <button onclick="playAudio()"
                         class="relative z-10 flex items-center justify-center w-10 h-10 border border-slate-200 rounded-xl overflow-hidden shadow-sm bg-white p-1 click-press transition-transform duration-75 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         aria-label="Play sound">
-                        <img src="./corado-nobg.png" alt="Corado Logo" class="h-full w-auto object-contain">
+                        <img src="./corado-nobg.png" alt="Corado Logo" class="h-full w-auto object-contain" width="40" height="40" decoding="async" fetchpriority="high">
                     </button>
                 </div>
                 <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-800">Corado</span>
@@ -237,8 +285,6 @@
             </div>
         </div>
     </nav>
-    </div>
-    </nav>
 
     <!-- Hero -->
     <section id="community" class="relative pt-32 pb-16 lg:pt-52 lg:pb-32 px-4 sm:px-6">
@@ -263,22 +309,19 @@
             </p>
 
 
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-2 mb-10 px-4">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 px-4">
 
-                <!-- Primary action: Use on Web -->
-                <a href="https://web.corado.in" target="_blank" class="w-full sm:w-64 bg-[#F7F7F8] text-[#3A3F44] px-6 py-3 rounded-2xl font-bold text-lg 
-            hover:bg-[#e0e0e2] transition shadow-xl flex items-center justify-center text-center
-            border-[2px] border-[#d0d0d2]">
+                <!-- Action: Use on Web -->
+                <a href="https://web.corado.in" target="_blank" class="w-full sm:w-64 brand-blue text-white px-6 py-4 rounded-2xl font-bold text-lg 
+            hover:opacity-90 transition shadow-xl shadow-blue-100 flex items-center justify-center text-center
+            border-2 border-transparent transform hover:-translate-y-1">
                     Use on Web
                 </a>
 
-                <!-- Separator -->
-                <span class="text-slate-400 italic text-sm">- or -</span>
-
-                <!-- Secondary action: Download the App -->
-                <a href="#download" class="w-full sm:w-64 bg-[#3A3F44] text-white px-6 py-3 rounded-2xl font-bold text-lg 
-            hover:bg-[#2b2f33] transition shadow flex items-center justify-center text-center
-            border-[2px] border-[#2b2f33]">
+                <!-- Action: Download the App -->
+                <a href="#download" class="w-full sm:w-64 bg-slate-800 text-white px-6 py-4 rounded-2xl font-bold text-lg 
+            hover:bg-slate-800 transition shadow-xl shadow-slate-100 flex items-center justify-center text-center
+            border-2 border-transparent transform hover:-translate-y-1">
                     Download the App
                 </a>
 
@@ -398,166 +441,6 @@
                 class="absolute inset-y-0 right-0 w-12 sm:w-1/4 bg-gradient-to-l from-white via-white/80 to-transparent z-30 pointer-events-none">
             </div>
         </div>
-
-        <style>
-            #slider-container {
-                /* Reduced padding for a more compact look on mobile */
-                padding: 1.5rem 0;
-            }
-
-            .slide-item {
-                transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                    filter 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                    opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-                filter: blur(2px);
-                opacity: 0.7;
-                transform: scale(0.9);
-                pointer-events: none;
-                will-change: transform, opacity, filter;
-            }
-
-            .slide-item.active {
-                filter: blur(0);
-                opacity: 1;
-                transform: scale(1.05);
-                z-index: 20;
-            }
-
-            .slide-item img {
-                border-radius: 2rem;
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-            }
-
-            .slide-item.active img {
-                box-shadow: 0 25px 50px -12px rgba(24, 119, 242, 0.2);
-            }
-
-            /* Utility to force stop animations during reset */
-            .no-transition,
-            .no-transition * {
-                transition: none !important;
-            }
-        </style>
-
-        <script>
-            const images = [
-                { src: './onboarding.png', alt: 'Onboarding' },
-                { src: './loging.png', alt: 'Login' },
-                { src: './cat.png', alt: 'Category' },
-                { src: './feed.png', alt: 'Feed' },
-                { src: './full-post.png', alt: 'Full Post' },
-                { src: './chat.jpg', alt: 'Chat' }
-
-            ];
-
-            const container = document.getElementById('slider-container');
-            let currentIndex = images.length;
-            let isPaused = false;
-            let isTransitioning = false;
-            let autoPlayInterval;
-
-            function initSlider() {
-                if (autoPlayInterval) clearInterval(autoPlayInterval);
-                container.innerHTML = '';
-
-                const allImages = [...images, ...images, ...images];
-                container.innerHTML = allImages.map((img, i) => `
-                <div class="slide-item shrink-0 w-[65vw] sm:w-[300px] aspect-[9/19]">
-                    <img src="${img.src}" alt="${img.alt}">
-                </div>
-            `).join('');
-
-                // FORCE IMMEDIATE POSITIONING
-                const slides = document.querySelectorAll('.slide-item');
-                const slideWidth = slides[0].offsetWidth;
-                const gap = window.innerWidth < 640 ? 16 : 32;
-                const centerOfSlide = (currentIndex * (slideWidth + gap)) + (slideWidth / 2);
-                const offset = (window.innerWidth / 2) - centerOfSlide;
-
-                container.classList.add('no-transition');
-                container.style.transition = 'none';
-                container.style.transform = `translateX(${offset}px)`;
-
-                slides.forEach((slide, i) => {
-                    slide.classList.toggle('active', i === currentIndex);
-                });
-
-                startAutoPlay();
-            }
-
-            function updateSlider(animate = true) {
-                const slides = document.querySelectorAll('.slide-item');
-                if (slides.length === 0) return;
-
-                const slideWidth = slides[0].offsetWidth;
-                const gap = window.innerWidth < 640 ? 16 : 32;
-                const centerOfSlide = (currentIndex * (slideWidth + gap)) + (slideWidth / 2);
-                const offset = (window.innerWidth / 2) - centerOfSlide;
-
-                if (animate) {
-                    container.classList.remove('no-transition');
-                    container.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-                    container.style.transform = `translateX(${offset}px)`;
-
-                    slides.forEach((slide, i) => {
-                        slide.classList.toggle('active', i === currentIndex);
-                    });
-                } else {
-                    // SNAP LOGIC
-                    container.classList.add('no-transition');
-                    container.style.transition = 'none';
-                    slides.forEach(s => s.classList.add('no-transition'));
-
-                    requestAnimationFrame(() => {
-                        container.style.transform = `translateX(${offset}px)`;
-                        slides.forEach((slide, i) => {
-                            slide.classList.toggle('active', i === currentIndex);
-                        });
-                        container.offsetHeight; // Force reflow
-
-                        requestAnimationFrame(() => {
-                            container.classList.remove('no-transition');
-                            slides.forEach(s => s.classList.remove('no-transition'));
-                        });
-                    });
-                }
-            }
-
-            container.addEventListener('transitionend', () => {
-                isTransitioning = false;
-                if (currentIndex >= images.length * 2) {
-                    currentIndex = images.length;
-                    updateSlider(false);
-                } else if (currentIndex < images.length) {
-                    currentIndex = images.length * 2 - 1;
-                    updateSlider(false);
-                }
-            });
-
-            function nextSlide() {
-                if (isPaused || isTransitioning) return;
-                isTransitioning = true;
-                currentIndex++;
-                updateSlider(true);
-            }
-
-            function startAutoPlay() {
-                if (autoPlayInterval) clearInterval(autoPlayInterval);
-                autoPlayInterval = setInterval(nextSlide, 2500);
-            }
-
-            window.addEventListener('DOMContentLoaded', initSlider);
-            window.addEventListener('resize', () => updateSlider(false));
-
-            // const detector = document.getElementById('pause-detector');
-            // detector.addEventListener('mouseenter', () => isPaused = true);
-            // detector.addEventListener('mouseleave', () => isPaused = false);
-            // detector.addEventListener('touchstart', () => isPaused = true, {passive: true});
-            // detector.addEventListener('touchend', () => isPaused = false, {passive: true});
-        </script>
     </section>
 
     <!-- How it Works -->
@@ -675,66 +558,162 @@
     <audio id="logoAudio" src="./corado-pronunciation.mp3" preload="auto"></audio>
 
     <script>
-        function handleVisitLogic() {
-            const STORAGE_KEY = 'corado_logo_visits';
-            const MAX_VISITS = 5;
-            const container = document.getElementById('animationContainer');
-
-            try {
-                // Get current count from localStorage
-                let visits = parseInt(localStorage.getItem(STORAGE_KEY)) || 0;
-
-                // Increment and update
-                visits += 1;
-                localStorage.setItem(STORAGE_KEY, visits);
-
-                // Show animation only if within the first 5 visits
-                if (visits <= MAX_VISITS) {
-                    container.classList.add('show-animation');
-                }
-            } catch (e) {
-                // Fallback for browsers with localStorage disabled (like Safari Private Mode)
-                console.warn("Storage not available, default to showing animation");
-                container.classList.add('show-animation');
+        // Global functions
+        function playAudio() {
+            const audio = document.getElementById('logoAudio');
+            if (audio) {
+                audio.currentTime = 0;
+                audio.play().catch(error => console.warn("Audio playback failed:", error));
             }
         }
 
-        function playAudio() {
-            const audio = document.getElementById('logoAudio');
-            audio.currentTime = 0;
-            audio.play().catch(error => {
-                console.error("Audio playback failed:", error);
-            });
-        }
+        (function() {
+            const images = [
+                { src: './onboarding.png', alt: 'Onboarding', w: 706, h: 1490 },
+                { src: './loging.png', alt: 'Login', w: 706, h: 1490 },
+                { src: './cat.png', alt: 'Category', w: 1080, h: 2424 },
+                { src: './feed.png', alt: 'Feed', w: 1080, h: 2424 },
+                { src: './full-post.png', alt: 'Full Post', w: 1080, h: 2424 },
+                { src: './chat.jpg', alt: 'Chat', w: 1080, h: 2424 }
+            ];
 
-        document.addEventListener("DOMContentLoaded", function () {
-            handleVisitLogic();
-            var packageName = "com.corado.app";
-            var playStoreUrl = "";
-            playStoreUrl = "https://play.google.com/store/apps/details?id=" + packageName;
+            let currentIndex = images.length;
+            let isPaused = false;
+            let isTransitioning = false;
+            let autoPlayInterval;
+            let container;
 
-            const androidLink = document.getElementById("android-link");
-            const modal = document.getElementById("beta-modal");
-            const continueBtn = document.getElementById("continue-download");
+            function initSlider() {
+                container = document.getElementById('slider-container');
+                if (!container) return;
+                
+                if (autoPlayInterval) clearInterval(autoPlayInterval);
+                container.innerHTML = '';
 
-            androidLink.addEventListener("click", function (e) {
-                e.preventDefault();
-                modal.classList.remove("hidden");
-                modal.classList.add("flex");
-            });
+                const allImages = [...images, ...images, ...images];
+                container.innerHTML = allImages.map((img, i) => `
+                    <div class="slide-item shrink-0 w-[65vw] sm:w-[300px] aspect-[9/19]">
+                        <img src="${img.src}" alt="${img.alt}" width="${img.w}" height="${img.h}" loading="lazy" decoding="async">
+                    </div>
+                `).join('');
 
-            continueBtn.addEventListener("click", function () {
-                window.open(playStoreUrl, "_blank");
-            });
+                const slides = container.querySelectorAll('.slide-item');
+                const slideWidth = slides[0].offsetWidth;
+                const gap = window.innerWidth < 640 ? 16 : 32;
+                const centerOfSlide = (currentIndex * (slideWidth + gap)) + (slideWidth / 2);
+                const offset = (window.innerWidth / 2) - centerOfSlide;
 
-            // Close modal if clicking outside box
-            modal.addEventListener("click", function (e) {
-                if (e.target === modal) {
-                    modal.classList.add("hidden");
-                    modal.classList.remove("flex");
+                container.classList.add('no-transition');
+                container.style.transform = `translateX(${offset}px)`;
+
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === currentIndex);
+                });
+
+                container.addEventListener('transitionend', () => {
+                    isTransitioning = false;
+                    if (currentIndex >= images.length * 2) {
+                        currentIndex = images.length;
+                        updateSlider(false);
+                    } else if (currentIndex < images.length) {
+                        currentIndex = images.length * 2 - 1;
+                        updateSlider(false);
+                    }
+                });
+
+                startAutoPlay();
+            }
+
+            function updateSlider(animate = true) {
+                const slides = container.querySelectorAll('.slide-item');
+                if (slides.length === 0) return;
+
+                const slideWidth = slides[0].offsetWidth;
+                const gap = window.innerWidth < 640 ? 16 : 32;
+                const centerOfSlide = (currentIndex * (slideWidth + gap)) + (slideWidth / 2);
+                const offset = (window.innerWidth / 2) - centerOfSlide;
+
+                if (animate) {
+                    container.classList.remove('no-transition');
+                    container.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                    container.style.transform = `translateX(${offset}px)`;
+
+                    slides.forEach((slide, i) => {
+                        slide.classList.toggle('active', i === currentIndex);
+                    });
+                } else {
+                    container.classList.add('no-transition');
+                    container.style.transition = 'none';
+                    requestAnimationFrame(() => {
+                        container.style.transform = `translateX(${offset}px)`;
+                        slides.forEach((slide, i) => {
+                            slide.classList.toggle('active', i === currentIndex);
+                        });
+                    });
+                }
+            }
+
+            function nextSlide() {
+                if (isPaused || isTransitioning) return;
+                isTransitioning = true;
+                currentIndex++;
+                updateSlider(true);
+            }
+
+            function startAutoPlay() {
+                if (autoPlayInterval) clearInterval(autoPlayInterval);
+                autoPlayInterval = setInterval(nextSlide, 2500);
+            }
+
+            function handleVisitLogic() {
+                const STORAGE_KEY = 'corado_logo_visits';
+                const MAX_VISITS = 5;
+                const animContainer = document.getElementById('animationContainer');
+                if (!animContainer) return;
+
+                try {
+                    let visits = parseInt(localStorage.getItem(STORAGE_KEY)) || 0;
+                    visits += 1;
+                    localStorage.setItem(STORAGE_KEY, visits);
+                    if (visits <= MAX_VISITS) animContainer.classList.add('show-animation');
+                } catch (e) {
+                    animContainer.classList.add('show-animation');
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                initSlider();
+                handleVisitLogic();
+                
+                window.addEventListener('resize', () => updateSlider(false));
+
+                const androidLink = document.getElementById("android-link");
+                const modal = document.getElementById("beta-modal");
+                const continueBtn = document.getElementById("continue-download");
+                const playStoreUrl = "https://play.google.com/store/apps/details?id=com.corado.app";
+
+                if (androidLink && modal) {
+                    androidLink.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        modal.classList.remove("hidden");
+                        modal.classList.add("flex");
+                    });
+
+                    modal.addEventListener("click", function (e) {
+                        if (e.target === modal) {
+                            modal.classList.add("hidden");
+                            modal.classList.remove("flex");
+                        }
+                    });
+                }
+
+                if (continueBtn) {
+                    continueBtn.addEventListener("click", function () {
+                        window.open(playStoreUrl, "_blank");
+                    });
                 }
             });
-        });
+        })();
     </script>
 
 </body>
