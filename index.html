@@ -26,6 +26,48 @@
     <meta name="keywords"
         content="verified professionals, corporate housing, flatmates, resale furniture, local help, community, Corado">
     <meta name="author" content="Corado">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.corado.in/">
+    <meta property="og:site_name" content="Corado">
+    <meta property="og:title" content="Corado | The Trusted Community for Verified Professionals">
+    <meta property="og:description"
+        content="Join the exclusive network where trust is built-in. Find housing, marketplace, happenings, daily help and more from people just like you.">
+    <meta property="og:image" content="https://www.corado.in/full-logo.png">
+    <meta property="og:image:secure_url" content="https://www.corado.in/full-logo.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1198">
+    <meta property="og:image:height" content="604">
+    <meta property="og:image:alt" content="Corado - Verified Professional Network Logo">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@CoradoIn">
+    <meta name="twitter:url" content="https://www.corado.in/">
+    <meta name="twitter:title" content="Corado | Verified Professionals Network">
+    <meta name="twitter:description"
+        content="Join the exclusive network where trust is built-in. Find housing, marketplace, happenings, daily help and more.">
+    <meta name="twitter:image" content="https://www.corado.in/full-logo.png">
+    <meta name="twitter:image:alt" content="Corado - Verified Professional Network Logo">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Corado",
+      "applicationCategory": "SocialNetworkingApplication",
+      "operatingSystem": "Android, iOS",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "A trusted community for verified professionals to find housing, referrals, and social connections."
+    }
+    </script>
 
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -171,6 +213,14 @@
             stroke-dashoffset: 150;
             animation: drawLine .7s cubic-bezier(0.45, 0, 0.55, 1) forwards;
             animation-delay: 1.5s;
+        }
+
+        .animate-strike-2 {
+            stroke-dasharray: 150;
+            stroke-dashoffset: 150;
+            animation: drawLine .7s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+            animation-delay: 2.2s;
+            /* Staggered delay */
         }
 
         /*** Click title to play audio ***/
@@ -339,7 +389,7 @@
             <div
                 class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border-[1.5px] border-brand-200 text-brand-600 text-sm font-semibold mb-8">
                 <i data-lucide="shield-check" class="w-4 h-4"></i>
-                Exclusively for Verified Professionals
+                Verified Professionals Only
             </div>
 
             <h1
@@ -360,8 +410,14 @@
                         Q 75,56 100,50: Slight dip down
                         This creates a subtle "S" curve wobble that feels more like a real pen stroke.
                     -->
-                        <path d="M0,52 Q25,48 50,52 Q75,56 100,50" fill="none" stroke="black" stroke-width="5"
+                        <!-- First Line: Subtle upward arc -->
+                        <path d="M-2,60 Q25,60 50,55 Q75,58 102,50" fill="none" stroke="black" stroke-width="4.4"
                             stroke-linecap="round" stroke-linejoin="round" class="animate-strike" />
+
+                        <!-- Second Line: Starts lower (looser) and converges toward the first line -->
+                        <path d="M1,72 Q28,62 58,62 Q65,61 98,60" fill="none" stroke="black" stroke-width="5"
+                            stroke-linecap="round" stroke-linejoin="round" class="animate-strike-2" />
+
                     </svg>
                 </span>
                 for
@@ -392,7 +448,7 @@
             </div>
 
             <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-600 mb-10">
-                A private, noise-free local network. Skip the public spam and find what you need directly from verified
+                <strong>Corado</strong> is a private, noise-free local network. Skip the public spam and find what you need directly from verified
                 peers, faster.
             </p>
 
@@ -811,8 +867,8 @@
                 </button>
             </div>
             <p class="text-gray-600 mb-6 text-sm leading-relaxed">
-                Corado is designed for mobile devices. Scan the QR code below from your phone or
-                manually visit <a href="https://web.corado.in" target="_blank" rel="noopener noreferrer"
+                Corado is designed for mobile devices. Scan the QR from your phone or visit <a
+                    href="https://web.corado.in" target="_blank" rel="noopener noreferrer"
                     class="font-semibold text-brand-600">&nbsp;web.corado.in</a>
             </p>
 
