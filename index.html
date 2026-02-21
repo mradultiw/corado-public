@@ -965,7 +965,7 @@
             <p class="text-gray-600 mb-6 text-sm leading-relaxed">
                 Corado is designed for mobile devices. Scan the QR code below from your phone or
                 manually visit <a href="https://web.corado.in" target="_blank" rel="noopener noreferrer"
-                    class="font-semibold text-brand-600">web.corado.in</a>
+                    class="font-semibold text-brand-600">&nbsp;web.corado.in</a>
             </p>
 
             <div
@@ -977,11 +977,11 @@
                 </div>
             </div>
 
-            <div class="flex flex-col gap-3">
-                <button id="insist-desktop-btn"
-                    class="w-full bg-white text-gray-700 font-semibold py-3.5 rounded-xl hover:bg-gray-50 transition-colors border border-gray-200 shadow-sm text-sm">
-                    Continue on Desktop anyway
-                </button>
+            <div class="flex flex-col gap-2">
+                <a href="#" role="button" id="insist-desktop-btn"
+                    class="w-full bg-white text-gray-600 font-semibold py-3 rounded-xl hover:bg-gray-50 transition-colors border border-gray-200 shadow-sm text-sm flex items-center justify-center">
+                    Report an Issue
+                </a>
             </div>
         </div>
     </div>
@@ -1126,7 +1126,7 @@
             if (closeDesktopModalBtn) closeDesktopModalBtn.addEventListener('click', closeDesktopModal);
             if (insistDesktopBtn) {
                 insistDesktopBtn.addEventListener('click', function () {
-                    window.open('https://web.corado.in', '_blank');
+                    window.open('https://docs.google.com/forms/d/e/1FAIpQLSdnYVmIwVuKf07DMU7aln1bCs3iOTD_TdDW5KmGyeDAhwjWqg/viewform?usp=header', '_blank');
                     closeDesktopModal();
                 });
             }
