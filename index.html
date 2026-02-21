@@ -53,6 +53,7 @@
                             700: '#1d4ed8',  // Trust Blue 700
                             900: '#1e3a8a',  // Trust Blue 900
                             dark: '#0f172a', // Slate 900
+                            light: '#3b82f6', // Trust Blue 500 (for light mode)
                         }
                     },
                     animation: {
@@ -75,6 +76,57 @@
         }
     </script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+        }
+
+        /* Clean Step Card */
+        .step-card {
+            background: #ffffff;
+            border: 1px solid #f1f5f9;
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            border-color: #e2e8f0;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Icon Scale */
+        .icon-container {
+            transition: transform 0.3s ease;
+        }
+
+        .step-wrapper:hover .icon-container {
+            transform: translateY(-5px);
+        }
+
+        /* Scroll Reveal */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Progressive Line Container */
+        .line-container {
+            /* Ensures line stays tucked under icons */
+            mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+        }
+
+        .progress-line {
+            transition: width 0.8s ease-out, height 0.8s ease-out;
+        }
+
         /* Custom subtle animations */
         .fade-in-up {
             opacity: 0;
@@ -158,6 +210,10 @@
             /* Hidden by default, shown via JS */
         }
 
+        .music-note-fast {
+            animation: float-up 1s ease-out infinite;
+        }
+
         /* Soft Pulse animation */
         @keyframes soft-pulse {
 
@@ -184,6 +240,14 @@
         .show-animation .music-note {
             display: flex;
         }
+
+        .music-note-show {
+            display: flex;
+        }
+
+        .music-note-hide {
+            display: none;
+        }
     </style>
 </head>
 
@@ -201,7 +265,7 @@
                         <div class="absolute inset-0 rounded-xl hint-pulse"></div>
 
                         <!-- Floating Note -->
-                        <div class="music-note" style="top: -5px; right: -5px;">♪</div>
+                        <div id="audioNote" class="music-note" style="top: -5px; right: -5px;">♪</div>
 
                         <button onclick="playAudio()"
                             class="relative z-10 flex items-center justify-center w-10 h-10 border border-slate-200 rounded-xl overflow-hidden shadow-sm bg-white p-1 click-press transition-transform duration-75 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -211,20 +275,6 @@
                     </div>
                     <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-800">Corado</span>
                 </div>
-
-                <!-- <div class="hidden md:flex items-center space-x-6">
-                    <a href="#features"
-                        class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Features</a>
-                    <a href="#how-it-works"
-                        class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">How it
-                        Works</a>
-                     Changed link to use JS logic via class -->
-                <!-- <a href="#"
-                        class="web-app-link text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Use
-                        on Web</a>
-                </div> -->
-
-
 
                 <!-- Mobile & Desktop accessible right side -->
                 <div class="flex items-center gap-3 sm:gap-6">
@@ -270,7 +320,8 @@
                 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-brand-dark tracking-tight leading-tight mb-8">
                 Stop searching in <br class="hidden md:block" />
                 <span class="relative inline-block">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400 opacity-90">
+                    <span
+                        class="whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400 opacity-90">
                         5 places
                     </span>
 
@@ -283,28 +334,35 @@
                         Q 75,56 100,50: Slight dip down
                         This creates a subtle "S" curve wobble that feels more like a real pen stroke.
                     -->
-                        <path d="M0,52 Q25,48 50,52 Q75,56 100,50" fill="none" stroke="black" stroke-width="7"
+                        <path d="M0,52 Q25,48 50,52 Q75,56 100,50" fill="none" stroke="black" stroke-width="5"
                             stroke-linecap="round" stroke-linejoin="round" class="animate-strike" />
                     </svg>
                 </span>
                 for
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-indigo-500">1
+                <span
+                    class="whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-indigo-500">1
                     thing.</span>
             </h1>
 
-            <div class="flex flex-wrap justify-center gap-3 mb-6">
-                <span
-                    class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-700 shadow-sm flex items-center gap-2"><i
-                        data-lucide="home" class="w-4 h-4 text-brand-500"></i>Housing</span>
-                <span
-                    class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-700 shadow-sm flex items-center gap-2"><i
-                        data-lucide="sofa" class="w-4 h-4 text-brand-500"></i>Furniture</span>
-                <span
-                    class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-700 shadow-sm flex items-center gap-2"><i
-                        data-lucide="chef-hat" class="w-4 h-4 text-brand-500"></i>Daily Help</span>
-                <span
-                    class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-700 shadow-sm flex items-center gap-2"><i
-                        data-lucide="map-pin" class="w-4 h-4 text-brand-500"></i>Local Advice</span>
+            <div class="flex justify-center w-full px-4 mb-8">
+                <div class="grid grid-cols-2 sm:flex sm:flex-row flex-wrap justify-center items-center gap-3 w-max">
+                    <span
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-700 shadow-sm whitespace-nowrap hover:border-brand-500 transition-colors cursor-default">
+                        <i data-lucide="home" class="w-4 h-4 text-blue-500"></i>Housing
+                    </span>
+                    <span
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-700 shadow-sm whitespace-nowrap hover:border-brand-500 transition-colors cursor-default">
+                        <i data-lucide="sofa" class="w-4 h-4 text-blue-500"></i>Furniture
+                    </span>
+                    <span
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-700 shadow-sm whitespace-nowrap hover:border-brand-500 transition-colors cursor-default">
+                        <i data-lucide="chef-hat" class="w-4 h-4 text-blue-500"></i>Daily Help
+                    </span>
+                    <span
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-700 shadow-sm whitespace-nowrap hover:border-brand-500 transition-colors cursor-default">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-blue-500"></i>Local Advice
+                    </span>
+                </div>
             </div>
 
             <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-600 mb-10">
@@ -551,16 +609,16 @@
                 </div>
                 <div class="bg-gray-800/50 border border-gray-700 p-6 rounded-2xl flex items-start gap-4">
                     <i data-lucide="x-circle" class="w-6 h-6 text-red-400 shrink-0 mt-1"></i>
-                    <p class="text-gray-300">Dealing with anonymous profiles to buy/sell resale furniture.</p>
+                    <p class="text-gray-300">Dealing with unvetted profiles to buy/sell resale furniture.</p>
                 </div>
                 <div class="bg-gray-800/50 border border-gray-700 p-6 rounded-2xl flex items-start gap-4">
                     <i data-lucide="x-circle" class="w-6 h-6 text-red-400 shrink-0 mt-1"></i>
-                    <p class="text-gray-300">Struggling to find trusted local cooks or maids.</p>
+                    <p class="text-gray-300">Struggling to find recommended local daily help.</p>
                 </div>
                 <div class="bg-gray-800/50 border border-gray-700 p-6 rounded-2xl flex items-start gap-4">
                     <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 shrink-0 mt-1"></i>
-                    <p class="text-white font-medium">Corado brings it all into one place — strictly limited to verified
-                        professionals.</p>
+                    <p class="text-white font-medium">Corado brings it all into one place — strictly limited to people
+                        like you!</p>
                 </div>
             </div>
         </div>
@@ -584,7 +642,7 @@
                     </div>
                     <h4 class="text-2xl font-bold text-gray-900 mb-3">Housing</h4>
                     <p class="text-gray-600 leading-relaxed">Find flatmates, replacement tenants, and rental leads —
-                        shared directly by verified professionals, not brokers.</p>
+                        shared directly by verified professionals.</p>
                 </div>
 
                 <!-- Feature 2: Marketplace (Orange) -->
@@ -595,7 +653,8 @@
                         <i data-lucide="shopping-bag" class="w-7 h-7 text-orange-500"></i>
                     </div>
                     <h4 class="text-2xl font-bold text-gray-900 mb-3">Marketplace</h4>
-                    <p class="text-gray-600 leading-relaxed">Buy and sell locally with people nearby. From furniture and
+                    <p class="text-gray-600 leading-relaxed">Buy and sell locally with vetted people nearby. From
+                        furniture and
                         appliances to daily essentials, completely peer-to-peer.</p>
                 </div>
 
@@ -607,8 +666,8 @@
                         <i data-lucide="users" class="w-7 h-7 text-emerald-500"></i>
                     </div>
                     <h4 class="text-2xl font-bold text-gray-900 mb-3">Daily Help</h4>
-                    <p class="text-gray-600 leading-relaxed">Find trusted cooks, maids, drivers, or domestic help
-                        through recommendations from your local professional network.</p>
+                    <p class="text-gray-600 leading-relaxed">Find recommended cooks, maids, nanny, or domestic help
+                        through recommendations from professionals near you.</p>
                 </div>
 
                 <!-- Feature 4: Local Advice (Purple) -->
@@ -619,8 +678,9 @@
                         <i data-lucide="map-pin" class="w-7 h-7 text-purple-500"></i>
                     </div>
                     <h4 class="text-2xl font-bold text-gray-900 mb-3">Local Advice</h4>
-                    <p class="text-gray-600 leading-relaxed">Ask practical, neighbourhood-specific questions and get
-                        reliable answers from nearby professionals who actually know.</p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Get reliable, local answers from people nearby or get help in general from the community of
+                        professionals.</p>
                 </div>
             </div>
         </div>
@@ -633,8 +693,8 @@
                 <div class="animate-on-scroll fade-in-up">
                     <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-6">Built for clarity.<br />Not clutter.
                     </h2>
-                    <p class="text-lg text-gray-600 mb-8">Corado is exclusively designed for working professionals who
-                        prefer relevant local posts, fewer unknown accounts, and practical exchanges over public noise.
+                    <p class="text-lg text-gray-600 mb-8">Exclusively designed for working professionals prefering local
+                        relevance, vetted profiles, and practical exchanges over public noise.
                     </p>
 
                     <ul class="space-y-4">
@@ -652,7 +712,7 @@
                         </li>
                         <li class="flex items-center gap-3 text-gray-800 font-medium bg-white p-4 rounded-xl shadow-sm">
                             <i data-lucide="check" class="w-5 h-5 text-brand-600 shrink-0"></i>
-                            No public spam or anonymous trolls
+                            No public spam or brokers
                         </li>
                     </ul>
                 </div>
@@ -664,19 +724,30 @@
                     <div class="relative bg-white p-8 rounded-[2rem] shadow-xl border border-gray-100">
                         <div class="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100">
                             <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
-                                <i data-lucide="user" class="w-6 h-6 text-gray-500"></i>
+                                <svg xmlns="http://www.w3.org" viewBox="2.5 2.5 19 19" class="w-6 h-6 text-gray-500">
+                                    <g>
+                                        <path d="M5 19L5 8L9 11L15 11L19 8L19 19Z" fill="#F59E0B" />
+                                        <circle cx="9" cy="14" r="1" fill="#333" />
+                                        <circle cx="15" cy="14" r="1" fill="#333" />
+                                        <path d="M12 16L11 17H13Z" fill="#333" />
+                                    </g>
+                                </svg>
                             </div>
                             <div>
-                                <h5 class="font-bold text-gray-900">Priya T.</h5>
+                                <h5 class="font-bold text-gray-900">Priya</h5>
                                 <p class="text-xs text-brand-600 font-bold flex items-center gap-1 uppercase">
-                                    <i data-lucide="shield-check" class="w-3 h-3"></i> Verified
+                                    Google
                                 </p>
                             </div>
                         </div>
                         <div class="space-y-4 mb-6">
                             <h6 class="font-bold text-lg text-gray-800">Selling lightly used microwave 🍿</h6>
-                            <p class="text-gray-600 text-sm leading-relaxed">Upgrading to a new one. This 20L LG
-                                microwave is in perfect condition. Pick up from Bellandur this weekend.</p>
+                            <p class="text-gray-600 text-sm leading-relaxed">Upgrading to a larger model and selling my
+                                1-year-old LG 20L Solo Microwave (MS2043BP). It’s in mint condition, featuring i-Wave
+                                technology and a healthy anti-bacterial cavity.
+                                Includes the original glass turntable. Asking ₹4000. Pickup from
+                                Bellandur this weekend—feel free to test it before buying! DM if interested.
+                            </p>
                         </div>
                         <div class="flex gap-3">
                             <button
@@ -692,41 +763,114 @@
     <!-- How it Works -->
     <section id="how-it-works" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 animate-on-scroll fade-in-up">
+
+            <!-- Header: Back to Original Minimalism -->
+            <div class="text-center mb-20 reveal-up">
                 <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4">Simple. Direct. Efficient.</h2>
-                <p class="text-xl text-gray-600">Join the community in three easy steps.</p>
+                <p class="text-xl text-gray-600">Join the community in a few easy steps.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-                <div
-                    class="hidden md:block absolute top-1/2 left-[15%] right-[15%] h-0.5 bg-gray-100 -translate-y-1/2 z-0">
+            <!-- Steps Container -->
+            <div class="relative">
+
+                <!-- Desktop Horizontal Connecting Line -->
+                <div class="hidden lg:block absolute top-12 left-[12%] right-[12%] h-0.5 bg-gray-100 z-0">
+                    <div id="desktop-progress" class="progress-line h-full bg-brand-light w-0"></div>
                 </div>
 
-                <div class="relative z-10 text-center animate-on-scroll fade-in-up">
-                    <div
-                        class="w-16 h-16 bg-brand-dark text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
-                        1</div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-2">Sign Up</h4>
-                    <p class="text-gray-600">Register securely using your corporate email to verify your professional
-                        status.</p>
+                <!-- Mobile Vertical Connecting Line -->
+                <div class="block lg:hidden absolute top-10 bottom-10 left-8 w-0.5 bg-gray-100 z-0">
+                    <div id="mobile-progress" class="progress-line w-full bg-brand-light h-0"></div>
                 </div>
 
-                <div class="relative z-10 text-center animate-on-scroll fade-in-up" style="transition-delay: 150ms;">
-                    <div
-                        class="w-16 h-16 bg-brand-600 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
-                        2</div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-2">Browse & Post</h4>
-                    <p class="text-gray-600">Explore local listings near you or create a post for exactly what you need.
-                    </p>
-                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 relative z-10">
 
-                <div class="relative z-10 text-center animate-on-scroll fade-in-up" style="transition-delay: 300ms;">
-                    <div
-                        class="w-16 h-16 bg-indigo-500 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
-                        3</div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-2">Connect Directly</h4>
-                    <p class="text-gray-600">Chat directly with peers. No middlemen, no brokers, no public comment
-                        sections.</p>
+                    <!-- Step 1 -->
+                    <div class="step-wrapper relative flex lg:block items-start gap-6 reveal-up"
+                        style="transition-delay: 100ms;">
+                        <div
+                            class="icon-container relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 lg:mx-auto bg-brand-dark text-white rounded-2xl flex items-center justify-center text-xl font-bold lg:mb-6 shadow-lg z-10">
+                            <svg class="w-8 h-8 lg:w-10 lg:h-10 relative z-10" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="step-card p-6 rounded-2xl w-full text-left lg:text-center">
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Sign Up</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Verify your professional status with your corporate email. <span
+                                    class="text-xs block mt-1 text-gray-400 font-bold">Stored securely, never
+                                    shared.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="step-wrapper relative flex lg:block items-center gap-6 reveal-up"
+                        style="transition-delay: 200ms;">
+                        <div
+                            class="icon-container relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 lg:mx-auto bg-slate-400 text-white rounded-2xl flex items-center justify-center text-xl font-bold lg:mb-6 shadow-lg z-10">
+                            <svg class="w-8 h-8 lg:w-10 lg:h-10 relative z-10" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="step-card p-6 rounded-2xl w-full text-left lg:text-center">
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Location</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Optional, but helps surface local results. <span
+                                    class="text-xs block mt-1 text-gray-400 font-bold">Stored securely, never
+                                    shared.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="step-wrapper relative flex lg:block items-center gap-6 reveal-up"
+                        style="transition-delay: 300ms;">
+                        <div
+                            class="icon-container relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 lg:mx-auto bg-blue-500 text-white rounded-2xl flex items-center justify-center text-xl font-bold lg:mb-6 shadow-lg z-10">
+                            <svg class="w-8 h-8 lg:w-10 lg:h-10 relative z-10" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="step-card p-6 rounded-2xl w-full text-left lg:text-center">
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Browse & Post</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Explore local listings on housing, local deals or create a post for exactly what you
+                                need.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="step-wrapper relative flex lg:block items-center gap-6 reveal-up"
+                        style="transition-delay: 400ms;">
+                        <div
+                            class="icon-container relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 lg:mx-auto bg-indigo-500 text-white rounded-2xl flex items-center justify-center text-xl font-bold lg:mb-6 shadow-lg z-10">
+                            <svg class="w-8 h-8 lg:w-10 lg:h-10 relative z-10" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="step-card p-6 rounded-2xl w-full text-left lg:text-center">
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Connect</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Chat directly with verified peers. No middlemen, no brokers, just you two.
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -751,26 +895,25 @@
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="#hero-section"
                     class="inline-flex justify-center items-center gap-2 bg-brand-500 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-brand-400 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-                    Join Today!
+                    Get Started Now
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-50 py-12 border-t border-gray-200">
+    <footer class="bg-gray-50 pt-6 pb-3 border-t border-gray-200">
         <div
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
-                <img src="./corado-nobg.png" alt="Corado Logo" class="h-8 w-auto grayscale opacity-70"
-                    onerror="this.style.display='none'">
                 <span class="text-xl font-bold tracking-tight text-gray-400">Corado</span>
             </div>
-            <p class="text-gray-500 text-sm">© 2024 Corado. All rights reserved.</p>
+            <p class="text-gray-500 text-sm">© 2026 Corado. All rights reserved.</p>
             <div class="flex space-x-6">
-                <a href="#" class="text-gray-400 hover:text-brand-600 transition-colors">Privacy</a>
-                <a href="#" class="text-gray-400 hover:text-brand-600 transition-colors">Terms</a>
-                <a href="#" class="text-gray-400 hover:text-brand-600 transition-colors">Contact</a>
+                <a href="https://corado.in/privacy"
+                    class="text-gray-400 hover:text-brand-600 transition-colors">Privacy</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdnYVmIwVuKf07DMU7aln1bCs3iOTD_TdDW5KmGyeDAhwjWqg/viewform?usp=header"
+                    class="text-gray-400 hover:text-brand-600 transition-colors">Contact</a>
             </div>
         </div>
     </footer>
@@ -872,7 +1015,7 @@
 
         function handleVisitLogic() {
             const STORAGE_KEY = 'corado_logo_visits';
-            const MAX_VISITS = 5;
+            const MAX_VISITS = 3;
             const container = document.getElementById('animationContainer');
 
             try {
@@ -895,11 +1038,23 @@
         }
 
         function playAudio() {
+            const note = document.getElementById('audioNote');
+            if (note) {
+                note.classList.remove('music-note-hide');
+                note.classList.add('music-note-show');
+                note.classList.add('music-note-fast');
+            }
             const audio = document.getElementById('logoAudio');
             audio.currentTime = 0;
             audio.play().catch(error => {
                 console.error("Audio playback failed:", error);
             });
+            setTimeout(() => {
+                if (note) {
+                    note.classList.remove('music-note-show');
+                    note.classList.add('music-note-hide');
+                }
+            }, 1000);
         }
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -1032,6 +1187,49 @@
                     nav.classList.remove('shadow-sm');
                 }
             });
+
+            // Reveal elements on scroll
+            const revealElements = document.querySelectorAll('.reveal-up');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // Progress Line Logic
+            const section = document.getElementById('how-it-works');
+            const deskProgress = document.getElementById('desktop-progress');
+            const mobProgress = document.getElementById('mobile-progress');
+            const steps = document.querySelectorAll('.step-wrapper');
+
+            const updateProgress = () => {
+                const windowHeight = window.innerHeight;
+                let visibleCount = 0;
+
+                steps.forEach(step => {
+                    const rect = step.getBoundingClientRect();
+                    // Activate progress as step icon reaches the upper middle of the screen
+                    if (rect.top + 40 < windowHeight * 0.7) {
+                        visibleCount++;
+                    }
+                });
+
+                // Calculate width/height percentage
+                let percentage = 0;
+                if (visibleCount > 1) {
+                    percentage = ((visibleCount - 1) / (steps.length - 1)) * 100;
+                }
+
+                deskProgress.style.width = `${percentage}%`;
+                mobProgress.style.height = `${percentage}%`;
+            };
+
+            window.addEventListener('scroll', updateProgress);
+            updateProgress();
         });
     </script>
 </body>
