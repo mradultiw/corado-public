@@ -17,8 +17,13 @@
     <!-- SEO & Meta Tags -->
     <title>Corado | Verified Professionals Community</title>
     <link rel="icon" type="image/png" href="./corado-nobg.png">
+
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://play.google.com">
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
 
     <meta name="title" content="Corado | Verified Professionals Community">
     <meta name="description"
@@ -70,8 +75,6 @@
     </script>
 
     <!-- Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -118,8 +121,6 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
         body {
             font-family: 'Inter', sans-serif;
             background-color: #ffffff;
@@ -298,8 +299,7 @@
         .music-note-hide {
             display: none;
         }
-    </style>
-    <style>
+
         @keyframes infinite-scroll {
             from {
                 transform: translateX(0);
@@ -346,7 +346,8 @@
                         <button onclick="playAudio()"
                             class="relative z-10 flex items-center justify-center w-10 h-10 border border-slate-200 rounded-xl overflow-hidden shadow-sm bg-white p-1 click-press transition-transform duration-75 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             aria-label="Play sound">
-                            <img src="./corado-nobg.png" alt="Corado Logo" class="h-full w-auto object-contain">
+                            <img src="./corado-nobg.png" alt="Corado Logo" class="h-full w-auto object-contain"
+                                decoding="async">
                         </button>
                     </div>
                     <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-800">Corado</span>
@@ -359,7 +360,7 @@
                         <a href="#features" class="hover:text-brand-blue transition">Features</a>
                         <a href="#how-it-works" class="hover:text-brand-blue transition">How it works</a>
                     </div>
-                    <a href="https://forms.gle/kFN56v8mXUWNBNer5" target="_blank"
+                    <a href="https://forms.gle/kFN56v8mXUWNBNer5" target="_blank" rel="noopener noreferrer"
                         class="text-slate-600 hover:text-brand-blue transition flex items-center gap-1 text-[10px] sm:text-sm font-bold whitespace-nowrap">
                         Feedback
                         <svg class="w-3 h-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -411,11 +412,11 @@
                         This creates a subtle "S" curve wobble that feels more like a real pen stroke.
                     -->
                         <!-- First Line: Subtle upward arc -->
-                        <path d="M-2,60 Q25,60 50,55 Q75,58 102,50" fill="none" stroke="black" stroke-width="4.4"
+                        <path d="M-2,60 Q25,60 50,55 Q75,58 102,50" fill="none" stroke="black" stroke-width="5"
                             stroke-linecap="round" stroke-linejoin="round" class="animate-strike" />
 
                         <!-- Second Line: Starts lower (looser) and converges toward the first line -->
-                        <path d="M1,72 Q28,62 58,62 Q65,61 98,60" fill="none" stroke="black" stroke-width="5"
+                        <path d="M1,72 Q28,62 58,62 Q65,61 98,60" fill="none" stroke="black" stroke-width="5.2"
                             stroke-linecap="round" stroke-linejoin="round" class="animate-strike-2" />
 
                     </svg>
@@ -447,8 +448,9 @@
                 </div>
             </div>
 
-            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-600 mb-10">
-                <strong>Corado</strong> is a private, noise-free local network. Skip the public spam and find what you need directly from verified
+            <p class="mt-8 max-w-2xl mx-auto text-xl text-gray-600 mb-10">
+                <strong>Corado</strong> is a private, noise-free local network. Skip the public spam and find what you
+                need directly from verified
                 peers, faster.
             </p>
 
@@ -867,9 +869,9 @@
                 </button>
             </div>
             <p class="text-gray-600 mb-6 text-sm leading-relaxed">
-                Corado is designed for mobile devices. Scan the QR from your phone or visit <a
-                    href="https://web.corado.in" target="_blank" rel="noopener noreferrer"
-                    class="font-semibold text-brand-600">&nbsp;web.corado.in</a>
+                Corado is designed for mobile devices. Scan the QR or visit <a href="https://web.corado.in"
+                    target="_blank" rel="noopener noreferrer"
+                    class="font-semibold text-brand-600">&nbsp;web.corado.in&nbsp;</a> from your phone.
             </p>
 
             <div
@@ -877,8 +879,9 @@
                 <div
                     class="w-80 h-80 bg-white rounded-2xl flex items-center justify-center border border-gray-200 shadow-md relative overflow-hidden p-4">
                     <img src="./corado-qr.png" alt="Scan this QR code to open the mobile web app"
-                        class="w-full h-full object-contain" />
+                        class="w-full h-full object-contain" loading="lazy" decoding="async" />
                 </div>
+                <p class="pt-4 text-center text-sm text-gray-400">Scan from your mobile device</p>
             </div>
 
             <div class="flex flex-col gap-2">
@@ -892,260 +895,10 @@
 
     <!-- Audio Element for Corado logo -->
     <audio id="logoAudio" src="./corado-pronunciation.mp3" preload="auto"></audio>
+
     <!-- Scripts -->
     <script>
-        // Initialize Icons
-        lucide.createIcons();
-
-        // Scroll Animations
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach((elem) => {
-            observer.observe(elem);
-        });
-
-        function handleVisitLogic() {
-            const STORAGE_KEY = 'corado_logo_visits';
-            const MAX_VISITS = 3;
-            const container = document.getElementById('animationContainer');
-
-            try {
-                // Get current count from localStorage
-                let visits = parseInt(localStorage.getItem(STORAGE_KEY)) || 0;
-
-                // Increment and update
-                visits += 1;
-                localStorage.setItem(STORAGE_KEY, visits);
-
-                // Show animation only if within the first 5 visits
-                if (visits <= MAX_VISITS) {
-                    container.classList.add('show-animation');
-                }
-            } catch (e) {
-                // Fallback for browsers with localStorage disabled (like Safari Private Mode)
-                console.warn("Storage not available, default to showing animation");
-                container.classList.add('show-animation');
-            }
-        }
-
-        function playAudio() {
-            const note = document.getElementById('audioNote');
-            if (note) {
-                note.classList.remove('music-note-hide');
-                note.classList.add('music-note-show');
-                note.classList.add('music-note-fast');
-            }
-            const audio = document.getElementById('logoAudio');
-            audio.currentTime = 0;
-            audio.play().catch(error => {
-                console.error("Audio playback failed:", error);
-            });
-            setTimeout(() => {
-                if (note) {
-                    note.classList.remove('music-note-show');
-                    note.classList.add('music-note-hide');
-                }
-            }, 1000);
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            handleVisitLogic();
-            // --- Audio Pronunciation Logic ---
-            const brandAudioTrigger = document.getElementById('brand-audio-trigger');
-            const brandAudio = document.getElementById('brand-audio');
-            const brandVolumeIcon = document.getElementById('brand-volume-icon');
-
-            if (brandAudioTrigger && brandAudio) {
-                brandAudioTrigger.addEventListener('click', function () {
-                    brandAudio.currentTime = 0;
-                    brandAudio.play().catch(e => console.log("Audio play failed or file missing:", e));
-
-                    if (brandVolumeIcon) {
-                        // Apply pulse animation via class
-                        brandVolumeIcon.classList.remove('animate-audio-playing');
-                        // trigger reflow
-                        void brandVolumeIcon.offsetWidth;
-                        brandVolumeIcon.classList.add('animate-audio-playing');
-                    }
-                });
-            }
-
-            // --- Desktop Warning Web App Logic ---
-            const webAppLinks = document.querySelectorAll('.web-app-link');
-            const desktopModal = document.getElementById('desktop-warning-modal');
-            const desktopModalContent = document.getElementById('desktop-modal-content');
-            const closeDesktopModalBtn = document.getElementById('close-desktop-modal');
-            const insistDesktopBtn = document.getElementById('insist-desktop-btn');
-
-            function openDesktopModal() {
-                desktopModal.classList.remove("hidden");
-                desktopModal.classList.add("flex");
-                setTimeout(() => {
-                    desktopModal.classList.remove("opacity-0");
-                    desktopModalContent.classList.remove("scale-95");
-                    desktopModalContent.classList.add("scale-100");
-                }, 10);
-            }
-
-            function closeDesktopModal() {
-                desktopModal.classList.add("opacity-0");
-                desktopModalContent.classList.remove("scale-100");
-                desktopModalContent.classList.add("scale-95");
-                setTimeout(() => {
-                    desktopModal.classList.add("hidden");
-                    desktopModal.classList.remove("flex");
-                }, 300);
-            }
-
-            webAppLinks.forEach(link => {
-                link.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    // Check if viewport is mobile width (< 768px in Tailwind)
-                    if (window.innerWidth < 768) {
-                        window.open('https://web.corado.in', '_blank');
-                    } else {
-                        openDesktopModal();
-                    }
-                });
-            });
-
-            if (desktopModal) {
-                desktopModal.addEventListener("click", function (e) {
-                    if (e.target === desktopModal) closeDesktopModal();
-                });
-            }
-            if (closeDesktopModalBtn) closeDesktopModalBtn.addEventListener('click', closeDesktopModal);
-            if (insistDesktopBtn) {
-                insistDesktopBtn.addEventListener('click', function () {
-                    window.open('https://docs.google.com/forms/d/e/1FAIpQLSdnYVmIwVuKf07DMU7aln1bCs3iOTD_TdDW5KmGyeDAhwjWqg/viewform?usp=header', '_blank');
-                    closeDesktopModal();
-                });
-            }
-
-            const betaDownloadBtn = document.getElementById('android-link');
-            const modal = document.getElementById("beta-modal");
-            const modalContent = document.getElementById("modal-content");
-            const joinBetaBtn = document.getElementById("join-beta-btn");
-            const continueBtn = document.getElementById("continue-download");
-            const playStoreUrl = "https://play.google.com/store/apps/details?id=com.corado.app";
-            const betaGroupsUrl = "https://groups.google.com/u/1/g/corado-trusted-testers";
-
-            function openModal(e) {
-                e.preventDefault();
-                modal.classList.remove("hidden");
-                modal.classList.add("flex");
-                setTimeout(() => {
-                    modal.classList.remove("opacity-0");
-                    modalContent.classList.remove("scale-95");
-                    modalContent.classList.add("scale-100");
-                }, 10);
-            }
-
-            function closeModal() {
-                modal.classList.add("opacity-0");
-                modalContent.classList.remove("scale-100");
-                modalContent.classList.add("scale-95");
-                setTimeout(() => {
-                    modal.classList.add("hidden");
-                    modal.classList.remove("flex");
-                }, 300);
-            }
-            betaDownloadBtn.addEventListener("click", openModal);
-            if (modal) {
-                modal.addEventListener("click", function (e) {
-                    if (e.target === modal) closeModal();
-                });
-            }
-            if (joinBetaBtn) {
-                joinBetaBtn.addEventListener("click", function () {
-                    window.open(betaGroupsUrl, "_blank");
-                    closeModal();
-                });
-            }
-            if (continueBtn) {
-                continueBtn.addEventListener("click", function () {
-                    window.open(playStoreUrl, "_blank");
-                    closeModal();
-                });
-            }
-
-            // --- Navbar Scroll Effect ---
-            const nav = document.querySelector('nav');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 10) {
-                    nav.classList.add('shadow-sm');
-                } else {
-                    nav.classList.remove('shadow-sm');
-                }
-            });
-
-            // Reveal elements on scroll
-            const revealElements = document.querySelectorAll('.reveal-up');
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            revealElements.forEach(el => revealObserver.observe(el));
-
-            // Progress Line Logic
-            const section = document.getElementById('how-it-works');
-            const deskProgress = document.getElementById('desktop-progress');
-            const mobProgress = document.getElementById('mobile-progress');
-            const steps = document.querySelectorAll('.step-wrapper');
-
-            const updateProgress = () => {
-                const windowHeight = window.innerHeight;
-                let visibleCount = 0;
-
-                steps.forEach(step => {
-                    const rect = step.getBoundingClientRect();
-                    // Activate progress as step icon reaches the upper middle of the screen
-                    if (rect.top + 40 < windowHeight * 0.7) {
-                        visibleCount++;
-                    }
-                });
-
-                // Calculate width/height percentage
-                let percentage = 0;
-                if (visibleCount > 1) {
-                    percentage = ((visibleCount - 1) / (steps.length - 1)) * 100;
-                }
-
-                deskProgress.style.width = `${percentage}%`;
-                mobProgress.style.height = `${percentage}%`;
-            };
-
-            window.addEventListener('scroll', updateProgress);
-            updateProgress();
-        });
-    </script>
-    <script>
-        const categoryColorMap = {
-            Marketplace: 'text-orange-600 bg-orange-50 border-orange-200',
-            Housing: 'text-blue-600 bg-blue-50 border-blue-200',
-            DailyHelp: 'text-amber-600 bg-amber-50 border-amber-200',
-            General: 'text-pink-600 bg-pink-50 border-pink-200'
-        };
-
-        const companies = ["Google", "Amazon", "Microsoft", "Visa", "Amex", "Atlassian", "Adobe", "Samsung", "Qualcomm", "Salesforce", "Flipkart"];
-
+        // --- Data ---
         const SAMPLE_POSTS = [
             {
                 id: 1, name: "Priya", company: "Google", date: "02/21/2026", category: "DailyHelp",
@@ -1221,13 +974,13 @@
             },
             {
                 id: 13, name: "Pooja", company: "Microsoft", date: "02/09/2026", category: "DailyHelp",
-                title: "Maid Needed for Cleaning | Marathalli Area",
+                title: "Maid Needed for Cleaning, Marathalli Area",
                 content: "Urgent requirement: Need a part-time maid for sweeping, mopping, and utensil cleaning. Timings are flexible but morning is preferred. Good salary offered.",
                 avatar: "P", avatarColor: "bg-rose-100 text-rose-700"
             },
             {
                 id: 14, name: "Neha", company: "Visa", date: "02/08/2026", category: "Marketplace",
-                title: "Seeking a used Ergonomic Office Chair | Indiranagar",
+                title: "Seeking a used Ergonomic Office Chair, Indiranagar",
                 content: "Looking for a used ergonomic office chair (preferably Herman Miller or Featherlite) in decent condition for my WFH setup. Let me know if you're selling!",
                 avatar: "N", avatarColor: "bg-amber-100 text-amber-700"
             },
@@ -1239,9 +992,18 @@
             }
         ];
 
+        const categoryColorMap = {
+            Marketplace: 'text-orange-600 bg-orange-50 border-orange-200',
+            Housing: 'text-blue-600 bg-blue-50 border-blue-200',
+            DailyHelp: 'text-amber-600 bg-amber-50 border-amber-200',
+            General: 'text-pink-600 bg-pink-50 border-pink-200'
+        };
+
+        let isOnboarding = false;
+
+        // --- Helpers ---
         function createPostCardHTML(post) {
             const categoryStyle = categoryColorMap[post.category] || categoryColorMap.General;
-
             return `
                 <div class="w-[380px] shrink-0 bg-white border border-gray-200 rounded-2xl p-5 flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300 whitespace-normal text-left">
                     <div class="flex justify-between items-start mb-3">
@@ -1260,32 +1022,179 @@
                             ${post.category}
                         </span>
                     </div>
-
-                    <p class="font-[700] text-slate-700 text-[.95rem]">
-                        ${post.title}
-                    </p>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
-                        ${post.content}
-                    </p>
-
+                    <p class="font-[700] text-slate-700 text-[.95rem]">${post.title}</p>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">${post.content}</p>
                     <div class="flex gap-3 pt-4 border-t border-gray-50">
-                        <button class="flex-1 bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 shadow-sm active:scale-95">
-                            Message
-                        </button>
-                        <button class="flex-1 bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 shadow-sm active:scale-95">
-                            Comment
-                        </button>
+                        <button class="flex-1 bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 shadow-sm active:scale-95">Message</button>
+                        <button class="flex-1 bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 shadow-sm active:scale-95">Comment</button>
                     </div>
                 </div>
             `;
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
+        const throttle = (func, limit) => {
+            let inThrottle;
+            return function () {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
+        };
+
+        function handleVisitLogic() {
+            const STORAGE_KEY = 'corado_logo_visits';
+            const MAX_VISITS = 3;
+            const container = document.getElementById('animationContainer');
+            if (!container) return;
+            try {
+                let visits = parseInt(localStorage.getItem(STORAGE_KEY)) || 0;
+                visits += 1;
+                localStorage.setItem(STORAGE_KEY, visits);
+                if (visits <= MAX_VISITS) {
+                    isOnboarding = true;
+                    container.classList.add('show-animation');
+                }
+            } catch (e) {
+                container.classList.add('show-animation');
+            }
+        }
+
+        function playAudio() {
+            const note = document.getElementById('audioNote');
+            if (!isOnboarding && note) {
+                note.classList.remove('music-note-hide');
+                note.classList.add('music-note-show', 'music-note-fast');
+            }
+            const audio = document.getElementById('logoAudio');
+            if (audio) {
+                audio.currentTime = 0;
+                audio.play().catch(e => console.error("Audio playback failed:", e));
+            }
+            setTimeout(() => {
+                if (!isOnboarding && note) note.classList.remove('music-note-show', 'music-note-fast');
+            }, 1000);
+        }
+
+        // --- Initialization ---
+        document.addEventListener("DOMContentLoaded", function () {
+            // Icons
+            if (window.lucide) lucide.createIcons();
+
+            handleVisitLogic();
+
+            // Marquee
             const track1 = document.getElementById('marquee-track-1');
             const track2 = document.getElementById('marquee-track-2');
-            const cardsHTML = SAMPLE_POSTS.map(createPostCardHTML).join('');
-            track1.innerHTML = cardsHTML;
-            track2.innerHTML = cardsHTML;
+            if (track1 && track2) {
+                const cardsHTML = SAMPLE_POSTS.map(createPostCardHTML).join('');
+                track1.innerHTML = cardsHTML;
+                track2.innerHTML = cardsHTML;
+            }
+
+            // Consolidated Intersection Observer
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.classList.contains('reveal-up')) {
+                            entry.target.classList.add('active');
+                        } else {
+                            entry.target.classList.add('visible');
+                        }
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.animate-on-scroll, .reveal-up').forEach(el => revealObserver.observe(el));
+
+            // Modals Logic
+            const webAppLinks = document.querySelectorAll('.web-app-link');
+            const desktopModal = document.getElementById('desktop-warning-modal');
+            const desktopModalContent = document.getElementById('desktop-modal-content');
+
+            const openModal = (modal, content) => {
+                modal.classList.remove("hidden");
+                modal.classList.add("flex");
+                setTimeout(() => {
+                    modal.classList.remove("opacity-0");
+                    content.classList.remove("scale-95");
+                    content.classList.add("scale-100");
+                }, 10);
+            };
+
+            const closeModal = (modal, content) => {
+                modal.classList.add("opacity-0");
+                content.classList.remove("scale-100");
+                content.classList.add("scale-95");
+                setTimeout(() => {
+                    modal.classList.add("hidden");
+                    modal.classList.remove("flex");
+                }, 300);
+            };
+
+            webAppLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (window.innerWidth < 768) {
+                        window.open('https://web.corado.in', '_blank');
+                    } else {
+                        openModal(desktopModal, desktopModalContent);
+                    }
+                });
+            });
+
+            document.getElementById('close-desktop-modal')?.addEventListener('click', () => closeModal(desktopModal, desktopModalContent));
+            desktopModal?.addEventListener("click", (e) => { if (e.target === desktopModal) closeModal(desktopModal, desktopModalContent); });
+            document.getElementById('insist-desktop-btn')?.addEventListener('click', () => {
+                window.open('https://docs.google.com/forms/d/e/1FAIpQLSdnYVmIwVuKf07DMU7aln1bCs3iOTD_TdDW5KmGyeDAhwjWqg/viewform?usp=header', '_blank');
+                closeModal(desktopModal, desktopModalContent);
+            });
+
+            const betaModal = document.getElementById("beta-modal");
+            const betaModalContent = document.getElementById("modal-content");
+            document.getElementById('android-link')?.addEventListener("click", (e) => {
+                e.preventDefault();
+                openModal(betaModal, betaModalContent);
+            });
+            betaModal?.addEventListener("click", (e) => { if (e.target === betaModal) closeModal(betaModal, betaModalContent); });
+            document.getElementById("join-beta-btn")?.addEventListener("click", () => {
+                window.open("https://groups.google.com/u/1/g/corado-trusted-testers", "_blank");
+                closeModal(betaModal, betaModalContent);
+            });
+            document.getElementById("continue-download")?.addEventListener("click", () => {
+                window.open("https://play.google.com/store/apps/details?id=com.corado.app", "_blank");
+                closeModal(betaModal, betaModalContent);
+            });
+
+            // Navbar & Progress
+            const nav = document.querySelector('nav');
+            const deskProgress = document.getElementById('desktop-progress');
+            const mobProgress = document.getElementById('mobile-progress');
+            const steps = document.querySelectorAll('.step-wrapper');
+
+            const onScroll = throttle(() => {
+                if (nav) {
+                    nav.classList.toggle('shadow-sm', window.scrollY > 10);
+                }
+
+                if (steps.length) {
+                    const windowHeight = window.innerHeight;
+                    let visibleCount = 0;
+                    steps.forEach(step => {
+                        if (step.getBoundingClientRect().top + 40 < windowHeight * 0.7) visibleCount++;
+                    });
+                    const percentage = visibleCount > 1 ? ((visibleCount - 1) / (steps.length - 1)) * 100 : 0;
+                    if (deskProgress) deskProgress.style.width = `${percentage}%`;
+                    if (mobProgress) mobProgress.style.height = `${percentage}%`;
+                }
+            }, 50);
+
+            window.addEventListener('scroll', onScroll);
+            onScroll();
         });
     </script>
 </body>
