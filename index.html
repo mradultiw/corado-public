@@ -42,12 +42,23 @@
                     },
                     colors: {
                         brand: {
-                            50: '#f0fdf4',
-                            100: '#dcfce7',
-                            500: '#22c55e',
-                            600: '#16a34a',
-                            900: '#14532d',
-                            dark: '#0f172a',
+                            50: '#eff6ff',   // Trust Blue 50
+                            100: '#dbeafe',  // Trust Blue 100
+                            200: '#bfdbfe',  // Trust Blue 200
+                            500: '#3b82f6',  // Trust Blue 500
+                            600: '#2563eb',  // Trust Blue 600 (Main)
+                            700: '#1d4ed8',  // Trust Blue 700
+                            900: '#1e3a8a',  // Trust Blue 900
+                            dark: '#0f172a', // Slate 900
+                        }
+                    },
+                    animation: {
+                        'infinite-scroll': 'scroll 30s linear infinite',
+                    },
+                    keyframes: {
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
                         }
                     }
                 }
@@ -70,6 +81,10 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
+        /* Pause scroll on hover */
+        .scroll-container:hover .animate-infinite-scroll {
+            animation-play-state: paused;
+        }
     </style>
 </head>
 
@@ -80,13 +95,14 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center gap-3">
-                    <img src="./corado-nobg.png" alt="Corado Logo" class="h-10 w-auto" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MCIgZmlsbD0iIzE2YTM0YSIvPjx0ZXh0IHg9IjUwIiB5PSI2MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DPC90ZXh0Pjwvc3ZnPg=='">
+                    <!-- Logo fallback color updated to Blue (#2563eb) -->
+                    <img src="./corado-nobg.png" alt="Corado Logo" class="h-10 w-auto" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MCIgZmlsbD0iIzI1NjNlYiIvPjx0ZXh0IHg9IjUwIiB5PSI2MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DPC90ZXh0Pjwvc3ZnPg=='">
                     <span class="text-xl font-bold tracking-tight text-brand-dark">Corado</span>
                 </div>
                 <div class="hidden md:flex items-center space-x-6">
                     <a href="#features" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Features</a>
                     <a href="#how-it-works" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">How it Works</a>
-                    <a href="#" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Use on Web</a>
+                    <a href="https://web.corado.in" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Use on Web</a>
                     <a href="#" id="android-link-nav" class="bg-brand-dark text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-800 transition-all shadow-md hover:shadow-lg">
                         Download App
                     </a>
@@ -102,10 +118,10 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden relative">
+    <section class="pt-32 pb-16 lg:pt-48 lg:pb-20 overflow-hidden relative">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl opacity-30 pointer-events-none">
             <div class="absolute top-20 left-10 w-72 h-72 bg-brand-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-            <div class="absolute top-40 right-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            <div class="absolute top-40 right-10 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
         </div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center animate-on-scroll fade-in-up">
@@ -113,17 +129,31 @@
                 <i data-lucide="shield-check" class="w-4 h-4"></i>
                 Exclusively for Verified Professionals
             </div>
-            <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-brand-dark tracking-tight leading-tight mb-6">
+            
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-brand-dark tracking-tight leading-tight mb-8">
                 Stop searching in <br class="hidden md:block" /> 
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-blue-600">5 places for 1 thing.</span>
+                <!-- Gradient shifts from warm/friction to cool/solution -->
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">5 places</span> 
+                for 
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-indigo-500">1 thing.</span>
             </h1>
+
+            <!-- Punchy Use-case Tags -->
+            <div class="flex flex-wrap justify-center gap-3 mb-6">
+                <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-700 shadow-sm flex items-center gap-2"><i data-lucide="home" class="w-4 h-4 text-brand-500"></i> Flatmates</span>
+                <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-700 shadow-sm flex items-center gap-2"><i data-lucide="sofa" class="w-4 h-4 text-brand-500"></i> Furniture</span>
+                <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-700 shadow-sm flex items-center gap-2"><i data-lucide="chef-hat" class="w-4 h-4 text-brand-500"></i> Cooks</span>
+                <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-700 shadow-sm flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-brand-500"></i> Local Advice</span>
+            </div>
+
+            <!-- Concise Explanation -->
             <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-600 mb-10">
-                Flatmate. Rental. Furniture. Cook. Local help. <br/>
-                Corado is a focused local community built for clarity, not clutter. No public noise. No random spam. Just relevant posts from people like you.
+                A private, noise-free local network. Skip the public spam and find exactly what you need directly from verified peers.
             </p>
+
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#" class="inline-flex justify-center items-center gap-2 bg-brand-dark text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-                    <i data-lucide="monitor" class="w-5 h-5"></i>
+                <a href="https://web.corado.in" class="inline-flex justify-center items-center gap-2 bg-brand-dark text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                    <i data-lucide="globe" class="w-5 h-5"></i>
                     Use on Web
                 </a>
                 <a href="#" id="android-link" class="inline-flex justify-center items-center gap-2 bg-white text-brand-dark border border-gray-200 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-50 transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5">
@@ -131,6 +161,153 @@
                     Download App
                 </a>
             </div>
+        </div>
+    </section>
+
+    <!-- App Preview Marquee (Marketing Section) -->
+    <section class="py-10 bg-gray-50 overflow-hidden relative border-y border-gray-200 scroll-container hidden sm:block">
+        <div class="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
+        <div class="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
+        
+        <!-- Double container to ensure seamless loop -->
+        <div class="flex w-[200%] animate-infinite-scroll">
+            
+            <!-- Set 1 -->
+            <div class="flex gap-6 px-3 w-1/2">
+                <!-- Post 1 -->
+                <div class="w-80 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 shrink-0">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-700 font-bold">R</div>
+                            <div>
+                                <div class="text-sm font-bold text-gray-900">Rahul M.</div>
+                                <div class="text-[10px] text-brand-600 font-bold uppercase tracking-wide flex items-center"><i data-lucide="shield-check" class="w-3 h-3 mr-1"></i>Verified</div>
+                            </div>
+                        </div>
+                        <span class="text-xs text-gray-400">2h ago</span>
+                    </div>
+                    <div class="text-gray-900 font-bold mb-2">Looking for a replacement tenant 🏠</div>
+                    <div class="text-sm text-gray-600 mb-4 line-clamp-2">Moving out of my 2BHK in Indiranagar. Looking for a chilled-out professional to take over my room.</div>
+                    <button class="w-full bg-gray-50 text-brand-700 font-medium py-2 rounded-xl text-sm border border-gray-100 hover:bg-brand-50 transition-colors">Message</button>
+                </div>
+                <!-- Post 2 -->
+                <div class="w-80 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 shrink-0">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-700 font-bold">S</div>
+                            <div>
+                                <div class="text-sm font-bold text-gray-900">Sneha K.</div>
+                                <div class="text-[10px] text-brand-600 font-bold uppercase tracking-wide flex items-center"><i data-lucide="shield-check" class="w-3 h-3 mr-1"></i>Verified</div>
+                            </div>
+                        </div>
+                        <span class="text-xs text-gray-400">5h ago</span>
+                    </div>
+                    <div class="text-gray-900 font-bold mb-2">Selling Office Chair 🪑</div>
+                    <div class="text-sm text-gray-600 mb-4 line-clamp-2">Barely used ergonomic chair, perfect for WFH. Pick up from HSR Layout Sector 2. ₹2,500.</div>
+                    <button class="w-full bg-gray-50 text-brand-700 font-medium py-2 rounded-xl text-sm border border-gray-100 hover:bg-brand-50 transition-colors">Message</button>
+                </div>
+                <!-- Post 3 -->
+                <div class="w-80 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 shrink-0">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-orange-700 font-bold">A</div>
+                            <div>
+                                <div class="text-sm font-bold text-gray-900">Amit P.</div>
+                                <div class="text-[10px] text-brand-600 font-bold uppercase tracking-wide flex items-center"><i data-lucide="shield-check" class="w-3 h-3 mr-1"></i>Verified</div>
+                            </div>
+                        </div>
+                        <span class="text-xs text-gray-400">1d ago</span>
+                    </div>
+                    <div class="text-gray-900 font-bold mb-2">Cook recommendation? 👨‍🍳</div>
+                    <div class="text-sm text-gray-600 mb-4 line-clamp-2">Does anyone have a contact for a good North Indian cook near Bellandur? Need them for 2 meals a day.</div>
+                    <button class="w-full bg-gray-50 text-brand-700 font-medium py-2 rounded-xl text-sm border border-gray-100 hover:bg-brand-50 transition-colors">Reply</button>
+                </div>
+                <!-- Post 4 -->
+                <div class="w-80 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 shrink-0">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center text-pink-700 font-bold">N</div>
+                            <div>
+                                <div class="text-sm font-bold text-gray-900">Neha R.</div>
+                                <div class="text-[10px] text-brand-600 font-bold uppercase tracking-wide flex items-center"><i data-lucide="shield-check" class="w-3 h-3 mr-1"></i>Verified</div>
+                            </div>
+                        </div>
+                        <span class="text-xs text-gray-400">1d ago</span>
+                    </div>
+                    <div class="text-gray-900 font-bold mb-2">Any good gyms nearby? 💪</div>
+                    <div class="text-sm text-gray-600 mb-4 line-clamp-2">Looking for a relatively empty gym near Koramangala 4th Block. The mainstream ones are too crowded.</div>
+                    <button class="w-full bg-gray-50 text-brand-700 font-medium py-2 rounded-xl text-sm border border-gray-100 hover:bg-brand-50 transition-colors">Reply</button>
+                </div>
+            </div>
+
+            <!-- Set 2 (Exact Duplicate for seamless scrolling) -->
+            <div class="flex gap-6 px-3 w-1/2">
+                <!-- Post 1 -->
+                <div class="w-80 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 shrink-0">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-700 font-bold">R</div>
+                            <div>
+                                <div class="text-sm font-bold text-gray-900">Rahul M.</div>
+                                <div class="text-[10px] text-brand-600 font-bold uppercase tracking-wide flex items-center"><i data-lucide="shield-check" class="w-3 h-3 mr-1"></i>Verified</div>
+                            </div>
+                        </div>
+                        <span class="text-xs text-gray-400">2h ago</span>
+                    </div>
+                    <div class="text-gray-900 font-bold mb-2">Looking for a replacement tenant 🏠</div>
+                    <div class="text-sm text-gray-600 mb-4 line-clamp-2">Moving out of my 2BHK in Indiranagar. Looking for a chilled-out professional to take over my room.</div>
+                    <button class="w-full bg-gray-50 text-brand-700 font-medium py-2 rounded-xl text-sm border border-gray-100 hover:bg-brand-50 transition-colors">Message</button>
+                </div>
+                <!-- Post 2 -->
+                <div class="w-80 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 shrink-0">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-700 font-bold">S</div>
+                            <div>
+                                <div class="text-sm font-bold text-gray-900">Sneha K.</div>
+                                <div class="text-[10px] text-brand-600 font-bold uppercase tracking-wide flex items-center"><i data-lucide="shield-check" class="w-3 h-3 mr-1"></i>Verified</div>
+                            </div>
+                        </div>
+                        <span class="text-xs text-gray-400">5h ago</span>
+                    </div>
+                    <div class="text-gray-900 font-bold mb-2">Selling Office Chair 🪑</div>
+                    <div class="text-sm text-gray-600 mb-4 line-clamp-2">Barely used ergonomic chair, perfect for WFH. Pick up from HSR Layout Sector 2. ₹2,500.</div>
+                    <button class="w-full bg-gray-50 text-brand-700 font-medium py-2 rounded-xl text-sm border border-gray-100 hover:bg-brand-50 transition-colors">Message</button>
+                </div>
+                <!-- Post 3 -->
+                <div class="w-80 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 shrink-0">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-orange-700 font-bold">A</div>
+                            <div>
+                                <div class="text-sm font-bold text-gray-900">Amit P.</div>
+                                <div class="text-[10px] text-brand-600 font-bold uppercase tracking-wide flex items-center"><i data-lucide="shield-check" class="w-3 h-3 mr-1"></i>Verified</div>
+                            </div>
+                        </div>
+                        <span class="text-xs text-gray-400">1d ago</span>
+                    </div>
+                    <div class="text-gray-900 font-bold mb-2">Cook recommendation? 👨‍🍳</div>
+                    <div class="text-sm text-gray-600 mb-4 line-clamp-2">Does anyone have a contact for a good North Indian cook near Bellandur? Need them for 2 meals a day.</div>
+                    <button class="w-full bg-gray-50 text-brand-700 font-medium py-2 rounded-xl text-sm border border-gray-100 hover:bg-brand-50 transition-colors">Reply</button>
+                </div>
+                <!-- Post 4 -->
+                <div class="w-80 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 shrink-0">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center text-pink-700 font-bold">N</div>
+                            <div>
+                                <div class="text-sm font-bold text-gray-900">Neha R.</div>
+                                <div class="text-[10px] text-brand-600 font-bold uppercase tracking-wide flex items-center"><i data-lucide="shield-check" class="w-3 h-3 mr-1"></i>Verified</div>
+                            </div>
+                        </div>
+                        <span class="text-xs text-gray-400">1d ago</span>
+                    </div>
+                    <div class="text-gray-900 font-bold mb-2">Any good gyms nearby? 💪</div>
+                    <div class="text-sm text-gray-600 mb-4 line-clamp-2">Looking for a relatively empty gym near Koramangala 4th Block. The mainstream ones are too crowded.</div>
+                    <button class="w-full bg-gray-50 text-brand-700 font-medium py-2 rounded-xl text-sm border border-gray-100 hover:bg-brand-50 transition-colors">Reply</button>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -239,25 +416,25 @@
                 
                 <!-- Simple UI Mockup / Illustration area -->
                 <div class="relative animate-on-scroll fade-in-up" style="transition-delay: 200ms;">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-200 to-blue-100 rounded-[2.5rem] transform rotate-3 scale-105"></div>
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-200 to-indigo-200 rounded-[2.5rem] transform rotate-3 scale-105"></div>
                     <div class="relative bg-white p-8 rounded-[2rem] shadow-xl border border-gray-100">
                         <div class="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100">
                             <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
                                 <i data-lucide="user" class="w-6 h-6 text-gray-500"></i>
                             </div>
                             <div>
-                                <h5 class="font-bold text-gray-900">Rahul M.</h5>
-                                <p class="text-xs text-brand-600 font-semibold flex items-center gap-1">
-                                    <i data-lucide="shield-check" class="w-3 h-3"></i> Verified Professional
+                                <h5 class="font-bold text-gray-900">Priya T.</h5>
+                                <p class="text-xs text-brand-600 font-bold flex items-center gap-1 uppercase">
+                                    <i data-lucide="shield-check" class="w-3 h-3"></i> Verified
                                 </p>
                             </div>
                         </div>
                         <div class="space-y-4 mb-6">
-                            <h6 class="font-bold text-lg text-gray-800">Looking for a replacement tenant 🏠</h6>
-                            <p class="text-gray-600 text-sm leading-relaxed">Moving out of my 2BHK in Indiranagar. Looking for a chilled-out professional to take over my room starting next month. No brokerage!</p>
+                            <h6 class="font-bold text-lg text-gray-800">Selling lightly used microwave 🍿</h6>
+                            <p class="text-gray-600 text-sm leading-relaxed">Upgrading to a new one. This 20L LG microwave is in perfect condition. Pick up from Bellandur this weekend.</p>
                         </div>
                         <div class="flex gap-3">
-                            <button class="flex-1 bg-brand-50 text-brand-700 font-medium py-2.5 rounded-xl text-sm border border-brand-100 hover:bg-brand-100 transition-colors">Message Rahul</button>
+                            <button class="flex-1 bg-brand-50 text-brand-700 font-medium py-2.5 rounded-xl text-sm border border-brand-100 hover:bg-brand-100 transition-colors">Message Priya</button>
                         </div>
                     </div>
                 </div>
@@ -290,7 +467,7 @@
                 </div>
 
                 <div class="relative z-10 text-center animate-on-scroll fade-in-up" style="transition-delay: 300ms;">
-                    <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">3</div>
+                    <div class="w-16 h-16 bg-indigo-500 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">3</div>
                     <h4 class="text-xl font-bold text-gray-900 mb-2">Connect Directly</h4>
                     <p class="text-gray-600">Chat directly with peers. No middlemen, no brokers, no public comment sections.</p>
                 </div>
@@ -315,7 +492,7 @@
             <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Tired of scattered groups?</h2>
             <p class="text-xl text-gray-300 mb-10">Join Corado today and experience a cleaner, safer, and more efficient way to connect locally.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#" class="inline-flex justify-center items-center gap-2 bg-brand-500 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-brand-400 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                <a href="https://web.corado.in" class="inline-flex justify-center items-center gap-2 bg-brand-500 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-brand-400 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
                     Create your account
                 </a>
             </div>
@@ -338,7 +515,7 @@
         </div>
     </footer>
 
-    <!-- Beta Download Modal (Preserved Functionality) -->
+    <!-- Beta Download Modal -->
     <div id="beta-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] items-center justify-center p-4 opacity-0 transition-opacity duration-300">
         <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl transform scale-95 transition-transform duration-300" id="modal-content">
             <div class="w-16 h-16 bg-brand-50 rounded-full flex items-center justify-center mb-6 mx-auto">
