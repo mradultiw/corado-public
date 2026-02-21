@@ -116,6 +116,70 @@
         .subtitle-clamp {
             font-size: clamp(1.25rem, 4vw, 2.5rem);
         }
+
+        /*** Click title to play audio ***/
+        .click-press:active {
+            transform: scale(0.99);
+        }
+
+        /* Music note floating animation */
+        @keyframes float-up {
+            0% {
+                transform: translateY(25px) scale(.2);
+                opacity: 0;
+            }
+
+            30% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-15px) scale(2);
+                opacity: 0;
+            }
+        }
+
+        .music-note {
+            pointer-events: none;
+            position: absolute;
+            font-size: 14px;
+            color: #6366f1;
+            animation: float-up 2s ease-out infinite;
+            display: none;
+            z-index: 1000;
+            /* Hidden by default, shown via JS */
+        }
+
+        /* Soft Pulse animation */
+        @keyframes soft-pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 0 6px rgba(99, 102, 241, 0);
+            }
+        }
+
+        .hint-pulse {
+            display: none;
+            /* Hidden by default, shown via JS */
+        }
+
+        .show-animation .hint-pulse {
+            display: flex;
+            animation: soft-pulse 3s infinite;
+        }
+
+        .show-animation .music-note {
+            display: flex;
+        }
     </style>
 </head>
 
@@ -124,13 +188,22 @@
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div
-                    class="flex items-center justify-center w-10 h-10 border border-slate-200 rounded-xl overflow-hidden shadow-sm bg-white p-1">
-                    <!-- Replaced local image with placeholder for preview -->
-                    <img src="./corado-nobg.png" alt="Corado Logo" class="h-full w-auto object-contain">
+            <div class="flex items-center gap-4">
+                <!-- Audio Trigger Container -->
+                <div id="animationContainer" class="relative">
+                    <!-- Animated Pulse Ring -->
+                    <div class="absolute inset-0 rounded-xl hint-pulse"></div>
+
+                    <!-- Floating Note -->
+                    <div class="music-note" style="top: -5px; right: -5px;">♪</div>
+
+                    <button onclick="playAudio()"
+                        class="relative z-10 flex items-center justify-center w-10 h-10 border border-slate-200 rounded-xl overflow-hidden shadow-sm bg-white p-1 click-press transition-transform duration-75 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        aria-label="Play sound">
+                        <img src="./corado-nobg.png" alt="Corado Logo" class="h-full w-auto object-contain">
+                    </button>
                 </div>
-                <span class="text-xl sm:text-2xl font-extrabold tracking-tight">Corado</span>
+                <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-800">Corado</span>
             </div>
 
             <!-- Mobile & Desktop accessible right side -->
@@ -298,7 +371,8 @@
                         </svg>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Crowdsourcing</h3>
-                    <p class="text-slate-500 text-sm font-medium leading-relaxed">Ask for professional advice, referrals, or local intel from people who get it.</p>
+                    <p class="text-slate-500 text-sm font-medium leading-relaxed">Ask for professional advice,
+                        referrals, or local intel from people who get it.</p>
                 </div>
             </div>
         </div>
@@ -597,9 +671,44 @@
         </div>
     </div>
 
+    <!-- Audio Element for Corado logo -->
+    <audio id="logoAudio" src="./corado-pronunciation.mp3" preload="auto"></audio>
+
     <script>
+        function handleVisitLogic() {
+            const STORAGE_KEY = 'corado_logo_visits';
+            const MAX_VISITS = 5;
+            const container = document.getElementById('animationContainer');
+
+            try {
+                // Get current count from localStorage
+                let visits = parseInt(localStorage.getItem(STORAGE_KEY)) || 0;
+
+                // Increment and update
+                visits += 1;
+                localStorage.setItem(STORAGE_KEY, visits);
+
+                // Show animation only if within the first 5 visits
+                if (visits <= MAX_VISITS) {
+                    container.classList.add('show-animation');
+                }
+            } catch (e) {
+                // Fallback for browsers with localStorage disabled (like Safari Private Mode)
+                console.warn("Storage not available, default to showing animation");
+                container.classList.add('show-animation');
+            }
+        }
+
+        function playAudio() {
+            const audio = document.getElementById('logoAudio');
+            audio.currentTime = 0;
+            audio.play().catch(error => {
+                console.error("Audio playback failed:", error);
+            });
+        }
+
         document.addEventListener("DOMContentLoaded", function () {
-            var path = window.location.pathname;
+            handleVisitLogic();
             var packageName = "com.corado.app";
             var playStoreUrl = "";
             playStoreUrl = "https://play.google.com/store/apps/details?id=" + packageName;
