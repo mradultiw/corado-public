@@ -147,16 +147,16 @@
             transform: translateY(-0.3125rem);
         }
 
-        /* Scroll Reveal */
+        /* Scroll Reveal - Enhanced with settle effect */
         .reveal-up {
             opacity: 0;
-            transform: translateY(1.25rem);
-            transition: all 0.6s ease-out;
+            transform: translateY(1.5rem) scale(0.98);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         .reveal-up.active {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
         /* Progressive Line Container */
@@ -173,13 +173,49 @@
         /* Custom subtle animations */
         .fade-in-up {
             opacity: 0;
-            transform: translateY(1.25rem);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(1.5rem) scale(0.98);
+            transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         .fade-in-up.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
+        }
+
+        @keyframes ambient-float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .animate-float {
+            animation: ambient-float 4s ease-in-out infinite;
+            animation-play-state: paused;
+        }
+
+        /* Only run float when parent section is in viewport */
+        .is-in-viewport .animate-float,
+        .active .animate-float,
+        .visible .animate-float {
+            animation-play-state: running;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.5s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.8s;
         }
 
         .glass-nav {
@@ -568,12 +604,12 @@
                 </h3>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 viewport-active">
                 <!-- Feature 1: Housing (Blue) -->
                 <div
                     class="p-6 sm:p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:border-blue-200 transition-colors animate-on-scroll fade-in-up group">
                     <div
-                        class="w-14 h-14 bg-blue-50 rounded-2xl shadow-sm border border-blue-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        class="w-14 h-14 bg-blue-50 rounded-2xl shadow-sm border border-blue-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 animate-float">
                         <i data-lucide="home" class="w-7 h-7 text-blue-500"></i>
                     </div>
                     <h4 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Housing</h4>
@@ -586,7 +622,7 @@
                 <div class="p-6 sm:p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:border-orange-200 transition-colors animate-on-scroll fade-in-up group"
                     style="transition-delay: 100ms;">
                     <div
-                        class="w-14 h-14 bg-orange-50 rounded-2xl shadow-sm border border-orange-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        class="w-14 h-14 bg-orange-50 rounded-2xl shadow-sm border border-orange-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 animate-float delay-1">
                         <i data-lucide="shopping-bag" class="w-7 h-7 text-orange-500"></i>
                     </div>
                     <h4 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Marketplace</h4>
@@ -600,7 +636,7 @@
                 <div
                     class="p-6 sm:p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:border-emerald-200 transition-colors animate-on-scroll fade-in-up group">
                     <div
-                        class="w-14 h-14 bg-emerald-50 rounded-2xl shadow-sm border border-emerald-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        class="w-14 h-14 bg-emerald-50 rounded-2xl shadow-sm border border-emerald-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 animate-float delay-2">
                         <i data-lucide="users" class="w-7 h-7 text-emerald-500"></i>
                     </div>
                     <h4 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Daily Help</h4>
@@ -613,7 +649,7 @@
                 <div class="p-6 sm:p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:border-purple-200 transition-colors animate-on-scroll fade-in-up group"
                     style="transition-delay: 100ms;">
                     <div
-                        class="w-14 h-14 bg-purple-50 rounded-2xl shadow-sm border border-purple-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        class="w-14 h-14 bg-purple-50 rounded-2xl shadow-sm border border-purple-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 animate-float delay-3">
                         <i data-lucide="map-pin" class="w-7 h-7 text-purple-500"></i>
                     </div>
                     <h4 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">General</h4>
@@ -668,10 +704,9 @@
                     <div
                         class="absolute inset-0 bg-gradient-to-tr from-brand-200 to-indigo-200 rounded-[2.5rem] transform rotate-3 scale-105">
                     </div>
-                    <div class="relative bg-white p-6 sm:p-8 rounded-[2rem] shadow-xl border border-gray-100">
-                        <!-- Header row -->
-                        <div class="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100">
-                            <!-- Icon Container -->
+                    <div
+                        class="relative bg-white p-6 sm:p-8 rounded-[2rem] shadow-xl border border-gray-100 animate-float delay-2 viewport-active">
+                        <div class="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100"> <!-- Icon Container -->
                             <div
                                 class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
                                 <svg xmlns="http://www.w3.org" viewBox="2.5 2.5 19 19" class="w-6 h-6 text-gray-500">
@@ -740,7 +775,7 @@
             </div>
 
             <!-- Steps Container -->
-            <div class="relative">
+            <div class="relative viewport-active">
 
                 <!-- Desktop Horizontal Connecting Line -->
                 <div class="hidden lg:block absolute top-10 left-[12%] right-[12%] h-0.5 bg-gray-100 z-0">
@@ -758,7 +793,7 @@
                     <div class="step-wrapper relative flex lg:block items-start gap-6 reveal-up"
                         style="transition-delay: 100ms;">
                         <div
-                            class="icon-container relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 lg:mx-auto bg-brand-dark text-white rounded-2xl flex items-center justify-center text-xl font-bold lg:mb-6 shadow-lg z-10">
+                            class="icon-container relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 lg:mx-auto bg-brand-dark text-white rounded-2xl flex items-center justify-center text-xl font-bold lg:mb-6 shadow-lg z-10 animate-float">
                             <svg class="w-8 h-8 lg:w-10 lg:h-10 relative z-10" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -780,7 +815,7 @@
                     <div class="step-wrapper relative flex lg:block items-center gap-6 reveal-up"
                         style="transition-delay: 200ms;">
                         <div
-                            class="icon-container relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 lg:mx-auto bg-slate-400 text-white rounded-2xl flex items-center justify-center text-xl font-bold lg:mb-6 shadow-lg z-10">
+                            class="icon-container relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 lg:mx-auto bg-slate-400 text-white rounded-2xl flex items-center justify-center text-xl font-bold lg:mb-6 shadow-lg z-10 animate-float delay-1">
                             <svg class="w-8 h-8 lg:w-10 lg:h-10 relative z-10" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -804,7 +839,7 @@
                     <div class="step-wrapper relative flex lg:block items-center gap-6 reveal-up"
                         style="transition-delay: 300ms;">
                         <div
-                            class="icon-container relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 lg:mx-auto bg-blue-500 text-white rounded-2xl flex items-center justify-center text-xl font-bold lg:mb-6 shadow-lg z-10">
+                            class="icon-container relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 lg:mx-auto bg-blue-500 text-white rounded-2xl flex items-center justify-center text-xl font-bold lg:mb-6 shadow-lg z-10 animate-float delay-2">
                             <svg class="w-8 h-8 lg:w-10 lg:h-10 relative z-10" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -824,7 +859,7 @@
                     <div class="step-wrapper relative flex lg:block items-center gap-6 reveal-up"
                         style="transition-delay: 400ms;">
                         <div
-                            class="icon-container relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 lg:mx-auto bg-indigo-500 text-white rounded-2xl flex items-center justify-center text-xl font-bold lg:mb-6 shadow-lg z-10">
+                            class="icon-container relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 lg:mx-auto bg-indigo-500 text-white rounded-2xl flex items-center justify-center text-xl font-bold lg:mb-6 shadow-lg z-10 animate-float delay-3">
                             <svg class="w-8 h-8 lg:w-10 lg:h-10 relative z-10" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1138,7 +1173,10 @@
                     if (entry.isIntersecting) {
                         if (entry.target.classList.contains('reveal-up')) {
                             entry.target.classList.add('active');
-                            revealObserver.unobserve(entry.target);
+                            // If it doesn't need to toggle back off, we unobserve
+                            if (!entry.target.classList.contains('viewport-active')) {
+                                revealObserver.unobserve(entry.target);
+                            }
                         } else if (entry.target.classList.contains('strike-trigger')) {
                             if (isPageFreshLoad) {
                                 entry.target.classList.add('strike-active');
@@ -1146,11 +1184,13 @@
                             } else {
                                 entry.target.classList.add('strike-active-fast');
                             }                            // Do not unobserve strike-trigger to allow resetting
-                        } else if (entry.target.classList.contains('marquee-container')) {
+                        } else if (entry.target.classList.contains('marquee-container') || entry.target.classList.contains('viewport-active')) {
                             entry.target.classList.add('is-in-viewport');
                         } else {
                             entry.target.classList.add('visible');
-                            revealObserver.unobserve(entry.target);
+                            if (!entry.target.classList.contains('viewport-active')) {
+                                revealObserver.unobserve(entry.target);
+                            }
                         }
                     } else {
                         // Reset strike animation when out of viewport
@@ -1159,16 +1199,15 @@
                             entry.target.classList.remove('strike-active-fast');
                         }
 
-                        // Toggle marquee animation when out of viewport
-                        if (entry.target.classList.contains('marquee-container')) {
+                        // Toggle animations when out of viewport
+                        if (entry.target.classList.contains('marquee-container') || entry.target.classList.contains('viewport-active')) {
                             entry.target.classList.remove('is-in-viewport');
                         }
                     }
                 });
             }, { threshold: 0.1 });
 
-            document.querySelectorAll('.animate-on-scroll, .reveal-up, .strike-trigger, .marquee-container')
-                .forEach(el => revealObserver.observe(el));
+            document.querySelectorAll('.animate-on-scroll, .reveal-up, .strike-trigger, .marquee-container, .viewport-active').forEach(el => revealObserver.observe(el));
 
             // Modals Logic
             const webAppLinks = document.querySelectorAll('.web-app-link');
