@@ -322,12 +322,12 @@
         }
 
         .animate-infinite-scroll {
-            animation: infinite-scroll 90s linear infinite !important
+            animation: infinite-scroll 90s linear infinite !important;
+            animation-play-state: paused !important;
         }
 
-        .marquee-container:hover .animate-infinite-scroll,
-        .marquee-container:active .animate-infinite-scroll {
-            animation-play-state: paused !important;
+        .marquee-container.is-in-viewport .animate-infinite-scroll {
+            animation-play-state: running !important;
         }
 
         .line-clamp-3 {
@@ -917,12 +917,6 @@
         // --- Data ---
         const SAMPLE_POSTS = [
             {
-                id: 1, name: "Priya", company: "Google", date: "02/21/2026", category: "DailyHelp",
-                title: "Reliable North Indian Cook Needed, Hoodi",
-                content: "Need a reliable cook who can make healthy North Indian food (2 meals/day) for a family of 3. Please DM me if you have any leads or contacts.",
-                avatar: "P", avatarColor: "bg-emerald-100 text-emerald-700"
-            },
-            {
                 id: 2, name: "Arjun", company: "Amazon", date: "02/20/2026", category: "Housing",
                 title: "Furnished 2 BHK Flatmate in Indiranagar",
                 content: "Flatmate needed for a fully furnished 2 BHK in Indiranagar near the Mahatma Gandhi Metro. Rent is 18k including maintenance. Chill vibes, no owner interference. Available from next month.",
@@ -941,22 +935,22 @@
                 avatar: "V", avatarColor: "bg-rose-100 text-rose-700"
             },
             {
-                id: 6, name: "Ananya", company: "Atlassian", date: "02/17/2026", category: "Marketplace",
-                title: "Buying Second-Hand Scooter, Bengaluru",
-                content: "Looking to buy a well-maintained second-hand scooter (Activa/Jupiter) or a bike. Budget around 30k-40k. Must have all papers clear. Hit me up!",
-                avatar: "A", avatarColor: "bg-amber-100 text-amber-700"
-            },
-            {
-                id: 7, name: "Kavya", company: "Adobe", date: "02/16/2026", category: "DailyHelp",
-                title: "Experienced Full-Time Nanny Needed, Whitefield",
-                content: "Looking for an experienced, full-time nanny for my 1-year-old daughter. Timings 9 AM to 6 PM. Must be hygienic and good with kids. References required.",
-                avatar: "K", avatarColor: "bg-orange-100 text-orange-700"
+                id: 1, name: "Priya", company: "Google", date: "02/21/2026", category: "DailyHelp",
+                title: "North Indian Cook Needed, Hoodi",
+                content: "Need a reliable cook who can make healthy North Indian food (2 meals/day) for a family of 3. Please DM me if you have any leads or contacts.",
+                avatar: "P", avatarColor: "bg-emerald-100 text-emerald-700"
             },
             {
                 id: 8, name: "Ishaan", company: "Samsung", date: "02/15/2026", category: "Housing",
                 title: "Private Room Available for Male, Bellandur",
                 content: "Urgent: Moving out next month and need a replacement for my private room in a 3 BHK at Bellandur (near RMZ Ecospace). Rent is 18k. Fully setup flat!",
                 avatar: "I", avatarColor: "bg-cyan-100 text-cyan-700"
+            },
+            {
+                id: 7, name: "Kavya", company: "Adobe", date: "02/16/2026", category: "DailyHelp",
+                title: "Experienced Full-Time Nanny Needed, Whitefield",
+                content: "Looking for an experienced, full-time nanny for my 1-year-old daughter. Timings 9 AM to 6 PM. Must be hygienic and good with kids. References required.",
+                avatar: "K", avatarColor: "bg-orange-100 text-orange-700"
             },
             {
                 id: 3, name: "Sneha", company: "Microsoft", date: "02/19/2026", category: "General",
@@ -1130,6 +1124,8 @@
                             } else {
                                 entry.target.classList.add('strike-active-fast');
                             }                            // Do not unobserve strike-trigger to allow resetting
+                        } else if (entry.target.classList.contains('marquee-container')) {
+                            entry.target.classList.add('is-in-viewport');
                         } else {
                             entry.target.classList.add('visible');
                             revealObserver.unobserve(entry.target);
@@ -1140,11 +1136,17 @@
                             entry.target.classList.remove('strike-active');
                             entry.target.classList.remove('strike-active-fast');
                         }
+
+                        // Toggle marquee animation when out of viewport
+                        if (entry.target.classList.contains('marquee-container')) {
+                            entry.target.classList.remove('is-in-viewport');
+                        }
                     }
                 });
             }, { threshold: 0.1 });
 
-            document.querySelectorAll('.animate-on-scroll, .reveal-up, .strike-trigger').forEach(el => revealObserver.observe(el));
+            document.querySelectorAll('.animate-on-scroll, .reveal-up, .strike-trigger, .marquee-container')
+                .forEach(el => revealObserver.observe(el));
 
             // Modals Logic
             const webAppLinks = document.querySelectorAll('.web-app-link');
