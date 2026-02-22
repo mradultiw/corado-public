@@ -292,7 +292,7 @@
             }
 
             100% {
-                transform: translateY(-0.9375rem) scale(2);
+                transform: translateY(-0.9375rem) scale(1.7);
                 opacity: 0;
             }
         }
@@ -460,11 +460,11 @@
                         This creates a subtle "S" curve wobble that feels more like a real pen stroke.
                     -->
                         <!-- First Line: Subtle upward arc -->
-                        <path d="M-2,60 Q25,60 50,55 Q75,58 102,50" fill="none" stroke="black" stroke-width="5"
+                        <path d="M-2,60 Q25,60 50,55 Q75,58 102,50" fill="none" stroke="black" stroke-width="4.8"
                             stroke-linecap="round" stroke-linejoin="round" class="animate-strike" />
 
                         <!-- Second Line: Starts lower (looser) and converges toward the first line -->
-                        <path d="M1,72 Q28,62 58,62 Q65,61 98,60" fill="none" stroke="black" stroke-width="5.2"
+                        <path d="M1,72 Q28,62 58,62 Q65,61 98,60" fill="none" stroke="black" stroke-width="5"
                             stroke-linecap="round" stroke-linejoin="round" class="animate-strike-2" />
 
                     </svg>
@@ -1120,6 +1120,7 @@
         function handleVisitLogic() {
             const STORAGE_KEY = 'corado_logo_visits';
             const MAX_VISITS = 3;
+            const initialDelayToAnimate = 8000; // 8 seconds after page load
             const container = document.getElementById('animationContainer');
             if (!container) return;
             try {
@@ -1128,10 +1129,14 @@
                 localStorage.setItem(STORAGE_KEY, visits);
                 if (visits <= MAX_VISITS) {
                     isOnboarding = true;
-                    container.classList.add('show-animation');
+                    setTimeout(() => {
+                        container.classList.add('show-animation');
+                    }, initialDelayToAnimate);
                 }
             } catch (e) {
-                container.classList.add('show-animation');
+                setTimeout(() => {
+                    container.classList.add('show-animation');
+                }, initialDelayToAnimate);
             }
         }
 
