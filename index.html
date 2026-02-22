@@ -523,6 +523,8 @@
     <!-- The Problem Section -->
     <section class="py-16 md:py-20 bg-brand-dark text-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll fade-in-up">
+            <h2 class="text-brand-600 font-semibold tracking-wide uppercase text-xs sm:text-sm mb-2 my-0 py-0">Why
+                Corado</h2>
             <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">Local discovery is unnecessarily messy.</h2>
             <p class="text-lg sm:text-xl text-gray-300 mb-12">Tired of posting the <span class="text-indigo-400">same
                     message</span> <span
@@ -626,14 +628,16 @@
     <!-- Why Corado & Who it's for -->
     <section class="py-16 md:py-24 bg-brand-50 border-y border-brand-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-brand-600 font-semibold tracking-wide uppercase text-xs sm:text-sm mb-2 my-0 py-0">Who it's
+                for</h2>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="animate-on-scroll fade-in-up">
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-dark mb-6">Built for
                         clarity.<br />Not clutter.
                     </h2>
-                    <p class="text-base sm:text-lg text-gray-600 mb-8">Exclusively designed for working professionals
-                        prefering local
-                        relevance, vetted profiles, and practical exchanges over public noise.
+                    <p class="text-base sm:text-lg text-gray-600 mb-8">Exclusively designed for <strong>working
+                            professionals</strong> who value
+                        their time and trust. Corado is private, local, and cuts through the public noise.
                     </p>
 
                     <ul class="space-y-4">
@@ -665,8 +669,11 @@
                         class="absolute inset-0 bg-gradient-to-tr from-brand-200 to-indigo-200 rounded-[2.5rem] transform rotate-3 scale-105">
                     </div>
                     <div class="relative bg-white p-6 sm:p-8 rounded-[2rem] shadow-xl border border-gray-100">
+                        <!-- Header row -->
                         <div class="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100">
-                            <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                            <!-- Icon Container -->
+                            <div
+                                class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
                                 <svg xmlns="http://www.w3.org" viewBox="2.5 2.5 19 19" class="w-6 h-6 text-gray-500">
                                     <g>
                                         <path d="M5 19L5 8L9 11L15 11L19 8L19 19Z" fill="#F59E0B" />
@@ -676,29 +683,41 @@
                                     </g>
                                 </svg>
                             </div>
-                            <div>
-                                <h5 class="font-bold text-base sm:text-lg text-gray-900">Priya</h5>
+
+                            <!-- Text Container: Added flex-1 to make this expand -->
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between w-full">
+                                    <h5 class="font-bold text-base sm:text-lg text-gray-900">Priya</h5>
+                                    <span
+                                        class="text-[0.5625rem] sm:text-[0.625rem] font-bold px-2 py-1 rounded-md border uppercase tracking-wider text-blue-600 bg-blue-50 border-blue-200">
+                                        Housing
+                                    </span>
+                                </div>
                                 <p
                                     class="text-[0.625rem] sm:text-xs text-brand-600 font-bold flex items-center gap-1 uppercase">
                                     Google
                                 </p>
                             </div>
                         </div>
+                        <!-- Post Content -->
                         <div class="space-y-4 mb-6">
-                            <h6 class="font-bold text-base sm:text-lg text-gray-800">Selling lightly used microwave 🍿
+                            <h6 class="font-bold text-base sm:text-lg text-gray-800">Looking for a private room in a 2/3
+                                BHK (female) 🏡 , Whitefield/&#8203;Brookfield
                             </h6>
-                            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">Upgrading to a larger model and
-                                selling my
-                                1-year-old LG 20L Solo Microwave (MS2043BP). It’s in mint condition, featuring i-Wave
-                                technology and a healthy anti-bacterial cavity.
-                                Includes the original glass turntable. Asking ₹4000. Pickup from
-                                Bellandur this weekend—feel free to test it before buying! DM if interested.
+                            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">Hi! I recently moved to
+                                Bangalore and just joined Google. I’m looking for a private room in a pre-occupied,
+                                fully setup 2 or 3 BHK with other female flatmates. My budget is around ₹20k -
+                                ₹25k.<br />
+                                Ideally looking in and around Whitefield, Brookfield, or nearby area. I'm clean,
+                                easy-going, and respect personal space. Prefer a chill vibe with no owner interference!
+                                Please DM if you have a vacancy in your flat.
                             </p>
                         </div>
                         <div class="flex gap-3">
                             <button
-                                class="flex-1 bg-brand-50 text-brand-700 font-medium py-2.5 rounded-xl text-xs sm:text-sm border border-brand-100 hover:bg-brand-100 transition-colors">Message
-                                Priya</button>
+                                class="flex-1 bg-white-50 text-gray-700 font-medium py-2.5 rounded-xl text-xs sm:text-sm border border-gray-300 hover:bg-gray-100 transition-colors">Message</button>
+                            <button
+                                class="flex-1 bg-white-50 text-gray-700 font-medium py-2.5 rounded-xl text-xs sm:text-sm border border-gray-300 hover:bg-gray-100 transition-colors">Comment</button>
                         </div>
                     </div>
                 </div>
@@ -708,6 +727,9 @@
 
     <!-- How it Works -->
     <section id="how-it-works" class="py-16 md:py-24 bg-white">
+        <h2
+            class="text-center text-brand-600 font-semibold tracking-wide uppercase text-xs sm:text-sm mb-2 my-0 pt-0 pb-2">
+            How it works</h2>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Header: Back to Original Minimalism -->
@@ -918,7 +940,7 @@
         const SAMPLE_POSTS = [
             {
                 id: 2, name: "Arjun", company: "Amazon", date: "02/20/2026", category: "Housing",
-                title: "Furnished 2 BHK Flatmate in Indiranagar",
+                title: "Flatmate needed 2 BHK, Indiranagar",
                 content: "Flatmate needed for a fully furnished 2 BHK in Indiranagar near the Mahatma Gandhi Metro. Rent is 18k including maintenance. Chill vibes, no owner interference. Available from next month.",
                 avatar: "A", avatarColor: "bg-blue-100 text-blue-700"
             },
