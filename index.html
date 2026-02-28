@@ -1289,10 +1289,10 @@
 
             window.addEventListener('scroll', onScroll);
             onScroll();
+            // Icons
+            if (window.lucide) lucide.createIcons();
         });
         document.getElementById("year").textContent = new Date().getFullYear();
-        // Icons
-        if (window.lucide) lucide.createIcons();
     </script>
 </body>
 
