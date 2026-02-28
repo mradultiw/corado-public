@@ -21,6 +21,7 @@
     <!-- Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://play.google.com">
     <link rel="dns-prefetch" href="https://unpkg.com">
@@ -90,7 +91,7 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], hand: ['Caveat', 'cursive'], },
                     colors: {
                         brand: {
                             50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 500: '#3b82f6',
@@ -323,6 +324,59 @@
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
+        }
+
+        /* Hand Drawn Verified Badge */
+        .hand-drawn-verified {
+            position: absolute;
+            left: 24px;
+            top: -20px;
+            display: none;
+            align-items: center;
+            color: #444545;
+            z-index: 50;
+            pointer-events: none;
+            width: 126px;
+            height: 36px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .hdv-active {
+            display: flex !important;
+            opacity: 1;
+        }
+
+        .hdv-arrow {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+        }
+
+        .hdv-text {
+            font-size: 1.4rem;
+            clip-path: inset(0 100% 0 0);
+        }
+
+        .hdv-active .hdv-arrow {
+            animation: hdv-draw 0.6s ease-in-out forwards;
+            animation-delay: 0.8s;
+        }
+
+        .hdv-active .hdv-text {
+            animation: hdv-reveal-text 1.2s ease-out forwards;
+            animation-delay: 1.4s;
+        }
+
+        @keyframes hdv-draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes hdv-reveal-text {
+            to {
+                clip-path: inset(0 0 0 0);
+            }
         }
     </style>
 </head>
@@ -676,8 +730,22 @@
                                 <div class="flex items-center justify-between w-full">
                                     <span class="flex flex-row gap-2 items-center justify-center">
                                         <h5 class="font-bold text-base sm:text-lg text-gray-900">Priya</h5>
-                                        <i data-lucide="badge-check"
-                                            class="w-5 h-5 text-blue-500 fill-blue-500 text-white"></i>
+                                        <div class="relative flex items-center">
+                                            <i data-lucide="badge-check"
+                                                class="w-5 h-5 text-blue-500 fill-blue-500 text-white"></i>
+                                            <div class="hand-drawn-verified" id="hand-drawn-verified-id">
+                                                <svg viewBox="0 0 126 36" width="126" height="36"
+                                                    style="overflow: visible;">
+                                                    <path class="hdv-arrow"
+                                                        d="M 9 13.2 L 4.8 19.2 L 11.88 21.12 M 4.8 19.2 Q 21 9 39 19.2"
+                                                        fill="none" stroke="currentColor" stroke-width="1.2"
+                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                        pathLength="100" />
+                                                    <text class="hdv-text font-hand" x="43" y="24"
+                                                        fill="currentColor">Verified</text>
+                                                </svg>
+                                            </div>
+                                        </div>
                                     </span>
                                     <span
                                         class="text-[0.5625rem] sm:text-[0.625rem] font-bold px-2 py-1 rounded-md border uppercase tracking-wider text-blue-600 bg-blue-50 border-blue-200">
@@ -1185,7 +1253,6 @@
                     if (entry.isIntersecting) {
                         if (entry.target.classList.contains('reveal-up')) {
                             entry.target.classList.add('active');
-                            // If it doesn't need to toggle back off, we unobserve
                             if (!entry.target.classList.contains('viewport-active')) {
                                 revealObserver.unobserve(entry.target);
                             }
@@ -1195,9 +1262,11 @@
                                 isPageFreshLoad = false;
                             } else {
                                 entry.target.classList.add('strike-active-fast');
-                            }                            // Do not unobserve strike-trigger to allow resetting
+                            }
                         } else if (entry.target.classList.contains('marquee-container') || entry.target.classList.contains('viewport-active')) {
                             entry.target.classList.add('is-in-viewport');
+                            const badge = entry.target.querySelector('#hand-drawn-verified-id');
+                            if (badge) badge.classList.add('hdv-active');
                         } else {
                             entry.target.classList.add('visible');
                             if (!entry.target.classList.contains('viewport-active')) {
@@ -1205,15 +1274,15 @@
                             }
                         }
                     } else {
-                        // Reset strike animation when out of viewport
                         if (entry.target.classList.contains('strike-trigger')) {
                             entry.target.classList.remove('strike-active');
                             entry.target.classList.remove('strike-active-fast');
                         }
 
-                        // Toggle animations when out of viewport
                         if (entry.target.classList.contains('marquee-container') || entry.target.classList.contains('viewport-active')) {
                             entry.target.classList.remove('is-in-viewport');
+                            const badge = entry.target.querySelector('#hand-drawn-verified-id');
+                            if (badge) badge.classList.remove('hdv-active');
                         }
                     }
                 });
