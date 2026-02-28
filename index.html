@@ -730,7 +730,11 @@
                             <!-- Text Container: Added flex-1 to make this expand -->
                             <div class="flex-1">
                                 <div class="flex items-center justify-between w-full">
-                                    <h5 class="font-bold text-base sm:text-lg text-gray-900">Priya</h5>
+                                    <span class="flex flex-row gap-2 items-center justify-center">
+                                        <h5 class="font-bold text-base sm:text-lg text-gray-900">Priya</h5><i
+                                            data-lucide="badge-check"
+                                            class="w-5 h-5 text-blue-500 fill-blue-500 text-white"></i>
+                                    </span>
                                     <span
                                         class="text-[0.5625rem] sm:text-[0.625rem] font-bold px-2 py-1 rounded-md border uppercase tracking-wider text-blue-600 bg-blue-50 border-blue-200">
                                         Housing
@@ -921,10 +925,12 @@
             <div class="flex items-center gap-2">
                 <span class="text-xl font-bold tracking-tight text-gray-400">Corado</span>
             </div>
-            <p class="text-gray-500 text-sm">© 2026 Corado. All rights reserved.</p>
+            <p class="text-gray-500 text-sm">© <span id="year"></span> Corado. All rights reserved.</p>
             <div class="flex space-x-6">
                 <a href="https://corado.in/privacy"
                     class="text-gray-400 hover:text-brand-600 transition-colors">Privacy</a>
+                <a href="https://corado.in/community"
+                    class="text-gray-400 hover:text-brand-600 transition-colors">Community</a>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSdnYVmIwVuKf07DMU7aln1bCs3iOTD_TdDW5KmGyeDAhwjWqg/viewform?usp=header"
                     class="text-gray-400 hover:text-brand-600 transition-colors">Contact</a>
             </div>
@@ -1292,6 +1298,7 @@
             window.addEventListener('scroll', onScroll);
             onScroll();
         });
+        document.getElementById("year").textContent = new Date().getFullYear();
     </script>
 </body>
 
