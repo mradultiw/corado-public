@@ -1081,7 +1081,7 @@
             General: 'text-pink-600 bg-pink-50 border-pink-200'
         };
 
-        let isOnboarding = false; // check if users in onboarding flow (first 3 visits)
+        const CCAO_STORAGE_KEY = 'ccao'; // 'corado_clicked_audio_once';
         let isPageFreshLoad = true; // true on first page load animation, false soon after scrolling away from hero section
 
         // --- Helpers ---
@@ -1133,17 +1133,12 @@
         };
 
         function handleVisitLogic() {
-            const STORAGE_KEY = 'corado_logo_visits';
-            const MAX_VISITS = 3;
             const initialDelayToAnimate = 5000; // 5 seconds after page load
             const container = document.getElementById('animationContainer');
             if (!container) return;
             try {
-                let visits = parseInt(localStorage.getItem(STORAGE_KEY)) || 0;
-                visits += 1;
-                localStorage.setItem(STORAGE_KEY, visits);
-                if (visits <= MAX_VISITS) {
-                    isOnboarding = true;
+                const hasClicked = parseInt(localStorage.getItem(CCAO_STORAGE_KEY)) || 0;
+                if (!hasClicked) {
                     setTimeout(() => {
                         container.classList.add('show-animation');
                     }, initialDelayToAnimate);
@@ -1156,8 +1151,10 @@
         }
 
         function playAudio() {
+            const container = document.getElementById('animationContainer');
+            container.classList.remove('show-animation');
             const note = document.getElementById('audioNote');
-            if (!isOnboarding && note) {
+            if (note) {
                 note.classList.remove('music-note-hide');
                 note.classList.add('music-note-show', 'music-note-fast');
             }
@@ -1167,8 +1164,9 @@
                 audio.play().catch(e => console.error("Audio playback failed:", e));
             }
             setTimeout(() => {
-                if (!isOnboarding && note) note.classList.remove('music-note-show', 'music-note-fast');
+                if (note) note.classList.remove('music-note-show', 'music-note-fast');
             }, 1000);
+            try { localStorage.setItem(CCAO_STORAGE_KEY, 1); } catch { }
         }
 
         // --- Initialization ---
