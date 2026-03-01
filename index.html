@@ -313,6 +313,8 @@
             cursor: grab;
             user-select: none;
             touch-action: pan-y;
+            scroll-behavior: auto !important;
+            will-change: scroll-position;
         }
 
         .marquee-container:active {
@@ -1217,31 +1219,47 @@
                     lastX = e.clientX;
                 });
 
-                window.addEventListener('pointerup', (e) => {
+                const endInteraction = (e) => {
                     isInteracting = false;
-                    try { container.releasePointerCapture(e.pointerId); } catch (e) { }
-                });
+                    try { container.releasePointerCapture(e.pointerId); } catch (err) { }
+                };
+
+                window.addEventListener('pointerup', endInteraction);
+                window.addEventListener('pointercancel', endInteraction);
 
                 const speed = 0.6; // Adjust scroll speed here
-                let lastTime = performance.now();
+                let lastTime = 0;
+                let scrollPos = 0;
 
                 function scrollStep(timestamp) {
-                    const trackWidth = track1.offsetWidth + 24; // track width + gap (24px for gap-6)
+                    if (!lastTime) lastTime = timestamp;
+                    const dt = timestamp - lastTime;
+                    lastTime = timestamp;
 
+                    // Only update scroll if in viewport
                     if (container.classList.contains('is-in-viewport')) {
-                        if (!isInteracting) {
-                            const dt = timestamp - lastTime;
-                            container.scrollLeft += speed * (dt / 16.6);
-                        }
+                        const trackWidth = track1.offsetWidth + 24; // track width + gap (24px for gap-6)
 
-                        // Seamless loop - always active for infinite swiping feel
-                        if (container.scrollLeft >= trackWidth) {
-                            container.scrollLeft -= trackWidth;
-                        } else if (container.scrollLeft < 0) {
-                            container.scrollLeft += trackWidth;
+                        if (trackWidth > 24) {
+                            if (!isInteracting) {
+                                // Accumulate position with high precision
+                                scrollPos += speed * (Math.min(dt, 32) / 16.6);
+                            } else {
+                                // Sync back to current scrollLeft during interaction
+                                scrollPos = container.scrollLeft;
+                            }
+
+                            // Seamless loop logic
+                            if (scrollPos >= trackWidth) {
+                                scrollPos -= trackWidth;
+                            } else if (scrollPos < 0) {
+                                scrollPos += trackWidth;
+                            }
+
+                            // Apply to element
+                            container.scrollLeft = scrollPos;
                         }
                     }
-                    lastTime = timestamp;
                     requestAnimationFrame(scrollStep);
                 }
                 requestAnimationFrame(scrollStep);
@@ -1286,7 +1304,7 @@
                         }
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0 });
 
             document.querySelectorAll('.animate-on-scroll, .reveal-up, .strike-trigger, .marquee-container, .viewport-active').forEach(el => revealObserver.observe(el));
 
