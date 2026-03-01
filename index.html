@@ -749,10 +749,15 @@
                                             </div>
                                         </div>
                                     </span>
-                                    <span
-                                        class="text-[0.5625rem] sm:text-[0.625rem] font-bold px-2 py-1 rounded-md border uppercase tracking-wider text-blue-600 bg-blue-50 border-blue-200">
-                                        Housing
-                                    </span>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-[0.6875rem] px-3 sm:text-xs font-bold text-brand-600">
+                                            3.1km
+                                        </span>
+                                        <span
+                                            class="text-[0.5625rem] sm:text-[0.625rem] font-bold px-2 py-1 rounded-md border uppercase tracking-wider text-blue-600 bg-blue-50 border-blue-200">
+                                            Housing
+                                        </span>
+                                    </div>
                                 </div>
                                 <p
                                     class="text-[0.625rem] sm:text-xs text-brand-600 font-bold flex items-center gap-1 uppercase">
@@ -855,7 +860,7 @@
                         <div class="step-card p-6 rounded-2xl w-full text-left lg:text-center">
                             <h4 class="text-lg font-bold text-gray-900 mb-2">Enable Location</h4>
                             <p class="text-gray-600 text-sm leading-relaxed">
-                                Optional, but location access helps surface relevant results. <span
+                                Optional, but location access helps surface relevant results near you. <span
                                     class="text-xs block mt-1 text-gray-400 font-bold">Stored securely, never
                                     shared.</span>
                             </p>
@@ -1003,85 +1008,85 @@
         // --- Data ---
         const SAMPLE_POSTS = [
             {
-                id: 2, name: "Arjun", company: "Amazon", date: "02/20/2026", category: "Housing",
+                id: 2, name: "Arjun", company: "Amazon", date: "02/20/2026", category: "Housing", distance: 1200,
                 title: "Flatmate needed 2 BHK, Indiranagar",
                 content: "Flatmate needed for a fully furnished 2 BHK in Indiranagar near the Mahatma Gandhi Metro. Rent is 18k including maintenance. Chill vibes, no owner interference. Available from next month.",
                 avatar: "A", avatarColor: "bg-blue-100 text-blue-700"
             },
             {
-                id: 4, name: "Rohan", company: "Visa", date: "02/18/2026", category: "Marketplace",
+                id: 4, name: "Rohan", company: "Visa", date: "02/18/2026", category: "Marketplace", distance: 3500,
                 title: "IKEA Kivik 3-Seater Sofa for Sale, Brookfield",
                 content: "Selling my 3-seater IKEA Kivik sofa. Barely used, 8 months old. Moving out of the city so need to sell it urgently. Asking price 15k. Pick up from Brookfield.",
                 avatar: "R", avatarColor: "bg-purple-100 text-purple-700"
             },
             {
-                id: 5, name: "Vikram", company: "Amex", date: "02/18/2026", category: "Housing",
+                id: 5, name: "Vikram", company: "Amex", date: "02/18/2026", category: "Housing", distance: 5800,
                 title: "Spacious 3 BHK Search for Family, Whitefield",
                 content: "Looking for a spacious 3 BHK apartment for a family of four in or around Whitefield. Budget is around 50k-60k. Prefer societies with good amenities and a park.",
                 avatar: "V", avatarColor: "bg-rose-100 text-rose-700"
             },
             {
-                id: 1, name: "Priya", company: "Google", date: "02/21/2026", category: "DailyHelp",
+                id: 1, name: "Priya", company: "Google", date: "02/21/2026", category: "DailyHelp", distance: 2100,
                 title: "North Indian Cook Needed, Hoodi",
                 content: "Need a reliable cook who can make healthy North Indian food (2 meals/day) for a family of 3. Please DM me if you have any leads or contacts.",
                 avatar: "P", avatarColor: "bg-emerald-100 text-emerald-700"
             },
             {
-                id: 8, name: "Ishaan", company: "Samsung", date: "02/15/2026", category: "Housing",
+                id: 8, name: "Ishaan", company: "Samsung", date: "02/15/2026", category: "Housing", distance: 4200,
                 title: "Private Room Available for Male, Bellandur",
                 content: "Urgent: Moving out next month and need a replacement for my private room in a 3 BHK at Bellandur (near RMZ Ecospace). Rent is 18k. Fully setup flat!",
                 avatar: "I", avatarColor: "bg-cyan-100 text-cyan-700"
             },
             {
-                id: 7, name: "Kavya", company: "Adobe", date: "02/16/2026", category: "DailyHelp",
+                id: 7, name: "Kavya", company: "Adobe", date: "02/16/2026", category: "DailyHelp", distance: 6700,
                 title: "Experienced Full-Time Nanny Needed, Whitefield",
                 content: "Looking for an experienced, full-time nanny for my 1-year-old daughter. Timings 9 AM to 6 PM. Must be hygienic and good with kids. References required.",
                 avatar: "K", avatarColor: "bg-orange-100 text-orange-700"
             },
             {
-                id: 3, name: "Sneha", company: "Microsoft", date: "02/19/2026", category: "General",
+                id: 3, name: "Sneha", company: "Microsoft", date: "02/19/2026", category: "General", distance: 8900,
                 title: "Child Daycare Recommendations, Sarjapur",
                 content: "Hi neighbors! Can anyone recommend a good, reliable daycare center near Sarjapur Road for a 2-year-old toddler? Would prefer places with live CCTV access.",
                 avatar: "S", avatarColor: "bg-yellow-100 text-yellow-700"
             },
             {
-                id: 9, name: "Aditya", company: "Salesforce", date: "02/13/2026", category: "Marketplace",
+                id: 9, name: "Aditya", company: "Salesforce", date: "02/13/2026", category: "Marketplace", distance: 1500,
                 title: "Washing Machine and Mattress Sale, Mahadevapura",
                 content: "Moving out sale! Selling an LG 6.5kg fully automatic washing machine and a queen-size Wakefit mattress. Both in excellent condition. DM for pictures and prices.",
                 avatar: "A", avatarColor: "bg-teal-100 text-teal-700"
             },
             {
-                id: 10, name: "Rahul", company: "Flipkart", date: "02/12/2026", category: "Housing",
+                id: 10, name: "Rahul", company: "Flipkart", date: "02/12/2026", category: "Housing", distance: 7300,
                 title: "Finding a Pet-Friendly House Rental, Electronic City",
                 content: "Family seeking an independent house or villa for rent near Electronic City Phase 1. Need at least 2 parking spots and a pet-friendly landlord.",
                 avatar: "R", avatarColor: "bg-blue-100 text-blue-700"
             },
             {
-                id: 11, name: "Meera", company: "Google", date: "02/11/2026", category: "General",
+                id: 11, name: "Meera", company: "Google", date: "02/11/2026", category: "General", distance: 2800,
                 title: "Pediatrician Recommendations for HSR Layout",
                 content: "Looking for recommendations for a good, patient pediatrician in and around HSR Layout Sector 2. Ideally someone who doesn't over-prescribe antibiotics.",
                 avatar: "M", avatarColor: "bg-pink-100 text-pink-700"
             },
             {
-                id: 12, name: "Karthik", company: "Amazon", date: "02/10/2026", category: "Housing",
+                id: 12, name: "Karthik", company: "Amazon", date: "02/10/2026", category: "Housing", distance: 5100,
                 title: "1 RK for Bachelor in JP Nagar",
                 content: "Available immediately: 1 RK for a bachelor in JP Nagar 7th Phase. Rent is 21k, deposit 50k. Very close to the main road and bus stop. No brokerage.",
                 avatar: "K", avatarColor: "bg-purple-100 text-purple-700"
             },
             {
-                id: 13, name: "Pooja", company: "Microsoft", date: "02/09/2026", category: "DailyHelp",
+                id: 13, name: "Pooja", company: "Microsoft", date: "02/09/2026", category: "DailyHelp", distance: 9200,
                 title: "Maid Needed for Cleaning, Marathahalli Area",
                 content: "Urgent requirement: Need a part-time maid for sweeping, mopping, and utensil cleaning. Timings are flexible but morning is preferred. Good salary offered.",
                 avatar: "P", avatarColor: "bg-rose-100 text-rose-700"
             },
             {
-                id: 14, name: "Neha", company: "Visa", date: "02/08/2026", category: "Marketplace",
+                id: 14, name: "Neha", company: "Visa", date: "02/08/2026", category: "Marketplace", distance: 3300,
                 title: "Seeking a used Ergonomic Office Chair, Indiranagar",
                 content: "Looking for a used ergonomic office chair (preferably Herman Miller or Featherlite) in decent condition for my WFH setup. Let me know if you're selling!",
                 avatar: "N", avatarColor: "bg-amber-100 text-amber-700"
             },
             {
-                id: 15, name: "Sanya", company: "Qualcomm", date: "02/14/2026", category: "General",
+                id: 15, name: "Sanya", company: "Qualcomm", date: "02/14/2026", category: "General", distance: 4600,
                 title: "Hiring SDE-2 Frontend Engineers (React)",
                 content: "My team is actively looking to hire Frontend Engineers (SDE-2). If you have 3+ years of React experience, DM me for a referral!",
                 avatar: "S", avatarColor: "bg-indigo-100 text-indigo-700"
@@ -1118,9 +1123,14 @@
                                 </p>
                             </div>
                         </div>
-                        <span class="text-[0.5625rem] sm:text-[0.625rem] font-bold px-2 py-1 rounded-md border uppercase tracking-wider ${categoryStyle}">
-                            ${post.category}
-                        </span>
+                        <div class="flex items-center">
+                            <span class="text-[0.6875rem] px-3 sm:text-xs font-bold text-brand-600">
+                                ${(post.distance / 1000).toFixed(1)}km
+                            </span>
+                            <span class="text-[0.5625rem] sm:text-[0.625rem] font-bold px-2 py-1 rounded-md border uppercase tracking-wider ${categoryStyle}">
+                                ${post.category}
+                            </span>
+                        </div>
                     </div>
                     <div class="flex-grow flex flex-col justify-start">
                         <p class="font-[700] text-slate-700 text-[0.875rem] sm:text-[0.95rem] mb-[0.125rem] line-clamp-1">${post.title}</p>
