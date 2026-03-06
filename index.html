@@ -331,20 +331,20 @@
         /* Hand Drawn Verified Badge */
         .hand-drawn-verified {
             position: absolute;
-            left: 24px;
-            top: -20px;
+            left: 1.5rem;
+            top: -1.25rem;
             align-items: center;
             color: #444545;
             z-index: 50;
             pointer-events: none;
-            width: 126px;
-            height: 36px;
+            width: 7.875rem;
+            height: 2.25rem;
             opacity: 0;
             transition: opacity 0.3s ease;
-            /* Set the pivot point to the arrow head coordinates */
-            transform-origin: 4.8px 19.2px;
+            /* Set the pivot point using relative coordinates */
+            transform-origin: 4% 53%;
             /* Rotate anticlockwise by 20 degrees (-20deg) */
-            transform: rotate(-20deg) translateX(-10px) translateY(-5px);
+            transform: rotate(-15deg) translateX(-0.625rem) translateY(-0.3125rem);
             /* Ensure it displays correctly */
             display: inline-block;
         }
@@ -754,14 +754,14 @@
 
                 <div class="relative animate-on-scroll fade-in-up" style="transition-delay: 200ms;">
                     <div
-                        class="absolute inset-0 bg-gradient-to-tr from-brand-200 to-indigo-200 rounded-[2.5rem] transform rotate-3 scale-105">
+                        class="absolute inset-0 bg-gradient-to-tr from-brand-200 to-indigo-200 rounded-[2rem] transform rotate-3 scale-105">
                     </div>
                     <div
-                        class="relative bg-white p-6 sm:p-8 rounded-[2rem] shadow-xl border border-gray-100 animate-float delay-2 viewport-active">
-                        <div class="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100"> <!-- Icon Container -->
+                        class="relative bg-white p-5 sm:p-7 rounded-[1.5rem] shadow-xl border border-gray-100 animate-float delay-2 viewport-active mx-auto max-w-md lg:max-w-none">
+                        <div class="flex items-center gap-4 mb-4 pb-4 border-b border-gray-100"> <!-- Icon Container -->
                             <div
-                                class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                <svg xmlns="http://www.w3.org" viewBox="2.5 2.5 19 19" class="w-6 h-6 text-gray-500">
+                                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg xmlns="http://www.w3.org" viewBox="2.5 2.5 19 19" class="w-5 h-5 text-gray-500">
                                     <g>
                                         <path d="M5 19L5 8L9 11L15 11L19 8L19 19Z" fill="#F59E0B" />
                                         <circle cx="9" cy="14" r="1" fill="#333" />
@@ -775,11 +775,11 @@
                             <div class="flex-1">
                                 <div class="flex items-center justify-between w-full">
                                     <span class="flex flex-row gap-2 items-center justify-center">
-                                        <h5 class="font-bold text-base sm:text-lg text-gray-900">Priya</h5>
+                                        <h5 class="font-bold text-sm sm:text-base text-gray-900">Priya</h5>
                                         <div class="relative flex items-center">
                                             <i data-lucide="badge-check"
-                                                class="w-5 h-5 text-blue-500 fill-blue-500 text-white"></i>
-                                            <div class="hand-drawn-verified" id="hand-drawn-verified-id">
+                                                class="w-4 h-4 text-blue-500 fill-blue-500 text-white"></i>
+                                            <div class="hand-drawn-verified" id="hand-drawn-verified-id" style="left: 1.25rem; top: -1.1rem; width: 6.5rem; height: 1.8rem;">
                                                 <svg viewBox="0 0 126 36" width="126" height="36"
                                                     style="overflow: visible;">
                                                     <path class="hdv-arrow"
@@ -788,33 +788,33 @@
                                                         stroke-linecap="round" stroke-linejoin="round"
                                                         pathLength="100" />
                                                     <text class="hdv-text font-hand" x="43" y="24"
-                                                        fill="currentColor">Verified</text>
+                                                        fill="currentColor" style="font-size: 1.4rem;">Verified</text>
                                                 </svg>
                                             </div>
                                         </div>
                                     </span>
                                     <div class="flex items-center gap-2">
-                                        <span class="text-[0.6875rem] px-3 sm:text-xs font-bold text-brand-600">
+                                        <span class="text-[0.625rem] px-2 sm:text-xs font-bold text-brand-600">
                                             3.1km
                                         </span>
                                         <span
-                                            class="text-[0.5625rem] sm:text-[0.625rem] font-bold px-2 py-1 rounded-md border uppercase tracking-wider text-blue-600 bg-blue-50 border-blue-200">
+                                            class="text-[0.5rem] sm:text-[0.5625rem] font-bold px-1.5 py-0.5 rounded-md border uppercase tracking-wider text-blue-600 bg-blue-50 border-blue-200">
                                             Housing
                                         </span>
                                     </div>
                                 </div>
                                 <p
-                                    class="text-[0.625rem] sm:text-xs text-brand-600 font-bold flex items-center gap-1 uppercase">
+                                    class="text-[0.5625rem] sm:text-xs text-brand-600 font-bold flex items-center gap-1 uppercase">
                                     Google
                                 </p>
                             </div>
                         </div>
                         <!-- Post Content -->
-                        <div class="space-y-4 mb-6">
-                            <h6 class="font-bold text-base sm:text-lg text-gray-800">Looking for a private room in a 2/3
+                        <div class="space-y-3 mb-4">
+                            <h6 class="font-bold text-sm sm:text-base text-gray-800 leading-snug">Looking for a private room in a 2/3
                                 BHK (female) 🏡 , Whitefield/&#8203;Brookfield
                             </h6>
-                            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">Hi! I recently moved to
+                            <p class="text-[0.75rem] sm:text-sm text-gray-600 leading-relaxed">Hi! I recently moved to
                                 Bangalore and just joined Google. I’m looking for a private room in a pre-occupied,
                                 fully setup 2 or 3 BHK with other female flatmates. My budget is around ₹20k -
                                 ₹25k.<br />
@@ -826,9 +826,9 @@
                         </div>
                         <div class="flex gap-3">
                             <button
-                                class="flex-1 bg-white-50 text-gray-700 font-medium py-2.5 rounded-xl text-xs sm:text-sm border border-gray-300 hover:bg-gray-100 transition-colors">Message</button>
+                                class="flex-1 bg-white-50 text-gray-700 font-medium py-2 rounded-xl text-[0.6875rem] sm:text-xs border border-gray-300 hover:bg-gray-100 transition-colors">Message</button>
                             <button
-                                class="flex-1 bg-white-50 text-gray-700 font-medium py-2.5 rounded-xl text-xs sm:text-sm border border-gray-300 hover:bg-gray-100 transition-colors">Comment</button>
+                                class="flex-1 bg-white-50 text-gray-700 font-medium py-2 rounded-xl text-[0.6875rem] sm:text-xs border border-gray-300 hover:bg-gray-100 transition-colors">Comment</button>
                         </div>
                     </div>
                 </div>
@@ -1252,18 +1252,22 @@
 
             // Sticky Buttons Observer
             const appLinks = document.getElementById('app-links');
+            const navElement = document.querySelector('nav');
 
-            if (appLinks) {
+            if (appLinks && navElement) {
+                // Get the actual height of the navigation bar to use as an offset
+                const navHeight = navElement.offsetHeight;
+                
                 const observerOptions = {
                     root: null,
-                    rootMargin: '-80px 0px 0px 0px',
+                    rootMargin: `-${navHeight}px 0px 0px 0px`,
                     threshold: 0
                 };
 
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
-                        // When scrolling down, if the top of buttons reaches the nav (80px from top)
-                        if (!entry.isIntersecting && entry.boundingClientRect.top < 80) {
+                        // Trigger when the buttons reach the bottom of the navigation bar
+                        if (!entry.isIntersecting && entry.boundingClientRect.top < navHeight) {
                             document.body.classList.add('sticky-bar-visible');
                         } else {
                             document.body.classList.remove('sticky-bar-visible');
