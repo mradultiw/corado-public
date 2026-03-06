@@ -111,7 +111,45 @@
         }
     </script>
     <style>
-        /* Base optimizations */
+        /* Base optimizations & Fluid Scaling */
+        html {
+            font-size: 100%;
+            /* Default 16px */
+            -webkit-user-select: none;
+            /* Safari */
+            -ms-user-select: none;
+            /* IE 10 and IE 11 */
+            user-select: none;
+            /* Standard syntax */
+            -webkit-touch-callout: none;
+            /* Disable long-press menu on iOS */
+        }
+
+        @media (max-width: 30rem) {
+
+            /* 480px */
+            html {
+                font-size: 96%;
+                /* 14px */
+            }
+        }
+
+        @media (max-width: 22.5rem) {
+
+            /* 360px */
+            html {
+                font-size: 90%;
+                /* 13px */
+            }
+        }
+
+        /* Re-enable selection for specific interactive elements if needed (e.g., inputs) */
+        input,
+        textarea {
+            user-select: text;
+            -webkit-user-select: text;
+        }
+
         html,
         body {
             max-width: 100%;
@@ -376,13 +414,65 @@
 
         /* Sticky App Links Bar */
         #sticky-bar {
-            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: opacity 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         .sticky-bar-visible #sticky-bar {
             opacity: 1;
             pointer-events: auto;
             transform: translateY(0);
+        }
+
+        @keyframes shake-vigorous {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            10% {
+                transform: translateX(-0.75rem);
+            }
+
+            20% {
+                transform: translateX(0.75rem);
+            }
+
+            30% {
+                transform: translateX(-0.625rem);
+            }
+
+            40% {
+                transform: translateX(0.625rem);
+            }
+
+            50% {
+                transform: translateX(-0.5rem);
+            }
+
+            60% {
+                transform: translateX(0.5rem);
+            }
+
+            70% {
+                transform: translateX(-0.3125rem);
+            }
+
+            80% {
+                transform: translateX(0.3125rem);
+            }
+
+            90% {
+                transform: translateX(-0.125rem);
+            }
+        }
+
+        .animate-shake-buttons a {
+            animation: shake-vigorous 0.8s cubic-bezier(.36, .07, .19, .97) both;
+        }
+
+        .feature-card-clickable {
+            cursor: pointer;
         }
 
         @keyframes hdv-draw {
@@ -462,16 +552,16 @@
     <!-- Sticky App Links Bar (Below Header) -->
     <div id="sticky-bar"
         class="fixed top-20 w-full z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 transition-all duration-500 transform -translate-y-full opacity-0 pointer-events-none shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 py-3.5 flex justify-center items-center gap-4">
+        <div class="max-w-7xl mx-auto px-3 py-3.5 flex justify-center items-center gap-2 sm:gap-4">
             <a href="https://web.corado.in"
-                class="web-app-link bg-slate-800 text-white px-6 py-2.5 rounded-full font-bold text-[0.8rem] sm:text-base flex items-center justify-center gap-2.5 border border-transparent shadow-sm hover:opacity-90 transition-opacity">
-                <i data-lucide="globe" class="w-5 h-5"></i>
-                <span>Use on Web</span>
+                class="web-app-link flex-1 sm:flex-none sm:w-52 bg-slate-800 text-white px-2 py-2.5 rounded-full font-bold text-[0.7rem] sm:text-base flex items-center justify-center gap-1.5 sm:gap-2.5 border-2 border-transparent shadow-sm hover:opacity-90 transition-opacity">
+                <i data-lucide="globe" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                <span class="whitespace-nowrap">Open in Browser</span>
             </a>
             <a href="https://play.google.com/store/apps/details?id=com.corado.app"
-                class="bg-white text-slate-900 px-6 py-2.5 rounded-full font-bold text-[0.8rem] sm:text-base flex items-center justify-center gap-2.5 border border-gray-300 shadow-sm hover:bg-gray-50 transition-colors">
-                <i data-lucide="smartphone" class="w-5 h-5 text-green-500"></i>
-                <span>Download App</span>
+                class="flex-1 sm:flex-none sm:w-52 bg-white text-slate-900 px-2 py-2.5 rounded-full font-bold text-[0.7rem] sm:text-base flex items-center justify-center gap-1.5 sm:gap-2.5 border-2 border-gray-200 shadow-sm hover:bg-gray-50 transition-colors">
+                <i data-lucide="smartphone" class="w-4 h-4 sm:w-5 sm:h-5 text-green-500"></i>
+                <span class="whitespace-nowrap">Download App</span>
             </a>
         </div>
     </div>
@@ -495,7 +585,7 @@
             </div>
 
             <h1
-                class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-brand-dark tracking-tight leading-tight mb-8">
+                class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-brand-dark tracking-tight leading-tight mb-8">
                 Stop searching in <br class="hidden md:block" />
                 <span class="relative inline-block">
                     <span
@@ -528,47 +618,47 @@
                     thing.</span>
             </h1>
 
-            <div class="flex justify-center w-full px-4 my-8">
-                <div class="flex flex-wrap justify-center items-center gap-3 w-full max-w-full">
+            <div class="flex justify-center w-full px-4 my-6">
+                <div class="flex flex-wrap justify-center items-center gap-2 sm:gap-3 w-full max-w-full">
                     <!-- First Pair -->
-                    <div class="flex gap-3">
+                    <div class="flex gap-2 sm:gap-3">
                         <span
-                            class="inline-flex items-center justify-center gap-2 min-w-[7rem] px-3 py-1  border border-gray-100 rounded-full text-xs sm:text-sm font-medium text-gray-700 whitespace-nowrap cursor-default">
-                            <i data-lucide="home" class="w-3.5 h-3.5 text-blue-400"></i>Housing
+                            class="inline-flex items-center justify-center gap-1.5 min-w-[6rem] sm:min-w-[7rem] px-2.5 py-1  border border-gray-100 rounded-full text-[0.7rem] sm:text-sm font-medium text-gray-700 whitespace-nowrap cursor-default">
+                            <i data-lucide="home" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-400"></i>Housing
                         </span>
 
                         <span
-                            class="inline-flex items-center justify-center gap-2 min-w-[7rem] px-3 py-1  border border-gray-100 rounded-full text-xs sm:text-sm font-medium text-gray-700 whitespace-nowrap cursor-default">
-                            <i data-lucide="sofa" class="w-3.5 h-3.5 text-blue-400"></i>Furniture
+                            class="inline-flex items-center justify-center gap-1.5 min-w-[6rem] sm:min-w-[7rem] px-2.5 py-1  border border-gray-100 rounded-full text-[0.7rem] sm:text-sm font-medium text-gray-700 whitespace-nowrap cursor-default">
+                            <i data-lucide="sofa" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-400"></i>Furniture
                         </span>
                     </div>
                     <!-- Second Pair -->
-                    <div class="flex gap-3">
+                    <div class="flex gap-2 sm:gap-3">
                         <span
-                            class="inline-flex items-center justify-center gap-2 min-w-[7rem] px-3 py-1  border border-gray-100 rounded-full text-xs sm:text-sm font-medium text-gray-700 whitespace-nowrap cursor-default">
-                            <i data-lucide="chef-hat" class="w-3.5 h-3.5 text-blue-400"></i>Daily Help
+                            class="inline-flex items-center justify-center gap-1.5 min-w-[6rem] sm:min-w-[7rem] px-2.5 py-1  border border-gray-100 rounded-full text-[0.7rem] sm:text-sm font-medium text-gray-700 whitespace-nowrap cursor-default">
+                            <i data-lucide="chef-hat" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-400"></i>Daily Help
                         </span>
 
                         <span
-                            class="inline-flex items-center justify-center gap-2 min-w-[7rem] px-3 py-1  border border-gray-100 rounded-full text-xs sm:text-sm font-medium text-gray-700 whitespace-nowrap cursor-default">
-                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-blue-400"></i>General
+                            class="inline-flex items-center justify-center gap-1.5 min-w-[6rem] sm:min-w-[7rem] px-2.5 py-1  border border-gray-100 rounded-full text-[0.7rem] sm:text-sm font-medium text-gray-700 whitespace-nowrap cursor-default">
+                            <i data-lucide="map-pin" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-400"></i>General
                         </span>
                     </div>
                 </div>
             </div>
 
-            <p class="max-w-2xl mx-auto text-lg sm:text-xl text-gray-600 my-10">
+            <p class="max-w-2xl mx-auto text-base sm:text-xl text-gray-600 my-8">
                 A private, noise-free local network to find essentials, faster.
             </p>
 
             <div id="app-links" class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-10 px-4">
-                <!-- Action: Use on Web (Universal) -->
+                <!-- Action: Open in Browser (Universal) -->
                 <a href="#" class="web-app-link w-full max-w-[17.5rem] sm:max-w-none sm:w-[18rem] bg-slate-800 text-white px-6 py-3 rounded-full font-bold text-lg 
             hover:opacity-90 transition shadow-xl shadow-blue-100 flex items-center justify-center gap-3 
             border-2 border-transparent transform hover:-translate-y-1">
                     <i data-lucide="globe" class="w-6 h-6 shrink-0"></i>
                     <div class="flex flex-col text-left">
-                        <span class="leading-tight">Use on Web</span>
+                        <span class="leading-tight">Open in Browser</span>
                         <span class="text-xs font-normal text-slate-300">For iOS & Android</span>
                     </div>
                 </a>
@@ -576,7 +666,7 @@
                 <!-- Action: Download the App (Android Only) -->
                 <a href="https://play.google.com/store/apps/details?id=com.corado.app" id="android-link" class="w-full max-w-[17.5rem] sm:max-w-none sm:w-[18rem] bg-white text-slate-900 px-6 py-3 rounded-full font-bold text-lg 
             hover:bg-gray-50 transition shadow-xl shadow-slate-200 flex items-center justify-center gap-3 
-            border border-gray-300 transform hover:-translate-y-1">
+            border-2 border-gray-200 transform hover:-translate-y-1">
                     <!-- Tinting the bot icon green adds a recognizable, implicit hint for Android -->
                     <i data-lucide="smartphone" class="w-6 h-6 text-green-500 shrink-0"></i>
                     <div class="flex flex-col text-left">
@@ -656,64 +746,67 @@
                 </h3>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 viewport-active">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 viewport-active">
                 <!-- Feature 1: Housing (Blue) -->
                 <div
-                    class="p-6 sm:p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:border-blue-200 transition-colors animate-on-scroll fade-in-up group">
-                    <div
-                        class="w-14 h-14 bg-blue-50 rounded-2xl shadow-sm border border-blue-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 animate-float">
-                        <i data-lucide="home" class="w-7 h-7 text-blue-500"></i>
+                    class="feature-card-clickable p-5 sm:p-6 rounded-2xl bg-gray-50 border-2 border-slate-100 hover:border-blue-200 transition-colors animate-on-scroll fade-in-up group">
+                    <div class="flex items-center gap-4 mb-3">
+                        <div
+                            class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-50 rounded-xl shadow-sm border border-blue-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 animate-float">
+                            <i data-lucide="home" class="w-5 h-5 sm:w-6 sm:h-6 text-blue-500"></i>
+                        </div>
+                        <h4 class="text-lg sm:text-xl font-bold text-gray-900">Housing</h4>
                     </div>
-                    <h4 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Housing</h4>
-                    <p class="text-sm sm:text-base text-gray-600 leading-relaxed">Find flatmates, replacement tenants,
-                        and rental leads —
-                        shared directly by verified professionals.</p>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">Find flatmates and rental leads — shared
+                        directly by verified professionals.</p>
                 </div>
 
                 <!-- Feature 2: Marketplace (Orange) -->
-                <div class="p-6 sm:p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:border-orange-200 transition-colors animate-on-scroll fade-in-up group"
+                <div class="feature-card-clickable p-5 sm:p-6 rounded-2xl bg-gray-50 border-2 border-slate-100 hover:border-orange-200 transition-colors animate-on-scroll fade-in-up group"
                     style="transition-delay: 100ms;">
-                    <div
-                        class="w-14 h-14 bg-orange-50 rounded-2xl shadow-sm border border-orange-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 animate-float delay-1">
-                        <i data-lucide="shopping-bag" class="w-7 h-7 text-orange-500"></i>
+                    <div class="flex items-center gap-4 mb-3">
+                        <div
+                            class="w-10 h-10 sm:w-12 sm:h-12 bg-orange-50 rounded-xl shadow-sm border border-orange-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 animate-float delay-1">
+                            <i data-lucide="shopping-bag" class="w-5 h-5 sm:w-6 sm:h-6 text-orange-500"></i>
+                        </div>
+                        <h4 class="text-lg sm:text-xl font-bold text-gray-900">Marketplace</h4>
                     </div>
-                    <h4 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Marketplace</h4>
-                    <p class="text-sm sm:text-base text-gray-600 leading-relaxed">Buy and sell locally with vetted
-                        people nearby. From
-                        furniture and
-                        appliances to daily essentials, completely peer-to-peer.</p>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">Buy & sell locally with vetted people
+                        nearby, completely peer-to-peer.</p>
                 </div>
 
                 <!-- Feature 3: Daily Help (Emerald) -->
                 <div
-                    class="p-6 sm:p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:border-emerald-200 transition-colors animate-on-scroll fade-in-up group">
-                    <div
-                        class="w-14 h-14 bg-emerald-50 rounded-2xl shadow-sm border border-emerald-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 animate-float delay-2">
-                        <i data-lucide="users" class="w-7 h-7 text-emerald-500"></i>
+                    class="feature-card-clickable p-5 sm:p-6 rounded-2xl bg-gray-50 border-2 border-slate-100 hover:border-emerald-200 transition-colors animate-on-scroll fade-in-up group">
+                    <div class="flex items-center gap-4 mb-3">
+                        <div
+                            class="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-50 rounded-xl shadow-sm border border-emerald-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 animate-float delay-2">
+                            <i data-lucide="users" class="w-5 h-5 sm:w-6 sm:h-6 text-emerald-500"></i>
+                        </div>
+                        <h4 class="text-lg sm:text-xl font-bold text-gray-900">Daily Help</h4>
                     </div>
-                    <h4 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Daily Help</h4>
-                    <p class="text-sm sm:text-base text-gray-600 leading-relaxed">Find recommended cooks, maids,
-                        nannies, or domestic help
-                        through recommendations from professionals near you.</p>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">Find cooks, maids, or domestic help
+                        through nearby recommendations</p>
                 </div>
 
                 <!-- Feature 4: General (Purple) -->
-                <div class="p-6 sm:p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:border-purple-200 transition-colors animate-on-scroll fade-in-up group"
+                <div class="feature-card-clickable p-5 sm:p-6 rounded-2xl bg-gray-50 border-2 border-slate-100 hover:border-purple-200 transition-colors animate-on-scroll fade-in-up group"
                     style="transition-delay: 100ms;">
-                    <div
-                        class="w-14 h-14 bg-purple-50 rounded-2xl shadow-sm border border-purple-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 animate-float delay-3">
-                        <i data-lucide="map-pin" class="w-7 h-7 text-purple-500"></i>
+                    <div class="flex items-center gap-4 mb-3">
+                        <div
+                            class="w-10 h-10 sm:w-12 sm:h-12 bg-purple-50 rounded-xl shadow-sm border border-purple-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 animate-float delay-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 sm:w-6 sm:h-6 text-purple-500"></i>
+                        </div>
+                        <h4 class="text-lg sm:text-xl font-bold text-gray-900">General</h4>
                     </div>
-                    <h4 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">General</h4>
-                    <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
-                        Get reliable, local answers from people nearby or get help in general from the community of
-                        professionals.</p>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">Get answers from neighbors or help from
+                        a community of professionals.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Corado & Who it's for -->
+    <!-- Who it's for -->
     <section class="py-16 md:py-24 bg-brand-50 border-y border-brand-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-brand-600 font-semibold tracking-wide uppercase text-xs sm:text-sm mb-2 my-0 py-0">Who it's
@@ -757,7 +850,7 @@
                         class="absolute inset-0 bg-gradient-to-tr from-brand-200 to-indigo-200 rounded-[2rem] transform rotate-3 scale-105">
                     </div>
                     <div
-                        class="relative bg-white p-5 sm:p-7 rounded-[1.5rem] shadow-xl border border-gray-100 animate-float delay-2 viewport-active mx-auto max-w-md lg:max-w-none">
+                        class="feature-card-clickable relative bg-white p-5 sm:p-7 rounded-[1.5rem] shadow-xl border border-gray-100 animate-float delay-2 viewport-active mx-auto max-w-md lg:max-w-none">
                         <div class="flex items-center gap-4 mb-4 pb-4 border-b border-gray-100"> <!-- Icon Container -->
                             <div
                                 class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
@@ -779,16 +872,17 @@
                                         <div class="relative flex items-center">
                                             <i data-lucide="badge-check"
                                                 class="w-4 h-4 text-blue-500 fill-blue-500 text-white"></i>
-                                            <div class="hand-drawn-verified" id="hand-drawn-verified-id" style="left: 1.25rem; top: -1.1rem; width: 6.5rem; height: 1.8rem;">
-                                                <svg viewBox="0 0 126 36" width="126" height="36"
+                                            <div class="hand-drawn-verified" id="hand-drawn-verified-id"
+                                                style="left: 1.25rem; top: -1.1rem; width: 6.5rem; height: 1.8rem;">
+                                                <svg viewBox="0 0 80 36" width="80" height="36"
                                                     style="overflow: visible;">
                                                     <path class="hdv-arrow"
-                                                        d="M 9 13.2 L 4.8 19.2 L 11.88 21.12 M 4.8 19.2 Q 21 9 39 19.2"
+                                                        d="M 9 13.2 L 4.8 19.2 L 11.88 21.12 M 4.8 19.2 Q 12 11 22 19.2"
                                                         fill="none" stroke="currentColor" stroke-width="1.2"
                                                         stroke-linecap="round" stroke-linejoin="round"
                                                         pathLength="100" />
-                                                    <text class="hdv-text font-hand" x="43" y="24"
-                                                        fill="currentColor" style="font-size: 1.4rem;">Verified</text>
+                                                    <text class="hdv-text font-hand" x="26" y="24" fill="currentColor"
+                                                        style="font-size: 1.4rem;">Verified</text>
                                                 </svg>
                                             </div>
                                         </div>
@@ -811,14 +905,16 @@
                         </div>
                         <!-- Post Content -->
                         <div class="space-y-3 mb-4">
-                            <h6 class="font-bold text-sm sm:text-base text-gray-800 leading-snug">Looking for a private room in a 2/3
+                            <h6 class="font-bold text-sm sm:text-base text-gray-800 leading-snug">Looking for a private
+                                room in a 2/3
                                 BHK (female) 🏡 , Whitefield/&#8203;Brookfield
                             </h6>
                             <p class="text-[0.75rem] sm:text-sm text-gray-600 leading-relaxed">Hi! I recently moved to
                                 Bangalore and just joined Google. I’m looking for a private room in a pre-occupied,
-                                fully setup 2 or 3 BHK with other female flatmates. My budget is around ₹20k -
-                                ₹25k.<br />
-                                Ideally looking in and around Whitefield, Brookfield, or the surrounding areas. I'm
+                                fully setup 2 or 3 BHK with other female flatmates. <br />My budget is around ₹20k -
+                                ₹25k.
+                                Ideally looking in and around Whitefield, Brookfield, or the surrounding areas.<br />
+                                I'm
                                 clean,
                                 easy-going, and respect personal space. Prefer a chill vibe with no owner interference!
                                 Please DM if you have a vacancy in your flat.
@@ -866,7 +962,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 relative z-10">
 
                     <!-- Step 1 -->
-                    <div class="step-wrapper relative flex lg:block items-start gap-6 reveal-up"
+                    <div class="step-wrapper feature-card-clickable relative flex lg:block items-start gap-6 reveal-up"
                         style="transition-delay: 100ms;">
                         <div
                             class="icon-container relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 lg:mx-auto bg-brand-dark text-white rounded-2xl flex items-center justify-center text-xl font-bold lg:mb-6 shadow-lg z-10 animate-float">
@@ -888,7 +984,7 @@
                     </div>
 
                     <!-- Step 2 -->
-                    <div class="step-wrapper relative flex lg:block items-center gap-6 reveal-up"
+                    <div class="step-wrapper feature-card-clickable relative flex lg:block items-center gap-6 reveal-up"
                         style="transition-delay: 200ms;">
                         <div
                             class="icon-container relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 lg:mx-auto bg-slate-400 text-white rounded-2xl flex items-center justify-center text-xl font-bold lg:mb-6 shadow-lg z-10 animate-float delay-1">
@@ -912,7 +1008,7 @@
                     </div>
 
                     <!-- Step 3 -->
-                    <div class="step-wrapper relative flex lg:block items-center gap-6 reveal-up"
+                    <div class="step-wrapper feature-card-clickable relative flex lg:block items-center gap-6 reveal-up"
                         style="transition-delay: 300ms;">
                         <div
                             class="icon-container relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 lg:mx-auto bg-blue-500 text-white rounded-2xl flex items-center justify-center text-xl font-bold lg:mb-6 shadow-lg z-10 animate-float delay-2">
@@ -932,7 +1028,7 @@
                     </div>
 
                     <!-- Step 4 -->
-                    <div class="step-wrapper relative flex lg:block items-center gap-6 reveal-up"
+                    <div class="step-wrapper feature-card-clickable relative flex lg:block items-center gap-6 reveal-up"
                         style="transition-delay: 400ms;">
                         <div
                             class="icon-container relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 lg:mx-auto bg-indigo-500 text-white rounded-2xl flex items-center justify-center text-xl font-bold lg:mb-6 shadow-lg z-10 animate-float delay-3">
@@ -970,12 +1066,11 @@
         </div>
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center animate-on-scroll fade-in-up">
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">Tired of scattered groups?</h2>
-            <p class="text-xl text-gray-300 mb-10">Join Corado today and experience a cleaner, safer, and more efficient
-                way to connect locally.</p>
+            <p class="text-xl text-gray-300 mb-10">Now experience a cleaner and efficient way to connect locally.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="#main"
                     class="inline-flex justify-center items-center gap-2 bg-brand-500 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-brand-400 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-                    Get Started Now
+                    Get Started
                 </a>
             </div>
         </div>
@@ -1049,9 +1144,7 @@
         </div>
     </div>
 
-    <!-- Audio Element for Corado logo -->
-    <audio id="logoAudio" src="./corado-pronunciation.mp3" preload="auto"></audio>
-
+    <!-- Audio Element handled dynamically in script -->
     <!-- Scripts -->
     <script>
         // --- Data ---
@@ -1228,20 +1321,29 @@
 
         function playAudio() {
             const container = document.getElementById('animationContainer');
-            container.classList.remove('show-animation');
+            if (container) container.classList.remove('show-animation');
+
             const note = document.getElementById('audioNote');
             if (note) {
                 note.classList.remove('music-note-hide');
                 note.classList.add('music-note-show', 'music-note-fast');
             }
-            const audio = document.getElementById('logoAudio');
-            if (audio) {
-                audio.currentTime = 0;
-                audio.play().catch(e => console.error("Audio playback failed:", e));
-            }
-            setTimeout(() => {
+
+            // Create audio dynamically to avoid lock-screen sticking
+            const audio = new Audio('./corado-pronunciation.mp3');
+            audio.play().catch(e => console.error("Audio playback failed:", e));
+
+            // Clean up session so it doesn't show on lock screen
+            audio.onended = () => {
                 if (note) note.classList.remove('music-note-show', 'music-note-fast');
-            }, 1000);
+
+                // Explicitly tell the OS to clear the media session
+                if ('mediaSession' in navigator) {
+                    navigator.mediaSession.playbackState = 'none';
+                    navigator.mediaSession.metadata = null;
+                }
+            };
+
             try { localStorage.setItem(CCAO_STORAGE_KEY, 1); } catch { }
         }
 
@@ -1253,11 +1355,12 @@
             // Sticky Buttons Observer
             const appLinks = document.getElementById('app-links');
             const navElement = document.querySelector('nav');
+            const stickyBar = document.getElementById('sticky-bar');
 
             if (appLinks && navElement) {
                 // Get the actual height of the navigation bar to use as an offset
                 const navHeight = navElement.offsetHeight;
-                
+
                 const observerOptions = {
                     root: null,
                     rootMargin: `-${navHeight}px 0px 0px 0px`,
@@ -1277,6 +1380,25 @@
 
                 observer.observe(appLinks);
             }
+
+            // Feature Card Shake Trigger
+            document.querySelectorAll('.feature-card-clickable').forEach(card => {
+                card.addEventListener('click', () => {
+                    const buttonContainer = stickyBar ? stickyBar.querySelector('.max-w-7xl') : null;
+                    if (buttonContainer && document.body.classList.contains('sticky-bar-visible')) {
+                        // Remove class if it exists to allow re-triggering
+                        buttonContainer.classList.remove('animate-shake-buttons');
+                        // Trigger reflow to restart animation
+                        void buttonContainer.offsetWidth;
+                        buttonContainer.classList.add('animate-shake-buttons');
+
+                        // Clear class after animation ends
+                        setTimeout(() => {
+                            buttonContainer.classList.remove('animate-shake-buttons');
+                        }, 400);
+                    }
+                });
+            });
 
             // Marquee Initialization & Auto-scroll logic
             const container = document.getElementById('marquee-container');
