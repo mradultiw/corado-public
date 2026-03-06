@@ -374,6 +374,17 @@
             animation-delay: 1.4s;
         }
 
+        /* Sticky App Links Bar */
+        #sticky-bar {
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .sticky-bar-visible #sticky-bar {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
         @keyframes hdv-draw {
             to {
                 stroke-dashoffset: 0;
@@ -395,7 +406,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
 
-                <div class="flex items-center gap-4" role="button" onclick="playAudio()">
+                <div class="flex items-center gap-4 shrink-0" role="button" onclick="playAudio()">
                     <!-- Audio Trigger Container -->
                     <div id="animationContainer" class="relative">
                         <!-- Animated Pulse Ring -->
@@ -411,7 +422,7 @@
                     <div class="flex items-center">
                         <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-800">Corado</span>
 
-                        <div class="ml-[0.8rem] flex items-end gap-1 group cursor-help text-[0.625rem] sm:text-[0.8rem] italic text-gray-400"
+                        <div class="nav-pronunciation ml-[0.8rem] flex items-end gap-1 group cursor-help text-[0.625rem] sm:text-[0.8rem] italic text-gray-400"
                             title="Pronunciation Guide">
                             <span>(</span>
                             <svg xmlns="http://www.w3.org" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -427,15 +438,14 @@
                     </div>
                 </div>
 
-                <!-- Mobile & Desktop accessible right side -->
-                <div class="flex items-center gap-3 sm:gap-6">
+                <div class="flex items-center gap-3 sm:gap-6 shrink-0">
                     <!-- Desktop Only Menu -->
                     <div class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-600 ml-4">
                         <a href="#features" class="hover:text-brand-blue transition">Features</a>
                         <a href="#how-it-works" class="hover:text-brand-blue transition">How it works</a>
                     </div>
-                    <a href="https://forms.gle/kFN56v8mXUWNBNer5" target="_blank" rel="noopener noreferrer"
-                        class="text-slate-600 hover:text-brand-blue transition flex items-center gap-1 text-xs sm:text-sm font-bold whitespace-nowrap">
+                    <a href="https://forms.gle/kFN56v8mXUWNBNer5"
+                        class="nav-feedback text-slate-600 hover:text-brand-blue transition flex items-center gap-1 text-xs sm:text-sm font-bold whitespace-nowrap">
                         Feedback
                         <svg class="w-3 h-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -448,6 +458,23 @@
             </div>
         </div>
     </nav>
+
+    <!-- Sticky App Links Bar (Below Header) -->
+    <div id="sticky-bar"
+        class="fixed top-20 w-full z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 transition-all duration-500 transform -translate-y-full opacity-0 pointer-events-none shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3.5 flex justify-center items-center gap-4">
+            <a href="https://web.corado.in"
+                class="web-app-link bg-slate-800 text-white px-6 py-2.5 rounded-full font-bold text-[0.8rem] sm:text-base flex items-center justify-center gap-2.5 border border-transparent shadow-sm hover:opacity-90 transition-opacity">
+                <i data-lucide="globe" class="w-5 h-5"></i>
+                <span>Use on Web</span>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.corado.app"
+                class="bg-white text-slate-900 px-6 py-2.5 rounded-full font-bold text-[0.8rem] sm:text-base flex items-center justify-center gap-2.5 border border-gray-300 shadow-sm hover:bg-gray-50 transition-colors">
+                <i data-lucide="smartphone" class="w-5 h-5 text-green-500"></i>
+                <span>Download App</span>
+            </a>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="pt-32 pb-16 lg:pt-48 lg:pb-20 overflow-hidden relative" id="main">
@@ -547,8 +574,7 @@
                 </a>
 
                 <!-- Action: Download the App (Android Only) -->
-                <a href="https://play.google.com/store/apps/details?id=com.corado.app" target="_blank"
-                    rel="noopener noreferrer" id="android-link" class="w-full max-w-[17.5rem] sm:max-w-none sm:w-[18rem] bg-white text-slate-900 px-6 py-3 rounded-full font-bold text-lg 
+                <a href="https://play.google.com/store/apps/details?id=com.corado.app" id="android-link" class="w-full max-w-[17.5rem] sm:max-w-none sm:w-[18rem] bg-white text-slate-900 px-6 py-3 rounded-full font-bold text-lg 
             hover:bg-gray-50 transition shadow-xl shadow-slate-200 flex items-center justify-center gap-3 
             border border-gray-300 transform hover:-translate-y-1">
                     <!-- Tinting the bot icon green adds a recognizable, implicit hint for Android -->
@@ -1224,6 +1250,30 @@
 
             handleVisitLogic();
 
+            // Sticky Buttons Observer
+            const appLinks = document.getElementById('app-links');
+
+            if (appLinks) {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '-80px 0px 0px 0px',
+                    threshold: 0
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        // When scrolling down, if the top of buttons reaches the nav (80px from top)
+                        if (!entry.isIntersecting && entry.boundingClientRect.top < 80) {
+                            document.body.classList.add('sticky-bar-visible');
+                        } else {
+                            document.body.classList.remove('sticky-bar-visible');
+                        }
+                    });
+                }, observerOptions);
+
+                observer.observe(appLinks);
+            }
+
             // Marquee Initialization & Auto-scroll logic
             const container = document.getElementById('marquee-container');
             const track1 = document.getElementById('marquee-track-1');
@@ -1370,7 +1420,7 @@
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     if (window.innerWidth < 768) {
-                        window.open('https://web.corado.in', '_blank');
+                        window.location.href = 'https://web.corado.in';
                     } else {
                         openModal(desktopModal, desktopModalContent);
                     }
@@ -1380,7 +1430,7 @@
             document.getElementById('close-desktop-modal')?.addEventListener('click', () => closeModal(desktopModal, desktopModalContent));
             desktopModal?.addEventListener("click", (e) => { if (e.target === desktopModal) closeModal(desktopModal, desktopModalContent); });
             document.getElementById('insist-desktop-btn')?.addEventListener('click', () => {
-                window.open('https://docs.google.com/forms/d/e/1FAIpQLSdnYVmIwVuKf07DMU7aln1bCs3iOTD_TdDW5KmGyeDAhwjWqg/viewform?usp=header', '_blank');
+                window.open('https://docs.google.com/forms/d/e/1FAIpQLSdnYVmIwVuKf07DMU7aln1bCs3iOTD_TdDW5KmGyeDAhwjWqg/viewform?usp=header');
                 closeModal(desktopModal, desktopModalContent);
             });
 
