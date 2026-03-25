@@ -814,7 +814,7 @@
                             <div class="flex-1">
                                 <div class="flex items-center justify-between w-full">
                                     <span class="flex flex-row gap-2 items-center justify-center">
-                                        <h5 class="font-bold text-sm sm:text-base text-gray-900">Priya</h5>
+                                        <h5 class="font-bold text-sm sm:text-base text-slate-900">Google</h5>
                                         <div class="relative flex items-center">
                                             <i data-lucide="badge-check"
                                                 class="w-4 h-4 text-blue-500 fill-blue-500 text-white"></i>
@@ -834,19 +834,22 @@
                                         </div>
                                     </span>
                                     <div class="flex items-center gap-2">
-                                        <span class="text-[0.625rem] px-2 sm:text-xs font-bold text-brand-600">
+                                        <span class="text-[0.6rem] px-2 font-semibold text-brand-600">
                                             3.1km
                                         </span>
                                         <span
                                             class="text-[0.5rem] sm:text-[0.5625rem] font-bold px-1.5 py-0.5 rounded-md border uppercase tracking-wider text-blue-600 bg-blue-50 border-blue-200">
-                                            Housing
+                                            Flat & Flatmates
                                         </span>
                                     </div>
                                 </div>
+                                <div class="flex flex-row gap-1">
                                 <p
-                                    class="text-[0.5625rem] sm:text-xs text-brand-600 font-bold flex items-center gap-1 uppercase">
-                                    Google
+                                    class="text-[0.5625rem] sm:text-xs text-gray-500 font-bold flex items-center gap-1">
+                                    Priya
                                 </p>
+                                <p class="text-[0.5rem] sm:text-xs text-gray-500 flex items-center gap-1">• 02/02/2026</p>
+                            </div>
                             </div>
                         </div>
                         <!-- Post Content -->
@@ -1169,20 +1172,20 @@
                             </div>
                             <div class="overflow-hidden">
                                 <span class="flex flex-row gap-2 items-center justify-start">
-                                    <h3 class="font-[400] text-slate-700 text-sm sm:text-base leading-tight truncate">${post.name}</h3>
+                                    <h3 class="font-semibold text-slate-600 text-sm sm:text-base leading-tight truncate">${post.company}</h3>
                                     <i data-lucide="badge-check" class="w-5 h-5 text-blue-500 fill-blue-500 text-white"></i>
                                 </span>
-                                <p class="text-[0.625rem] sm:text-[0.6875rem] font-medium text-gray-500 uppercase tracking-tight">
-                                    ${post.company} <span class="mx-1 text-gray-300">•</span> ${post.date}
+                                <p class="text-[0.625rem] sm:text-[0.6875rem] font-medium text-gray-500 tracking-tight">
+                                    ${post.name} <span class="mx-1 text-gray-300">•</span> ${post.date}
                                 </p>
                             </div>
                         </div>
                         <div class="flex items-center">
-                            <span class="text-[0.6875rem] px-3 sm:text-xs font-bold text-brand-600">
+                            <span class="text-[0.6rem] px-3 font-semibold text-brand-600">
                                 ${(post.distance / 1000).toFixed(1)}km
                             </span>
-                            <span class="text-[0.5625rem] sm:text-[0.625rem] font-bold px-2 py-1 rounded-md border uppercase tracking-wider ${categoryStyle}">
-                                ${post.category}
+                            <span class="text-[0.5rem] font-semibold px-2 py-1 rounded-md border uppercase tracking-wider ${categoryStyle}">
+                                ${post.category == "Housing"? "Flat & Flatmates": "Buy & Sell" }
                             </span>
                         </div>
                     </div>
