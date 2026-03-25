@@ -796,11 +796,11 @@
                         class="absolute inset-0 bg-gradient-to-tr from-brand-200 to-indigo-200 rounded-[2rem] transform rotate-3 scale-105">
                     </div>
                     <div
-                        class="feature-card-clickable relative bg-white p-5 sm:p-7 rounded-[1.5rem] shadow-xl border border-gray-100 animate-float delay-2 viewport-active mx-auto max-w-md lg:max-w-none">
-                        <div class="flex items-center gap-4 mb-4 pb-4 border-b border-gray-100"> <!-- Icon Container -->
+                        class="feature-card-clickable relative bg-white p-4 sm:p-7 rounded-[1.5rem] shadow-xl border border-gray-100 animate-float delay-2 viewport-active mx-auto max-w-md lg:max-w-none">
+                        <div class="flex items-center gap-3 sm:gap-4 mb-4 pb-4 border-b border-gray-100"> <!-- Icon Container -->
                             <div
-                                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                <svg xmlns="http://www.w3.org" viewBox="2.5 2.5 19 19" class="w-5 h-5 text-gray-500">
+                                class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg xmlns="http://www.w3.org" viewBox="2.5 2.5 19 19" class="w-4 h-4 sm:w-5 sm:h-5 text-gray-500">
                                     <g>
                                         <path d="M5 19L5 8L9 11L15 11L19 8L19 19Z" fill="#F59E0B" />
                                         <circle cx="9" cy="14" r="1" fill="#333" />
@@ -811,13 +811,13 @@
                             </div>
 
                             <!-- Text Container: Added flex-1 to make this expand -->
-                            <div class="flex-1">
+                            <div class="flex-1 min-w-0">
                                 <div class="flex items-center justify-between w-full">
-                                    <span class="flex flex-row gap-2 items-center justify-center">
-                                        <h5 class="font-bold text-sm sm:text-base text-slate-900">Google</h5>
-                                        <div class="relative flex items-center">
+                                    <span class="flex flex-row gap-1.5 sm:gap-2 items-center justify-start min-w-0">
+                                        <h5 class="font-bold text-xs sm:text-base text-slate-900 truncate">Google</h5>
+                                        <div class="relative flex items-center shrink-0">
                                             <i data-lucide="badge-check"
-                                                class="w-4 h-4 text-blue-500 fill-blue-500 text-white"></i>
+                                                class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-500 fill-blue-500 text-white"></i>
                                             <div class="hand-drawn-verified" id="hand-drawn-verified-id"
                                                 style="left: 1.25rem; top: -1.1rem; width: 6.5rem; height: 1.8rem;">
                                                 <svg viewBox="0 0 80 36" width="80" height="36"
@@ -833,19 +833,19 @@
                                             </div>
                                         </div>
                                     </span>
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-[0.6rem] px-2 font-semibold text-brand-600">
+                                    <div class="flex items-center gap-1 sm:gap-2 shrink-0 ml-2">
+                                        <span class="text-[0.55rem] sm:text-[0.6rem] px-1 sm:px-2 font-semibold text-brand-600">
                                             3.1km
                                         </span>
                                         <span
-                                            class="text-[0.5rem] sm:text-[0.5625rem] font-bold px-1.5 py-0.5 rounded-md border uppercase tracking-wider text-blue-600 bg-blue-50 border-blue-200">
+                                            class="text-[0.45rem] sm:text-[0.5625rem] font-bold px-1.5 py-0.5 rounded-md border uppercase tracking-wider text-blue-600 bg-blue-50 border-blue-200 whitespace-nowrap">
                                             Flat & Flatmates
                                         </span>
                                     </div>
                                 </div>
                                 <div class="flex flex-row gap-1">
                                 <p
-                                    class="text-[0.5625rem] sm:text-xs text-gray-500 font-bold flex items-center gap-1">
+                                    class="text-[0.55rem] sm:text-xs text-gray-500 font-bold flex items-center gap-1">
                                     Priya
                                 </p>
                                 <p class="text-[0.5rem] sm:text-xs text-gray-500 flex items-center gap-1">• 02/02/2026</p>
@@ -853,30 +853,28 @@
                             </div>
                         </div>
                         <!-- Post Content -->
-                        <div class="space-y-3 mb-4">
-                            <h6 class="font-bold text-sm sm:text-base text-gray-800 leading-snug">Looking for a private
+                        <div class="space-y-2 sm:space-y-3 mb-4">
+                            <h6 class="font-bold text-xs sm:text-base text-gray-800 leading-snug">Looking for a private
                                 room in a 2/3
                                 BHK (female) 🏡 , Whitefield/&#8203;Brookfield
                             </h6>
-                            <p class="text-[0.75rem] sm:text-sm text-gray-600 leading-relaxed">Hi! I recently moved to
+                            <p class="text-[0.65rem] sm:text-sm text-gray-600 leading-relaxed line-clamp-4 sm:line-clamp-none">Hi! I recently moved to
                                 Bangalore and just joined Google. I’m looking for a private room in a pre-occupied,
-                                fully setup 2 or 3 BHK with other female flatmates. <br />My budget is around ₹20k -
+                                fully setup 2 or 3 BHK with other female flatmates. <br class="hidden sm:block" />My budget is around ₹20k -
                                 ₹25k.
-                                Ideally looking in and around Whitefield, Brookfield, or the surrounding areas.<br />
-                                I'm
-                                clean,
-                                easy-going, and respect personal space. Prefer a chill vibe with no owner interference!
+                                Ideally looking in and around Whitefield, Brookfield, or the surrounding areas.<br class="hidden sm:block" />
+                                I'm clean, easy-going, and respect personal space. Prefer a chill vibe with no owner interference!
                                 Please DM if you have a vacancy in your flat.
                             </p>
                         </div>
-                        <div class="flex justify-start gap-8">
+                        <div class="flex justify-start gap-6 sm:gap-8">
                             <button
-                                class="bg-white-50 text-gray-700 font-medium rounded-xl hover:bg-gray-100 transition-colors flex items-center justify-center p-2">
-                                <i data-lucide="send" class="w-4 h-4"></i>
+                                class="bg-white-50 text-gray-700 font-medium rounded-xl hover:bg-gray-100 transition-colors flex items-center justify-center p-1.5 sm:p-2">
+                                <i data-lucide="send" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
                             </button>
                             <button
-                                class="bg-white-50 text-gray-700 font-medium rounded-xl hover:bg-gray-100 transition-colors flex items-center justify-center p-2">
-                                <i data-lucide="message-square" class="w-4 h-4"></i>
+                                class="bg-white-50 text-gray-700 font-medium rounded-xl hover:bg-gray-100 transition-colors flex items-center justify-center p-1.5 sm:p-2">
+                                <i data-lucide="message-square" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
                             </button>
                         </div>
                     </div>
@@ -1164,45 +1162,45 @@
         function createPostCardHTML(post) {
             const categoryStyle = categoryColorMap[post.category] || categoryColorMap.Marketplace;
             return `
-                <div class="w-[18.75rem] sm:w-[23.75rem] shrink-0 bg-white border border-gray-200 rounded-2xl p-5 flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300 whitespace-normal text-left h-full">
+                <div class="w-[17.5rem] sm:w-[23.75rem] shrink-0 bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300 whitespace-normal text-left h-full">
                     <div class="flex justify-between items-start mb-3">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full flex shrink-0 items-center justify-center font-bold text-[0.75rem] sm:text-sm ${post.avatarColor}">
+                        <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+                            <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full flex shrink-0 items-center justify-center font-bold text-[0.55rem] sm:text-xs ${post.avatarColor}">
                                 ${post.avatar}
                             </div>
                             <div class="overflow-hidden">
-                                <span class="flex flex-row gap-2 items-center justify-start">
-                                    <h3 class="font-semibold text-slate-600 text-sm sm:text-base leading-tight truncate">${post.company}</h3>
-                                    <i data-lucide="badge-check" class="w-5 h-5 text-blue-500 fill-blue-500 text-white"></i>
+                                <span class="flex flex-row gap-1 sm:gap-2 items-center justify-start">
+                                    <h3 class="font-semibold text-slate-600 text-xs sm:text-base leading-tight truncate">${post.company}</h3>
+                                    <i data-lucide="badge-check" class="w-3.5 h-3.5 sm:w-5 sm:h-5 text-blue-500 fill-blue-500 text-white shrink-0"></i>
                                 </span>
-                                <p class="text-[0.625rem] sm:text-[0.6875rem] font-medium text-gray-500 tracking-tight">
-                                    ${post.name} <span class="mx-1 text-gray-300">•</span> ${post.date}
+                                <p class="text-[0.55rem] sm:text-[0.6875rem] font-medium text-gray-500 tracking-tight truncate">
+                                    ${post.name} <span class="mx-0.5 text-gray-300">•</span> ${post.date}
                                 </p>
                             </div>
                         </div>
-                        <div class="flex items-center">
-                            <span class="text-[0.6rem] px-3 font-semibold text-brand-600">
+                        <div class="flex items-center shrink-0 ml-2">
+                            <span class="text-[0.55rem] sm:text-[0.6rem] px-1.5 sm:px-3 font-semibold text-brand-600">
                                 ${(post.distance / 1000).toFixed(1)}km
                             </span>
-                            <span class="text-[0.5rem] font-semibold px-2 py-1 rounded-md border uppercase tracking-wider ${categoryStyle}">
+                            <span class="text-[0.45rem] sm:text-[0.5rem] font-bold px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-md border uppercase tracking-wider whitespace-nowrap ${categoryStyle}">
                                 ${post.category == "Housing"? "Flat & Flatmates": "Buy & Sell" }
                             </span>
                         </div>
                     </div>
                     <div class="flex-grow flex flex-col justify-start">
-                        <p class="font-[700] text-slate-700 text-[0.875rem] sm:text-[0.95rem] mb-[0.125rem] line-clamp-1">${post.title}</p>
-                        <div class="min-h-[4rem] sm:min-h-[4.25rem]">
-                            <p class="text-gray-600 text-xs sm:text-sm leading-relaxed line-clamp-3">${post.content}</p>
+                        <p class="font-[700] text-slate-700 text-[0.75rem] sm:text-[0.95rem] mb-[0.125rem] line-clamp-1">${post.title}</p>
+                        <div class="min-h-[3.5rem] sm:min-h-[4.25rem]">
+                            <p class="text-gray-600 text-[0.65rem] sm:text-sm leading-relaxed line-clamp-3">${post.content}</p>
                         </div>
                     </div>
-                    <div class="flex justify-start gap-8">
+                    <div class="flex justify-start gap-6 sm:gap-8 mt-2">
                         <button
-                            class="bg-white-50 text-gray-700 font-medium rounded-xl hover:bg-gray-100 transition-colors flex items-center justify-center p-2">
-                            <i data-lucide="send" class="w-4 h-4"></i>
+                            class="bg-white-50 text-gray-700 font-medium rounded-xl hover:bg-gray-100 transition-colors flex items-center justify-center p-1.5 sm:p-2">
+                            <i data-lucide="send" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
                         </button>
                         <button
-                            class="bg-white-50 text-gray-700 font-medium rounded-xl hover:bg-gray-100 transition-colors flex items-center justify-center p-2">
-                            <i data-lucide="message-square" class="w-4 h-4"></i>
+                            class="bg-white-50 text-gray-700 font-medium rounded-xl hover:bg-gray-100 transition-colors flex items-center justify-center p-1.5 sm:p-2">
+                            <i data-lucide="message-square" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
                         </button>
                     </div>
                 </div>
